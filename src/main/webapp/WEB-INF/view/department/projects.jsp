@@ -1,166 +1,91 @@
-<%@ page language="java"  contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <head>
+        <meta charset="utf-8">
+        <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> ISAP Projects </title>
-		<meta name="description" content="">
-		<meta name="author" content="">
-			
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title> ISAP Corporate User - Department Home</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+           
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<!-- Basic Styles -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+        <!-- Basic Styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
 
-		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+        <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
 
-		<!-- SmartAdmin RTL Support -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css"> 
+        <!-- SmartAdmin RTL Support -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
 
-		<!-- We recommend you use "your_style.css" to override SmartAdmin
-		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
-		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+        <!-- We recommend you use "your_style.css" to override SmartAdmin
+             specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+        <link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
 
-		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+        <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
 
-		<!-- FAVICONS -->
-		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <!-- FAVICONS -->
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
 
-		<!-- GOOGLE FONT -->
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
-
-		<!-- Specifying a Webpage Icon for Web Clip 
-			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-		<link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
-		
-		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		
-		<!-- Startup image for web apps -->
-		<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
-		<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
-		<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-
-
-
-
-
-<script>
-	
-function deletedf(){
-	alter(1);
-	    
-}
-	
-	
-	function addProject()
-	{
-		
-		document.addForm.action = "./addProject";
-	   	document.addForm.submit();
-	}
-	
-	function deleteProject(value){
-
-		    var proj_id=value.id;
-			document.getElementById('proj_id').value = proj_id;
-			
-			document.editForm.action = "./deleteProject";
-		   	document.editForm.submit();
-	}
-	
-	/* function editProject(value){
-		
-		    var proj_id=value.id;
-		    alert(proj_id);
-			document.getElementById('proj_id').value = proj_id;
-			document.editForm.action = "./editProjectList";
-		   	document.editForm.submit();
-	} */
-	
-	
-	
-	/* function updateProjectList()
-	{
-	document.edit-proj-form.action="./editProjectDetails";
-	document.edit-proj-form.submit();
-	}
- */
-
-	
-	
-	</script>
-
-
-	</head>
-	
-	
-    <body  class="desktop-detected menu-on-top pace-done smart-style-4">
-		<!-- #HEADER -->
-		<header id="header">
+        <!-- GOOGLE FONT -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+    </head>
+   
+    <body class=" ">
+    <!-- #HEADER -->
+    <header id="header">
           <div id="logo-group">
-			<img width="80px" height="100%" style="padding-top: 2.5%" src="img/logo_isap.png" alt="ISAP"> 
-			<span> </span>
-			
-			<!-- PLACE YOUR LOGO HERE -->
-			 <span> 
-			  <img src="img/syntel-logo.png" style="padding-top: 3%" width="85px" height="100%" alt="SYNTEL">
-			</span>
-		</div>
+            <img width="80px" height="100%" style="padding-top: 2.5%" src="img/logo_isap.png" alt="ISAP">
+            <span> </span>
+             <span>
+              <img src="img/syntel-logo.png" style="padding-top: 3%" width="85px" height="100%" alt="SYNTEL">
+            </span>
+          </div>
 
-			
-			<!-- #TOGGLE LAYOUT BUTTONS -->
-			<!-- pulled right: nav area -->
-			<div class="pull-right">
-
-               <div class="project-context hidden-xs">
-                <span class="label"> Department Admin: ( Corporate Admin : Syntel )</span>
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                    <i class="fa fa-user"></i>
-                    <span> Welcome ,&nbsp;&nbsp;${userValue.usr_name}</span>
+    <!-- pulled right: nav area -->
+       <div class="pull-right">
+           <div class="project-context hidden-xs">
+                <span class="label">Corporate Admin: ( Syntel )
+                </span>
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                   <i class="fa fa-user"></i>
+                   <span> Welcome ,&nbsp;&nbsp;${userValue.usr_name}</span>
                  </a>
-               </div>
-               
-               	<!-- collapse menu button -->
-				<div id="hide-menu" class="btn-header pull-right">
-					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
-				</div>
-				<!-- end collapse menu -->
-
-              <span> <a style="border-radius: 2px;cursor: default !important;display: inline-block;font-weight: 700;height: 30px;line-height: 24px;min-width: 30px;
-                                padding: 2px;text-align: center;text-decoration: none !important;-moz-user-select: none;background-color: #F8F8F8;
-                                background-image: -moz-linear-gradient(center top , #F8F8F8, #F1F1F1);border: 1px solid #BFBFBF;color: #6D6A69;font-size: 17px;
-                                margin: 10px 0px 0px;" href="./logout" title="Sign Out" data-action="userLogout" 
-                                data-logout-msg="You can improve your security further after logging out by closing this opened browser">
-                           <i class="fa fa-sign-out"></i>
-                       </a> 
-             </span> 
-
            </div>
-			<!-- end pulled right: nav area -->
+              
+           <!-- collapse menu button -->
+           <div id="hide-menu" class="btn-header pull-right">
+                <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+            </div>
+            <!-- end collapse menu -->
 
-		</header>
-		<!-- END HEADER -->
+            <span>
+                   <a style="border-radius: 2px;cursor: default !important;display: inline-block;font-weight: 700;height: 30px;line-height: 24px;min-width: 30px;
+                             padding: 2px;text-align: center;text-decoration: none !important;-moz-user-select: none;background-color: #F8F8F8;
+                             background-image: -moz-linear-gradient(center top , #F8F8F8, #F1F1F1);border: 1px solid #BFBFBF;color: #6D6A69;font-size: 17px;
+                             margin: 10px 0px 0px;" href="./logout" title="Sign Out" data-action="userLogout"
+                             data-logout-msg="You can improve your security further after logging out by closing this opened browser">
+                           <i class="fa fa-sign-out"></i>
+                    </a>
+             </span>
+
+         </div>
+        <!-- end pulled right: nav area -->
+    </header>
+    <!-- END HEADER -->
 
 
-		<!-- #NAVIGATION -->
-		<!-- Left panel : Navigation area -->
-		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
-		<aside id="left-panel">
+        <!-- #NAVIGATION -->
+        <!-- Left panel : Navigation area -->
+        <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+       <aside id="left-panel">
 
 			<!-- User info -->
 			
@@ -171,59 +96,59 @@ function deletedf(){
 			<nav>
 				<ul>
 				
-					<li>
+					<li class="active">
 						<a href="dashboardDeparment" title="DashBoard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">DashBoard</span></a>
 					</li>
 					
 					
 				
-					<li class="active">
+					<li >
 						<a href="projects"><i class="fa fa-stack-overflow"></i> <span class="menu-item-parent">Projects</span></a>
 					</li>		
 				<!-- 	<li >
 						<a href="#"><i class="fa fa-lg fa-fw fa-filter"></i> <span class="menu-item-parent">Map Users</span></a>
 					</li> -->
-					<li>
+					<!-- <li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Service Catalog creation</span></a>
 					</li> 
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-filter"></i> <span class="menu-item-parent">Stack List</span></a>
 					</li>
 					
-		           <!-- <li>
+		           <li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Manage Services</span></a>
-					</li>  -->
+					</li> 
 					
 					<li>
 						<a href="#"><i class="fa fa-stack-overflow"></i> <span class="menu-item-parent">Reports</span></a>
 					</li>		
+					
 					<li>
-						<a href="#"><i class="fa  fa-user"></i> <span class="menu-item-parent">Users & Account</span></a>	
-			
-					</li>
-					<li>
-					<a href="monitor"><i class="fa fa-fw fa-medkit"></i> <span class="menu-item-parent"> Monitor</span></a>			
+					<a href="#"><i class="fa fa-fw fa-medkit"></i> <span class="menu-item-parent"> Monitor</span></a>			
+					</li> -->
+						<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent"> Quota</span></a>			
 					</li>
 					
-						
+					<!-- 	
 					<li>
 						<a href="#" ><i class="fa fa-lg fa-fw fa-retweet"></i> <span class="menu-item-parent">Migration</span></a>
 					
 					    <ul>
 						   <li>
-								<a href="Discover">Discover</a>
+								<a href="#">Discover</a>
 							</li>
 							<li class="active"> 
-								<a href="MigratePlans">MigrationPlans</a>
+								<a href="#">MigrationPlans</a>
 							</li>
 							<li>
-								<a href="RegisterEnv">RegisterEnv</a>
+								<a href="#">RegisterEnv</a>
 							</li>
 						</ul>
 					
 					
 					</li>
-					
+					 -->
 					
 				</ul>
 			</nav>
@@ -232,12 +157,25 @@ function deletedf(){
 			</span>
 
 		</aside>
+        <!-- END NAVIGATION -->
+
+    <!-- MAIN PANEL -->
+    <div id="main" role="main">
+        <!-- RIBBON -->
+        <div id="ribbon">
+           <!-- breadcrumb -->
+            <ol class="breadcrumb">
+             		<li>Home</li><li>Projects</li>
+            </ol>
+            <!-- end breadcrumb -->
+        </div>
+        <!-- END RIBBON -->
 		<!-- END NAVIGATION -->
 
-		<!-- MAIN PANEL -->
-		<div id="main" role="main">
+	<!-- 	<!-- MAIN PANEL -->
+	<!-- 	<div id="main" role="main"> -->
 
-			<!-- RIBBON -->
+		<%-- 	<!-- RIBBON -->
 			<div id="ribbon">
 
 				<span class="ribbon-button-alignment"> 
@@ -253,7 +191,7 @@ function deletedf(){
 				<!-- end breadcrumb -->
 
 			</div>
-			<!-- END RIBBON -->
+			<!-- END RIBBON --> --%>
 
 			<!-- MAIN CONTENT -->
 			<div id="content">
@@ -266,7 +204,7 @@ function deletedf(){
 					<!-- row -->
 					<div class="row">
 					
-						<div class="row">
+				<!-- 		<div class="row">
                        <div class="alert alert-success">
 							<div class="row">
 							   <div class="col-md-6">
@@ -282,9 +220,16 @@ function deletedf(){
 									</div>
 								</div>
 							</div>
-	              	</div>
+	              	</div> -->
 	              	
-	              	
+	              	   
+                     <div class="pull-right" style="padding-right: 1%;">
+							 <a data-toggle="modal" href="#myModal"  class="btn btn-success txt-color-white pull-right  ">
+                                            <i class="fa fa-circle-arrow-up fa-lg"></i>
+                                           Add Project
+                                        </a>   
+							<br><br>
+						</div>
 	              	
 	              	
 	              	 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
@@ -331,7 +276,7 @@ function deletedf(){
                                                         <label class="label col col-2">Select New Owner</label>
                                                                 <div class="col col-10">
                                                                     <label class="input">
-                                                                        <select class="form-control" id="edit_usr_id" name="owner">
+                                                                        <select class="form-control" id="edit_usr_id" name="usr_id">
                                                                     </select> 
                                                                     </label>                                                               
                                                                 </div>
@@ -369,7 +314,7 @@ function deletedf(){
 											</h4>
 										</div>
 										<div class="modal-body no-padding">
-											<form  id="addForm" name ="addForm" class="smart-form" method="post">
+											<form  id="addForm" action="addProject" name ="addForm" class="smart-form" method="post">
 											
 										
 													<fieldset>
@@ -378,7 +323,7 @@ function deletedf(){
 																<div class="row">
 																	<label class="label col col-2">Name</label>
 																	<div class="col col-10">
-																		<label class="input"> <i class="icon-append fa fa-user"></i>
+																		<label class="input"> 
 																			<input type="text" name="proj_name">
 																		</label>
 																	</div>
@@ -388,7 +333,7 @@ function deletedf(){
 															<div class="row">
 																<label class="label col col-2">Project Description</label>
 																<div class="col col-10">
-																	<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+																	<label class="input"> 
 																		<input type="text" name="proj_desc">
 																	</label>
 																	
@@ -415,7 +360,7 @@ function deletedf(){
 										        </fieldset>
 										
 												<footer>
-													<button type="submit" onclick ="addProject();" class="btn btn-primary">
+													<button type="submit"  class="btn btn-primary">
 														Add Project
 													</button>
 													<button type="button" class="btn btn-default" data-dismiss="modal">
@@ -439,7 +384,7 @@ function deletedf(){
 				
 				<input type="hidden"  name="proj_id" id="proj_id"/>
 							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+							<div class="jarviswidget jarviswidget-color-blueLight" id="wid-id-0" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="true" data-widget-sortable="false">
 								<!-- widget options:
 								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 				
@@ -507,14 +452,11 @@ function deletedf(){
         								          <td  style="padding-left: 3%;">
         								   
         								      <a title="edit"  id ="${project.proj_id}" name ="${project.created_by}"  onclick="getRow(this);" href="#myModal1" data-toggle="modal"><i class="fa fa-pencil"></i></a>
-                                                        <c:choose>
-                                                           	 <c:when test="${ status=='Active'}">
-                                                             <a title="delete" href="#myModal${project.proj_id}" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-                                                           </c:when>
-                                                           <c:otherwise>
+                                                    
                                                            
-                                                           </c:otherwise>
-                                                         </c:choose> 
+                                                             <a title="delete" href="#myModal${project.proj_id}" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                                                          
+                                                         
         
       									  <div class="modal small fade" id="myModal${project.proj_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       												<div class="modal-dialog">
@@ -652,8 +594,7 @@ function deletedf(){
 
 		<![endif]-->
 
-		<!-- Demo purpose only -->
-		<script src="js/demo.min.js"></script>
+
 
 		<!-- MAIN APP JS FILE -->
 		<script src="js/app.min.js"></script>
@@ -681,6 +622,97 @@ function deletedf(){
 		$(document).ready(function() {
 			
 			pageSetUp();
+			
+			
+			 
+	          // Validation
+	                $("#edit-proj-form").validate({
+	                    // Rules for form validation
+	                    rules : {
+	                        proj_name : {
+	                            required : true
+	                        },
+	                        proj_desc : {
+	                            required : true
+	                        },                   
+	                        usr_id : {
+	                            required : true
+	                        }
+	                    },
+
+	                    // Messages for form validation
+	                    messages : {
+	                    	proj_name : {
+	                            required : 'Please enter your project name'
+	                        },   
+	                        proj_desc : {
+	                            required : 'Please select your project description'
+	                        },                       
+	                        usr_id : {
+	                            required : 'Please select owner'
+	                        }
+	                       
+	                    },
+
+	                    // Ajax form submition
+	                    submitHandler : function(form) {
+	                        $(form).ajaxSubmit({
+	                            success : function() {
+	                                $("#edit-proj-form").addClass('submited');
+	                            }
+	                        });
+	                    },
+	                // Do not change code below
+	                    errorPlacement : function(error, element) {
+	                        error.insertAfter(element.parent());
+	                    }
+	                });
+	           
+	                
+	  	          // Validation
+	  	                $("#addForm").validate({
+	  	                    // Rules for form validation
+	  	                    rules : {
+	  	                        proj_name : {
+	  	                            required : true
+	  	                        },
+	  	                        proj_desc : {
+	  	                            required : true
+	  	                        },                   
+	  	                        usr_id : {
+	  	                            required : true
+	  	                        }
+	  	                    },
+
+	  	                    // Messages for form validation
+	  	                    messages : {
+	  	                    	proj_name : {
+	  	                            required : 'Please enter your project name'
+	  	                        },   
+	  	                        proj_desc : {
+	  	                            required : 'Please select your project description'
+	  	                        },                       
+	  	                        usr_id : {
+	  	                            required : 'Please select owner'
+	  	                        }
+	  	                       
+	  	                    },
+
+	  	                    // Ajax form submition
+	  	                    submitHandler : function(form) {
+	  	                        $(form).ajaxSubmit({
+	  	                            success : function() {
+	  	                                $("#addForm").addClass('submited');
+	  	                            }
+	  	                        });
+	  	                    },
+	  	                // Do not change code below
+	  	                    errorPlacement : function(error, element) {
+	  	                        error.insertAfter(element.parent());
+	  	                    }
+	  	                });
+	          
+	                
 			
 			
 			
@@ -789,13 +821,27 @@ function deletedf(){
 	          $.getJSON("./getProject/"+projId,function(response){
 	                 $('#edit_proj_name').val(response.proj_name);
 	                 $('#edit_proj_desc').val(response.proj_desc);
-	                  $('#edit_usr_id').html('');  
+	                  $('#edit_usr_id').html('');
+	                  if(userName.trim() !== ""){
+	                      $.getJSON("./getOwnersofProject/"+userName,function(response){
+	                              var options = '';                 
+	                                 options += '<option selected value="' + response.usr_id + '">' + response.usr_name + '</option>';
+	                                 $('#edit_usr_id').append(options); 
+	                                 
+	            
+	                           });
+	                  }
+	                  else{
+	                      var options = '';                 
+	                       options += '<option selected value="0"> Select new Owner </option>';
+	                      $('#edit_usr_id').append(options);   
+	                  }
 	                  
 	                  
 	                  $.getJSON("./getDeptUsersList",function(response){
 	                      var options = '';   
 	                      for(i=0;i<response.length;i++){
-	                         options += '<option value="' + response[i].usr_name + '">' + response[i].usr_name + '</option>';
+	                         options += '<option value="' + response[i].usr_id + '">' + response[i].usr_name + '</option>';
 	                      }
 	                     $('#edit_usr_id').append(options);     
 	                   });  
@@ -809,6 +855,54 @@ function deletedf(){
 		
 		
 		</script>
+		
+		
+		
+		<script>
+	
+function deletedf(){
+	alter(1);
+	    
+}
+	
+	
+	function addProject()
+	{
+		
+		document.addForm.action = "./addProject";
+	   	document.addForm.submit();
+	}
+	
+	function deleteProject(value){
+
+		    var proj_id=value.id;
+			document.getElementById('proj_id').value = proj_id;
+			
+			document.editForm.action = "./deleteProject";
+		   	document.editForm.submit();
+	}
+	
+	/* function editProject(value){
+		
+		    var proj_id=value.id;
+		    alert(proj_id);
+			document.getElementById('proj_id').value = proj_id;
+			document.editForm.action = "./editProjectList";
+		   	document.editForm.submit();
+	} */
+	
+	
+	
+	/* function updateProjectList()
+	{
+	document.edit-proj-form.action="./editProjectDetails";
+	document.edit-proj-form.submit();
+	}
+ */
+
+	
+	
+	</script>
 
 		<!-- Your GOOGLE ANALYTICS CODE Below -->
 		<script type="text/javascript">

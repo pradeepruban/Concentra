@@ -94,7 +94,10 @@
 					</li>     
                     <li class="active">
                         <a href="departmentList" title="departments"><i class="fa  fa-group"></i> <span class="menu-item-parent">Departments</span></a>
-                    </li>               
+                    </li>  
+                    	<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent"> Quota</span></a>			
+					</li>             
                  </ul>
             </nav>
             <span class="minifyme" data-action="minifyMenu">
@@ -193,7 +196,27 @@
                                                                     </label>                                                               
                                                                 </div>
                                                      </div>
-                                                </section>                                                                                                   
+                                                </section>  
+                                                
+                                                    <section>
+                                                    <div class="row">
+                                                        <label class="label col col-2">Status</label>
+                                                                <div class="col col-10">
+                                                                    <label class="input">
+                                                                        <select class="form-control" id="status" name="status">
+                                                                        
+                                                                        <option value="Active">Active</option>
+                                                                        
+                                                                        <option value="InActive">InActive</option>
+                                                                        
+                                                                        
+                                                                        
+                                                                    </select> 
+                                                                    </label>                                                               
+                                                                </div>
+                                                     </div>
+                                                </section>  
+                                                                                                                                                 
                                                </fieldset>                                   
                                                <footer>
                                                     <button type="submit" class="btn btn-primary">
@@ -276,7 +299,7 @@
             <form name="department" id="department">
                   <!-- NEW WIDGET START -->
                   <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                     <div class="jarviswidget jarviswidget-color-darken" id="wid-id-1" data-widget-editbutton="false">
+                     <div class="jarviswidget jarviswidget-color-darken" id="wid-id-1" data-widget-editbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="true" data-widget-sortable="false">
                                 <!-- widget options:
                                 usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
@@ -334,14 +357,14 @@
                                                     <td  style="padding-left: 2%;">                                           
                                                     <a title="edit" data-toggle="modal" id="${department.dpt_id}" name="${department.created_by}"  onclick="getRow(this);" href="#myModal1"><i class="fa fa-pencil"></i></a>
                                                    
-                                                    <c:choose>
-                                                           <c:when test="${ paramName=='Active'}">;
+                                                  <%--   <c:choose> --%>
+                                                         <%--   <c:when test="${ paramName=='Active'}"> --%>
                                                              <a title="delete" href="#" id="${department.dpt_id}" name="${department.dpt_name}" onclick="deleteDepartment(this)"><i class="fa fa-trash-o"></i></a>
-                                                           </c:when>
+                                                     <%--       </c:when>
                                                            <c:otherwise>
                                                            
                                                            </c:otherwise>
-                                                         </c:choose>   
+                                                         </c:choose>   --%> 
                                                     </td>
                                               </tr>
                                             </c:forEach>               
@@ -474,6 +497,20 @@
           $.getJSON("./getDepartment/"+deptId,function(response){
                  $('#edit_dpt_name').val(response.dpt_name);
                  $('#edit_dpt_desc').val(response.dpt_desc);
+                 $('#status').html('');  
+                 if(response.status=="Active"){
+                	 var options = '';  
+                	  options += '<option selected value="Active"> Active </option>';
+                	  options += '<option  value="InActive"> InActive </option>';
+                      $('#status').append(options); 
+                 }
+                 else{
+                  var options = '';  
+               	  options += '<option  value="Active"> Active </option>';
+               	  options += '<option selected value="InActive"> InActive </option>';
+                   $('#status').append(options); 
+                 }
+                 
                   $('#edit_usr_id').html('');     
                  if(userName.trim() !== ""){
                      $.getJSON("./getOwners/"+userName,function(response){

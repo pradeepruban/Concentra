@@ -94,7 +94,10 @@
 					</li>     
                     <li >
                         <a href="departmentList" title="departments"><i class="fa  fa-group"></i> <span class="menu-item-parent">Departments</span></a>
-                    </li>            
+                    </li>
+                    	<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent"> Quota</span></a>			
+					</li>            
                  </ul>
             </nav>
             <span class="minifyme" data-action="minifyMenu">
