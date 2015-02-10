@@ -45,7 +45,7 @@ public class CorporateGroupController {
 	@RequestMapping(value="/corporategroups", method=RequestMethod.GET)
 		public ModelAndView corporateGroupLists(HttpSession session) {
 			
-			List<User> usersList = new ArrayList<User>();
+			
 			List<CorporateGroups> corporateGroupList = new ArrayList<CorporateGroups>();
 			String view = "admin/corporateGroups";
 			LOGGER.info("Inside CorporateGroups GET");
@@ -54,9 +54,6 @@ public class CorporateGroupController {
 			
 			corporateGroupList = corporateGroupService.getcorporateGroupList();
 			LOGGER.info("user Session Values"+user.getCg_id());
-			usersList =  corporateGroupService.getUsersByCgIdAndRoleID(user);
-			
-			model.addObject("usersList",usersList);
 			model.addObject("corpgrplist", corporateGroupList);
 			System.out.println("Corporate Groups List details:-" + corporateGroupList);
 			model.setViewName(view);
@@ -72,62 +69,19 @@ public class CorporateGroupController {
 										@ModelAttribute("user") User user,
 										HttpSession session) {
 			List<CorporateGroups> corporateGroupList = new ArrayList<CorporateGroups>();
-			//User userSession= (User) session.getAttribute("userValue");
-			//user.setCg_id(userSession.getCg_id());
 			LOGGER.info("Inside addDepartment()- Post");
-			List<User> usersList = new ArrayList<User>();
 			ModelAndView model = new ModelAndView();
-			//List<String> ownersList = new ArrayList<String>();
 			String view = "admin/corporateGroups";
 			if(corpGroup!=null)
 				corporateGroupService.insertAddCorporateGroupData(corpGroup,user);
 			
-			usersList =  corporateGroupService.getUsersByCgIdAndRoleID(user);
-			System.out.println("++++++++++++++++++++++++++++++++++++++"+corpGroup.getCorporate_owner());
-			
 			corporateGroupList = corporateGroupService.getcorporateGroupList();
-			//ownersList =  corporateGroupService.getUsernamesByCgId(cgId);
-			model.addObject("usersList",usersList);
 			model.addObject("corpgrplist", corporateGroupList);
 			model.setViewName(view);
 			return  model;
 		}
 	
-	/**
-	 * 
-	 * @param cg_id
-	 * @return Jsp page
-	 */
-	@RequestMapping(value ="/sessioneditcorporategroup" ,method=RequestMethod.POST)
-	public ModelAndView sessionEditData(@RequestParam int cg_id) {
-		int cgId = 11; // cgId for Corporate pool users is 11 in database
-		List<String> ownersList = new ArrayList<String>();
-		ModelAndView model = new ModelAndView();
-		String view = "admin/editTemp";
-		System.out.println("cg_id+++++++++++++++:"+cg_id);
 	
-		CorporateGroups corpgrp = new CorporateGroups();
-		corpgrp = corporateGroupService.getCorpGrpByID(cg_id);
-		ownersList =  corporateGroupService.getUsernamesByCgId(cgId);
-		model.addObject("corpgrp",corpgrp);
-		model.addObject("ownerslist",ownersList);
-		model.setViewName(view);
-		return  model;
-		/*int cgId = 11; // cgId for Corporate pool users is 11 in database
-		List<String> ownersList = new ArrayList<String>();
-		List<CorporateGroups> corporateGroupList = new ArrayList<CorporateGroups>();
-		ModelAndView model = new ModelAndView();
-		if (corpGroup != null)
-			corporateGroupService.updateCorpGrpData(corpGroup);
-		
-		String view = "admin/corporateGroups";
-		corporateGroupList = corporateGroupService.getcorporateGroupList();
-		ownersList =  corporateGroupService.getUsernamesByCgId(cgId);
-		model.addObject("ownerslist",ownersList);
-		model.addObject("corpgrplist", corporateGroupList);
-		model.setViewName(view);*/
-		
-	}
 	
 	/**
 	 * 
@@ -135,43 +89,37 @@ public class CorporateGroupController {
 	 * @return Jsp page
 	 */
 	@RequestMapping(value ="/editcorporategroup" ,method=RequestMethod.POST)
-	public ModelAndView editData(@ModelAttribute(value="corpgrp") CorporateGroups corpgrp) {
-		int cgId = 11; // cgId for Corporate pool users is 11 in database
-		List<String> ownersList = new ArrayList<String>();
+	public ModelAndView editData(@ModelAttribute(value="corpgrp") CorporateGroups corpgrp,@ModelAttribute("user") User user) {
+		
+		
 		List<CorporateGroups> corporateGroupList = new ArrayList<CorporateGroups>();
 		ModelAndView model = new ModelAndView();
-		System.out.println("((((((((((((((((((((((((((((((("+corpgrp.getCg_id());
-		System.out.println("((((((((((((((((((((((((((((((("+corpgrp.getCorporate_description());
 		if (corpgrp != null)
-			corporateGroupService.updateCorpGrpData(corpgrp);
+			corporateGroupService.updateCorpGrpData(corpgrp,user);
 		
 		String view = "admin/corporateGroups";
 		corporateGroupList = corporateGroupService.getcorporateGroupList();
-		ownersList =  corporateGroupService.getUsernamesByCgId(cgId);
-		model.addObject("ownerslist",ownersList);
 		model.addObject("corpgrplist", corporateGroupList);
 		model.setViewName(view);
 		return  model;
 	}
+	
 	
 	/**
 	 * 
 	 * @param cg_id
 	 * @return Jsp page
 	 */
-	@RequestMapping(value ="/deletecorporategroup" ,method=RequestMethod.POST)
-	public ModelAndView deleteAndBackUpData(@RequestParam int cg_id) {
-		int cgId = 11; // cgId for Corporate pool users is 11 in database
+	@RequestMapping(value ="/deletecorporategroup1" ,method=RequestMethod.POST)
+	public ModelAndView deleteCorporateGroup(@RequestParam int cg_id) {
+		
 		String view = "admin/corporateGroups";
-		List<String> ownersList = new ArrayList<String>();
 		List<CorporateGroups> corporateGroupList = new ArrayList<CorporateGroups>();
 		ModelAndView model = new ModelAndView();
-		
-		corporateGroupService.changeDeleteFlagInCorpGrp(cg_id);
+				
+		corporateGroupService.deleteCorporateGroups(cg_id);
+				
 		corporateGroupList = corporateGroupService.getcorporateGroupList();
-		ownersList =  corporateGroupService.getUsernamesByCgId(cgId);
-		
-		model.addObject("ownerslist",ownersList);
 		model.addObject("corpgrplist", corporateGroupList);
 		model.setViewName(view);
 		return  model;

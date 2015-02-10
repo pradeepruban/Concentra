@@ -30,6 +30,19 @@ public class DashboardController {
 			return  model;
 		}
 	  
+	  
+	  @RequestMapping(value ="/registerVdcAdmin", method = RequestMethod.GET)
+			public ModelAndView registerVdcAdmin() {
+			  ModelAndView model = new ModelAndView();
+				
+				String view = "admin/registerVdcAdmin";
+				  model.setViewName(view);
+				return  model;
+			}
+	  
+	  
+	  
+	  
 	
 	
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -92,31 +93,41 @@ public class IsapAdminUserController {
 
 	   
 	 @RequestMapping("/add")
- public ModelAndView  update(@ModelAttribute("User") User usr)
- {
-	 
+ public ModelAndView addNewUser(@ModelAttribute("User") User usr)
+     {
+		 LOGGER.info("Inside allUserLists()- GET");
+		 String view = "admin/UserManagement";
+		 List<User> userList=new ArrayList<User>();
 		 ModelAndView model = new ModelAndView();
-	 int i=isapAdminUserService.update(usr);
-	   if(i>0)
-	    {
-		 List<User> user= isapAdminUserService.getUser();
-		   model.addObject("list",user);
-	     }
-
-	   String view = "admin/UserManagement";
-		  List<User> userList=new ArrayList<User>();
+		 
+		 isapAdminUserService.addUserInUserTable(usr);
 		 
 		 
-		  LOGGER.info("Inside allUserLists()- GET");
-		 
-		  userList =  isapAdminUserService.getUser();
-		  model.addObject("usrlist", userList);
-		
-		  model.setViewName(view);
-	      return model;
+		 userList =  isapAdminUserService.getUser();
+		 model.addObject("usrlist", userList);
+		 model.setViewName(view);
+	     return model;
 
  }
-	
+	 
+	 @RequestMapping(value ="/deleteUser")
+		public ModelAndView deleteUser(@RequestParam(value = "usr_id") Integer usr_id,HttpSession session ) 
+	  {
+		/* System.out.println(""+usr_id);*/
+		 LOGGER.info("Inside deleteUser()- GET");
+		  isapAdminUserService.deleteUser(usr_id);
+		 List<User> userList=new ArrayList<User>();
+		  LOGGER.info("Inside deleteUser()- GET");
+		  ModelAndView model = new ModelAndView();
+		  String view = "admin/UserManagement";
+		  User user = (User) session.getAttribute("userValue");
+		 userList =  isapAdminUserService.getUserLists(user.getCg_id());
+		  model.addObject("userlist", userList);
+		  model.setViewName(view);
+	      return model;
+		
+		}
+	 
 	
 
 }

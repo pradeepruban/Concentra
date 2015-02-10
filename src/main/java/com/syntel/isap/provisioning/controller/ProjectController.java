@@ -152,7 +152,7 @@ public class ProjectController {
 			  
 			  
 			  @RequestMapping(value="/editProjectDetails",method=RequestMethod.POST)
-				public ModelAndView getEditWorkflow(HttpSession session, @ModelAttribute(value="project") Project project)
+				public ModelAndView getEditProjectDetails(HttpSession session,@ModelAttribute("user") User user, @ModelAttribute(value="project") Project project)
 				{
 					
 				  
@@ -161,14 +161,12 @@ public class ProjectController {
 				  System.out.println("inside getEditWorkflow");
 				  List<Project> projectList=new ArrayList<Project>();
 					
-				  System.out.println(project.getProj_desc());
-				  System.out.println(project.getProj_id());
-				  System.out.println(project.getStatus());
-					projectService.updateProject(project);		
+				
+					projectService.updateProject(project,user);		
 					  ModelAndView model = new ModelAndView();
 					  String view = "department/projects";
-					  User user = (User) session.getAttribute("userValue");
-						projectList =  projectService.getprojectLists(user.getDpt_id());
+					  User userSession = (User) session.getAttribute("userValue");
+						projectList =  projectService.getprojectLists(userSession.getDpt_id());
 					  model.addObject("prolist", projectList);
 					
 				
@@ -195,6 +193,14 @@ public class ProjectController {
 					}
 			  
 			  
+				 
+				 @RequestMapping(value="/getOwnersofProject/{userName}", method = RequestMethod.GET)
+					public @ResponseBody User getOwnersOwnersofProjectInJSON(@PathVariable String userName,HttpSession session) {
+			         User user=new User();
+			         user=projectService.getOwnerByName(userName);
+					 return user;
+				 
+					}
 				 
 				 /**
 				  * param 
