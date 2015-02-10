@@ -11,7 +11,7 @@ public interface ICorporateGroupDAO {
 
 	void insertCorpGrpData(CorporateGroups corpGroup);
 
-	List<String> getUsernamesByCgId(int cgId);
+	List<String> getUsernamesByCgId();
 
 	void updateCorpGrpData(CorporateGroups corpGroup);
 
@@ -23,7 +23,7 @@ public interface ICorporateGroupDAO {
 
 	int getUserIdByuserNameInUsertable(String ownerName);
 
-	void changeDeleteFlagInCorpGrp(int cg_id);
+	void updateDeleteFlagInCorpGrp(int cg_id);
 
 	User getOwnerByName(String userName);
 
@@ -31,11 +31,31 @@ public interface ICorporateGroupDAO {
 
 	List<User> getUsersByCgIdAndRoleID(User user);
 
-	String getUserNameById(int usr_id);
+	String getUserNameById(User user);
 
 	void insertAddCorporateGroupData(CorporateGroups corpGroup);
 
 	void mapRoleToUser(User user);
 
 	void mapCorporateGroupToUser(int usr_id, int cg_id);
+
+	List<Integer> getDptIdListByCgId(int cg_id);
+
+	List<Integer> getProjIdListByCgId(int cg_id);
+
+	List<Integer> getUserIdListByCgId(int cg_id);
+
+	void updateDeptDeleteFlag(Integer deptId);
+
+	void updateProjDeleteFlag(Integer projId);
+
+	void updateCgDeptProjId(Integer userId);
+
+	String getOwnerByCgId(int cg_id);
+
+	void updateCorpGroupWithoutOwner(CorporateGroups corpGroup);
+
+	void updateRoleOfOldOwner(int oldUsrId);
+
+	void updateCgIdofOldOwner(int oldUsrId);
 }

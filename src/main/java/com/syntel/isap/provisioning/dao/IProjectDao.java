@@ -20,6 +20,26 @@ public interface IProjectDao {
 	public void updateRoleMapByUserId(int userID);
 
 	public void updateProjIdInUserTable(int projId, int userID);
+
+	public List<Integer> getUserByProjID(Integer proj_id);
+
+	public void updateUserProjIds(Integer userID);
+
+	public void updateUserRole(Integer userID);
+
+	public Project getProjectById(int proj_id);
+
+	public String getUserNameById(int usr_id);
+
+	public int getUserIdByProjId(int proj_id);
+
+	public void updateUser(int userId);
+
+	public void mapRoleToUser(User user);
+
+	public void mapProjectToUser(int usr_id, int proj_id);
+
+	public User getOwnerByName(String userName);
 	 
 
 }

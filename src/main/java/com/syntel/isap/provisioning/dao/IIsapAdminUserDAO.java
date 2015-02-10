@@ -21,6 +21,15 @@ public interface IIsapAdminUserDAO {
 
 	List<User> getUser();
 
-	int update(User usr);
+	
+/*delete user */
+	
+	 public Object deleteUser(Integer usr_id);
+
+	List<User> getuserLists(int cg_id);
+
+	void addUserInUserTable(User user);
+
+	void insertRoleIdforUserIdInRolemap(int roleId, int usrId);
 
 }
