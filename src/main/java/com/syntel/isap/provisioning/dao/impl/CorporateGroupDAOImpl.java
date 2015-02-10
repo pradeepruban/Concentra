@@ -16,6 +16,15 @@ import org.springframework.stereotype.Service;
 
 
 
+
+
+
+
+
+
+
+
+
 import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.User;
 import com.syntel.isap.provisioning.dao.ICorporateGroupDAO;
@@ -41,7 +50,7 @@ public class CorporateGroupDAOImpl implements ICorporateGroupDAO {
 	}
 
 	public List<String> getUsernamesByCgId(int cgId) {
-		List<String> usernamesList = corporategroupMapper.getUsernamesByCgId(cgId);
+		List<String> usernamesList = null;//corporategroupMapper.getUsernamesByCgId();
 		System.out.println("Userlist in DAO--------------"+usernamesList);
 		return usernamesList;
 	}
@@ -72,8 +81,8 @@ public class CorporateGroupDAOImpl implements ICorporateGroupDAO {
 		return userId;
 	}
 
-	public void changeDeleteFlagInCorpGrp(int cg_id) {
-		corporategroupMapper.changeDeleteFlagInCorpGrp(cg_id);
+	public void updateDeleteFlagInCorpGrp(int cg_id) {
+		corporategroupMapper.updateDeleteFlagInCorpGrp(cg_id);
 		
 	}
 
@@ -94,8 +103,8 @@ public class CorporateGroupDAOImpl implements ICorporateGroupDAO {
 	}
 
 	
-	public String getUserNameById(int usr_id) {
-		return corporategroupMapper.getUserNameById(usr_id);
+	public String getUserNameById(User user) {
+		return corporategroupMapper.getUserNameById(user);
 	}
 
 	public void insertAddCorporateGroupData(CorporateGroups corpGroup) {
@@ -112,6 +121,82 @@ public class CorporateGroupDAOImpl implements ICorporateGroupDAO {
 		corporategroupMapper.mapCorporateGroupToUser(usr_id,cg_id);
 		
 	}
+
+	public List<String> getUsernamesByCgId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public List<Integer> getDptIdListByCgId(int cg_id) {
+		List<Integer> dptIdList = corporategroupMapper.getDptIdListByCgId(cg_id);
+		return dptIdList;
+	}
+
+
+
+	public List<Integer> getProjIdListByCgId(int cg_id) {
+		List<Integer> projIdList = corporategroupMapper.getProjIdListByCgId(cg_id);
+		return projIdList;
+	}
+
+
+
+	public List<Integer> getUserIdListByCgId(int cg_id) {
+		List<Integer> userIdList = corporategroupMapper.getUserIdListByCgId(cg_id);
+		return userIdList;
+	}
+
+
+
+	public void updateDeptDeleteFlag(Integer deptId) {
+		corporategroupMapper.updateDeptDeleteFlag(deptId);
+		
+	}
+
+
+
+	public void updateProjDeleteFlag(Integer projId) {
+		corporategroupMapper.updateProjDeleteFlag(projId);
+		
+	}
+
+
+
+	public void updateCgDeptProjId(Integer userId) {
+		corporategroupMapper.updateCgDeptProjId(userId);
+		
+	}
+
+
+
+	public String getOwnerByCgId(int cg_id) {
+		String currentOwner = corporategroupMapper.getOwnerByCgId(cg_id);
+		return currentOwner;
+	}
+
+
+
+	public void updateCorpGroupWithoutOwner(CorporateGroups corpGroup) {
+		corporategroupMapper.updateCorpGroupWithoutOwner(corpGroup);
+	}
+
+
+
+	public void updateRoleOfOldOwner(int oldUsrId) {
+		corporategroupMapper.updateRoleOfOldOwner(oldUsrId);
+		
+	}
+
+
+
+	public void updateCgIdofOldOwner(int oldUsrId) {
+		corporategroupMapper.updateCgIdofOldOwner(oldUsrId);
+		
+	}
+
+
+
 
 	
 

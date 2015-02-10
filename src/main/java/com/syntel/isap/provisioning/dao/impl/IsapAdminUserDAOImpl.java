@@ -39,6 +39,9 @@ public class IsapAdminUserDAOImpl implements IIsapAdminUserDAO{
 
 	//@Override
 	public List<User> getUser() {
+		
+		
+		
 		// TODO Auto-generated method stub
 		return isapAdminUserMapper.getUser();
 	}
@@ -56,11 +59,23 @@ public class IsapAdminUserDAOImpl implements IIsapAdminUserDAO{
 		return isapAdminUserMapper.getProjsJson(deptId);
 	}
 
-	//@Override
-	public int update(User usr) {
-		// TODO Auto-generated method stub
-		return isapAdminUserMapper.getuser(usr);
+	
+
+	public Object deleteUser(Integer usr_id) {
+		
+		return isapAdminUserMapper.getuserLists(usr_id);
+	}
+
+	public List<User> getuserLists(int cg_id) {
+		return isapAdminUserMapper.deleteUser(cg_id);
 	}
 	
+	public void addUserInUserTable(User user) {
+		isapAdminUserMapper.addUserInUserTable(user);
+	}
 	
+	public void insertRoleIdforUserIdInRolemap(int roleId, int usrId){
+		isapAdminUserMapper.insertRoleIdforUserIdInRolemap(roleId, usrId);
+//insertRoleIdforUserIdInRolemap(roleId,usrId);
+	}
 }
