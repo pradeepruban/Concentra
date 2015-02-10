@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
@@ -62,143 +63,101 @@
 		</style>
 	</head>
 	
-	
-    <body class="desktop-detected menu-on-top pace-done smart-style-4">
-    
-		<!-- #HEADER -->
-		<header id="header">
+	    <body class=" ">
+    <!-- #HEADER -->
+    <header id="header">
           <div id="logo-group">
-			<img width="80px" height="100%" style="padding-top: 2.5%" src="img/logo_isap.png" alt="ISAP"> 
-			<span> </span>
-			
-			<!-- PLACE YOUR LOGO HERE -->
-			 <span> 
-			  <img src="img/syntel-logo.png" style="padding-top: 3%" width="85px" height="100%" alt="SYNTEL">
-			</span>
-		</div>
+            <img width="80px" height="100%" style="padding-top: 2.5%" src="img/logo_isap.png" alt="ISAP">
+            <span> </span>
+             <span>
+              <img src="img/syntel-logo.png" style="padding-top: 3%" width="85px" height="100%" alt="SYNTEL">
+            </span>
+          </div>
 
-			
-			<!-- #TOGGLE LAYOUT BUTTONS -->
-			<!-- pulled right: nav area -->
-			<div class="pull-right">
-
-               <div class="project-context hidden-xs">
-                <span class="label">Technical Admin: ( Project : STG Automtation Team )</span>
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                    <i class="fa fa-user"></i>
-                    <span> Welcome ,&nbsp;&nbsp;Admin</span>
+    <!-- pulled right: nav area -->
+       <div class="pull-right">
+           <div class="project-context hidden-xs">
+                <span class="label">Corporate Admin: ( Syntel )
+                </span>
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                   <i class="fa fa-user"></i>
+                   <span> Welcome ,&nbsp;&nbsp;${userValue.usr_name}</span>
                  </a>
-               </div>
-               
-               	<!-- collapse menu button -->
-				<div id="hide-menu" class="btn-header pull-right">
-					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
-				</div>
-				<!-- end collapse menu -->
-
-              <span> <a style="border-radius: 2px;cursor: default !important;display: inline-block;font-weight: 700;height: 30px;line-height: 24px;min-width: 30px;
-                                padding: 2px;text-align: center;text-decoration: none !important;-moz-user-select: none;background-color: #F8F8F8;
-                                background-image: -moz-linear-gradient(center top , #F8F8F8, #F1F1F1);border: 1px solid #BFBFBF;color: #6D6A69;font-size: 17px;
-                                margin: 10px 0px 0px;" href="/isap" title="Sign Out" data-action="userLogout" 
-                                data-logout-msg="You can improve your security further after logging out by closing this opened browser">
-                           <i class="fa fa-sign-out"></i>
-                       </a> 
-             </span> 
-
            </div>
-			<!-- end pulled right: nav area -->
+              
+           <!-- collapse menu button -->
+           <div id="hide-menu" class="btn-header pull-right">
+                <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+            </div>
+            <!-- end collapse menu -->
 
-		</header>
-		<!-- END HEADER -->
+            <span>
+                   <a style="border-radius: 2px;cursor: default !important;display: inline-block;font-weight: 700;height: 30px;line-height: 24px;min-width: 30px;
+                             padding: 2px;text-align: center;text-decoration: none !important;-moz-user-select: none;background-color: #F8F8F8;
+                             background-image: -moz-linear-gradient(center top , #F8F8F8, #F1F1F1);border: 1px solid #BFBFBF;color: #6D6A69;font-size: 17px;
+                             margin: 10px 0px 0px;" href="./logout" title="Sign Out" data-action="userLogout"
+                             data-logout-msg="You can improve your security further after logging out by closing this opened browser">
+                           <i class="fa fa-sign-out"></i>
+                    </a>
+             </span>
+
+         </div>
+        <!-- end pulled right: nav area -->
+    </header>
+    <!-- END HEADER -->
 
 
-		<!-- #NAVIGATION -->
-		<!-- Left panel : Navigation area -->
-		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
-		<aside id="left-panel">
-
-			<!-- User info -->
-			
-			
-			<!-- end user info -->
-
-			<!-- NAVIGATION : This navigation is also responsive-->
-			<nav>
-				<ul>
-					<li >
+        <!-- #NAVIGATION -->
+        <!-- Left panel : Navigation area -->
+        <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+        <aside id="left-panel">
+            <!-- NAVIGATION : This navigation is also responsive-->
+            <nav>
+                <ul>  
+                    <li >
 						<a href="dashboardAdmin" title="DashBoard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">DashBoard</span></a>
 					</li>
-					<li>
-						<a href="organizationDesignerAdmin" title="OrganizationDesigner"><i class="fa fa-pencil-square"></i> <span class="menu-item-parent">Organization Designer</span></a>
-					</li>
-					<li>
+					
+						<li class="active">
 						<a href="#"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">VDC Management</span></a>
 						<ul>
-							<li class="active">
-								<a href="#">Register VDC</a>
-							</li>
-						</ul>		
-					</li>
-					<li>
-					  <a href="#"><i class="fa fa-lg fa-fw  fa-legal"></i> <span class="menu-item-parent">Policies</span></a>
-						<ul>
-						   <li>
-								<a href="listUsersAdmin">List Users</a>
-							</li>
 							<li>
-								<a href="setPoliciesAdmin">Set Policies</a>
-							</li>							
+								<a href="registerVdcAdmin">Register VDC</a>
+							</li>
 						</ul>		
 					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Service Catalog creation</span></a>
-					</li> 
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-filter"></i> <span class="menu-item-parent">Stack List</span></a>
-					</li>
-					
-					<!-- <li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Manage Services</span></a>
-					</li>  -->
 					
 					<li>
-						<a href="#"><i class="fa fa-stack-overflow"></i> <span class="menu-item-parent">Reports</span></a>
-					</li>		
-					<li>
-						<a href="#"><i class="fa  fa-user"></i> <span class="menu-item-parent">Users & Account</span></a>	
-			
+						<a href="ListUsers"><i class="fa fa-user"></i> <span class="menu-item-parent">Users</span></a>
 					</li>
-					<li>
-					<a href="#"><i class="fa fa-fw fa-medkit"></i> <span class="menu-item-parent"> Monitor</span></a>			
+					
+					<li >
+						<a href="corporategroups" title="corporateAdmin"><i class="fa  fa-group"></i> <span class="menu-item-parent">Corporate Group</span></a>
 					</li>
-				</ul>
-			</nav>
-			<span class="minifyme" data-action="minifyMenu"> 
-				<i class="fa fa-arrow-circle-left hit"></i> 
-			</span>
+					
+						<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent"> Quota</span></a>			
+					</li>
+                 </ul>
+            </nav>
+            <span class="minifyme" data-action="minifyMenu">
+                <i class="fa fa-arrow-circle-left hit"></i>
+            </span>
+        </aside>
+        <!-- END NAVIGATION -->
 
-		</aside>
-		<!-- END NAVIGATION -->
+    <!-- MAIN PANEL -->
+    <div id="main" role="main">
+        <!-- RIBBON -->
+        <div id="ribbon">
+           <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                    <li>Home</li><li>VDC Management</li><li>RegisterVDC</li>
+            </ol>
+            <!-- end breadcrumb -->
+        </div>
+        <!-- END RIBBON -->
 
-		<!-- MAIN PANEL -->
-		<div id="main" role="main">
-
-			<!-- RIBBON -->
-			<div id="ribbon">
-
-				<span class="ribbon-button-alignment"> 
-					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
-						<i class="fa fa-refresh"></i>
-					</span> 
-				</span>
-
-				<!-- breadcrumb -->
-				<ol class="breadcrumb">
-					<li>Home</li><li>VDC Management<li>RegisterVDC</li>
-				</ol>
-				<!-- end breadcrumb -->
-			</div>
-			<!-- END RIBBON -->
 
 
 
@@ -273,7 +232,7 @@
 						<!-- NEW WIDGET START -->
 	
 							<!-- Widget ID (each widget will need unique ID)-->
-							 <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+							 <div class="jarviswidget jarviswidget-color-blueLight" id="wid-id-0" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="true" data-widget-sortable="false">
 						
 								<header>
 									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
@@ -383,7 +342,7 @@
 														</td>
 													</tr>
 													
-													<tr>
+											<!-- 		<tr>
 														<td>OpenS-Chennai-RLT</td>
 														<td>Registered</td>
 														<td>Chennai GDC</td>
@@ -406,7 +365,7 @@
 																</ul>
 															</div>
 														</td>
-													</tr>
+													</tr> -->
 												</tbody>
 											</table>
                                           </div>
@@ -423,7 +382,7 @@
 					
 				
 					<!-- Widget ID (each widget will need unique ID)-->
-					 <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+					<div class="jarviswidget jarviswidget-color-blueLight" id="wid-id-0" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="true" data-widget-sortable="false">
 								<header>
 									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 									<h2>Amazon VDC </h2>
@@ -524,7 +483,7 @@
 						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				
 							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+							<div class="jarviswidget jarviswidget-color-blueLight" id="wid-id-0" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="true" data-widget-sortable="false">
 								<header>
 									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 									<h2>VM Ware VDC </h2>
@@ -1002,8 +961,7 @@
 
 		<![endif]-->
 
-		<!-- Demo purpose only -->
-		<script src="js/demo.min.js"></script>
+	
 
 		<!-- MAIN APP JS FILE -->
 		<script src="js/app.min.js"></script>

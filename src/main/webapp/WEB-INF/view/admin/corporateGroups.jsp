@@ -1,185 +1,124 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <head>
+        <meta charset="utf-8">
+        <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> ISAP Workflow - Workflow List </title>
-		<meta name="description" content="">
-		<meta name="author" content="">
-			
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title> ISAP Corporate User - Department Home</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+           
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<!-- Basic Styles -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+        <!-- Basic Styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
 
-		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+        <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
 
-		<!-- SmartAdmin RTL Support -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css"> 
+        <!-- SmartAdmin RTL Support -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
 
-		<!-- We recommend you use "your_style.css" to override SmartAdmin
-		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
-		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+        <!-- We recommend you use "your_style.css" to override SmartAdmin
+             specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+        <link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
 
-		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+        <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
 
-		<!-- FAVICONS -->
-		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <!-- FAVICONS -->
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
 
-		<!-- GOOGLE FONT -->
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
-
-		<!-- Specifying a Webpage Icon for Web Clip 
-			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-		<link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
-		
-		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		
-		<!-- Startup image for web apps -->
-		<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
-		<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
-		<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-
-	</head>
-	
-	<!--
-
-	TABLE OF CONTENTS.
-	
-	Use search to find needed section.
-	
-	===================================================================
-	
-	|  01. #CSS Links                |  all CSS links and file paths  |
-	|  02. #FAVICONS                 |  Favicon links and file paths  |
-	|  03. #GOOGLE FONT              |  Google font link              |
-	|  04. #APP SCREEN / ICONS       |  app icons, screen backdrops   |
-	|  05. #BODY                     |  body tag                      |
-	|  06. #HEADER                   |  header tag                    |
-	|  07. #PROJECTS                 |  project lists                 |
-	|  08. #TOGGLE LAYOUT BUTTONS    |  layout buttons and actions    |
-	|  09. #MOBILE                   |  mobile view dropdown          |
-	|  10. #SEARCH                   |  search field                  |
-	|  11. #NAVIGATION               |  left panel & navigation       |
-	|  12. #RIGHT PANEL              |  right panel userlist          |
-	|  13. #MAIN PANEL               |  main panel                    |
-	|  14. #MAIN CONTENT             |  content holder                |
-	|  15. #PAGE FOOTER              |  page footer                   |
-	|  16. #SHORTCUT AREA            |  dropdown shortcuts area       |
-	|  17. #PLUGINS                  |  all scripts and plugins       |
-	
-	===================================================================
-	
-	-->
-	
-	<!-- #BODY -->
-	<!-- Possible Classes
-
-		* 'smart-style-{SKIN#}'
-		* 'smart-rtl'         - Switch theme mode to RTL
-		* 'menu-on-top'       - Switch to top navigation (no DOM change required)
-		* 'no-menu'			  - Hides the menu completely
-		* 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
-		* 'fixed-header'      - Fixes the header
-		* 'fixed-navigation'  - Fixes the main menu
-		* 'fixed-ribbon'      - Fixes breadcrumb
-		* 'fixed-page-footer' - Fixes footer
-		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
-	-->
-
-    <body class="desktop-detected menu-on-top pace-done smart-style-4">
-    
-		<!-- #HEADER -->
-		<header id="header">
+        <!-- GOOGLE FONT -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+    </head>
+   
+    <body class=" ">
+    <!-- #HEADER -->
+    <header id="header">
           <div id="logo-group">
-			<img width="80px" height="100%" style="padding-top: 2.5%" src="img/logo_isap.png" alt="ISAP"> 
-			<span> </span>
-			
-			<!-- PLACE YOUR LOGO HERE -->
-			 <span> 
-			  <img src="img/syntel-logo.png" style="padding-top: 3%" width="85px" height="100%" alt="SYNTEL">
-			</span>
-		</div>
+            <img width="80px" height="100%" style="padding-top: 2.5%" src="img/logo_isap.png" alt="ISAP">
+            <span> </span>
+             <span>
+              <img src="img/syntel-logo.png" style="padding-top: 3%" width="85px" height="100%" alt="SYNTEL">
+            </span>
+          </div>
 
-			
-			<!-- #TOGGLE LAYOUT BUTTONS -->
-			<!-- pulled right: nav area -->
-			<div class="pull-right">
-
-               <div class="project-context hidden-xs">
-                <span class="label"> ISAP Admin: Syntel </span>
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                    <i class="fa fa-user"></i>
-                    <span> Welcome ,&nbsp;&nbsp;${userValue.usr_name}</span>
+    <!-- pulled right: nav area -->
+       <div class="pull-right">
+           <div class="project-context hidden-xs">
+                <span class="label">Corporate Admin: ( Syntel )
+                </span>
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                   <i class="fa fa-user"></i>
+                   <span> Welcome ,&nbsp;&nbsp;${userValue.usr_name}</span>
                  </a>
-               </div>
-               
-               	<!-- collapse menu button -->
-				<div id="hide-menu" class="btn-header pull-right">
-					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
-				</div>
-				<!-- end collapse menu -->
-
-              <span> <a style="border-radius: 2px;cursor: default !important;display: inline-block;font-weight: 700;height: 30px;line-height: 24px;min-width: 30px;
-                                padding: 2px;text-align: center;text-decoration: none !important;-moz-user-select: none;background-color: #F8F8F8;
-                                background-image: -moz-linear-gradient(center top , #F8F8F8, #F1F1F1);border: 1px solid #BFBFBF;color: #6D6A69;font-size: 17px;
-                                margin: 10px 0px 0px;"href="./logout" title="Sign Out" data-action="userLogout" 
-                                data-logout-msg="You can improve your security further after logging out by closing this opened browser">
-                           <i class="fa fa-sign-out"></i>
-                       </a> 
-             </span> 
-
            </div>
-			<!-- end pulled right: nav area -->
+              
+           <!-- collapse menu button -->
+           <div id="hide-menu" class="btn-header pull-right">
+                <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+            </div>
+            <!-- end collapse menu -->
 
-		</header>
-		<!-- END HEADER -->
+            <span>
+                   <a style="border-radius: 2px;cursor: default !important;display: inline-block;font-weight: 700;height: 30px;line-height: 24px;min-width: 30px;
+                             padding: 2px;text-align: center;text-decoration: none !important;-moz-user-select: none;background-color: #F8F8F8;
+                             background-image: -moz-linear-gradient(center top , #F8F8F8, #F1F1F1);border: 1px solid #BFBFBF;color: #6D6A69;font-size: 17px;
+                             margin: 10px 0px 0px;" href="./logout" title="Sign Out" data-action="userLogout"
+                             data-logout-msg="You can improve your security further after logging out by closing this opened browser">
+                           <i class="fa fa-sign-out"></i>
+                    </a>
+             </span>
+
+         </div>
+        <!-- end pulled right: nav area -->
+    </header>
+    <!-- END HEADER -->
 
 
-		<!-- #NAVIGATION -->
-		<!-- Left panel : Navigation area -->
-		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
-		<aside id="left-panel">
-
-			<!-- User info -->
-			
-			
-			<!-- end user info -->
-
-			<!-- NAVIGATION : This navigation is also responsive-->
-			<nav>
+        <!-- #NAVIGATION -->
+        <!-- Left panel : Navigation area -->
+        <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+        <aside id="left-panel">
+            <!-- NAVIGATION : This navigation is also responsive-->
+            <nav>
 				<ul>
 					<li >
 						<a href="dashboardAdmin" title="DashBoard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">DashBoard</span></a>
+					</li>
+					
+						<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">VDC Management</span></a>
+						<ul>
+							<li>
+								<a href="registerVdcAdmin">Register VDC</a>
+							</li>
+						</ul>		
 					</li>
 					<li>
 						<a href="ListUsers"><i class="fa fa-user"></i> <span class="menu-item-parent">Users</span></a>
 					</li>
 					
 					<li class="active">
-						<a href="corporategroups" title="corporateAdmin"><i class="fa  fa-user"></i> <span class="menu-item-parent">Corporate Group</span></a>
+						<a href="corporategroups" title="corporateAdmin"><i class="fa  fa-group"></i> <span class="menu-item-parent">Corporate Group</span></a>
+					</li>
+					
+						<li>
+					<a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent"> Quota</span></a>			
 					</li>
 				
-					<li >
+					<!-- <li >
 						<a href="#"><i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">VDC Management</span></a>
 						<ul>
 							<li>
-								<a href="registerVdcAdmin">Register VDC</a>
+								<a href="#">Register VDC</a>
 							</li>
 						</ul>		
 					</li>
@@ -190,7 +129,7 @@
 								<a href="#">List Users</a>
 							</li>
 							<li>
-								<a href="setPoliciesAdmin">Set Policies</a>
+								<a href="#">Set Policies</a>
 							</li>
 							
 						</ul>		
@@ -200,16 +139,16 @@
 						<a href="#"><i class="fa fa-lg fa-fw fa-filter"></i> <span class="menu-item-parent">Stack List</span></a>
 					</li>
 					
-				<!-- 	<li>
+					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Manage Services</span></a>
-					</li>  -->
+					</li> 
 					
 					<li>
 						<a href="#"><i class="fa fa-stack-overflow"></i> <span class="menu-item-parent">Reports</span></a>
 					</li>		
 					
 					<li>
-					<a href="monitor"><i class="fa fa-fw fa-medkit"></i> <span class="menu-item-parent"> Monitor</span></a>			
+					<a href="#"><i class="fa fa-fw fa-medkit"></i> <span class="menu-item-parent"> Monitor</span></a>			
 					</li>
 					
 						
@@ -218,18 +157,18 @@
 					
 					    <ul>
 						   <li>
-								<a href="Discover">Discover</a>
+								<a href="#">Discover</a>
 							</li>
 							<li class="active"> 
-								<a href="MigratePlans">MigrationPlans</a>
+								<a href="#">MigrationPlans</a>
 							</li>
 							<li>
-								<a href="RegisterEnv">RegisterEnv</a>
+								<a href="#">RegisterEnv</a>
 							</li>
 						</ul>
 					
 					
-					</li>
+					</li> -->
 					
 				</ul>
 			</nav>
@@ -245,19 +184,15 @@
 
 			<!-- RIBBON -->
 			<div id="ribbon">
-
 				<span class="ribbon-button-alignment"> 
-					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+				<%-- 	<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
 						<i class="fa fa-refresh"></i>
-					</span> 
+					</span>  --%>
 				</span>
-
 				<!-- breadcrumb -->
 				<ol class="breadcrumb">
-					<li>Home</li><li>Users<</li>
+					<li>Home</li><li>Corporate Group</li>
 				</ol>
-				<!-- end breadcrumb -->
-
 			</div>
 			<!-- END RIBBON -->
 
@@ -274,7 +209,7 @@
 							<div class="pull-right" style="padding-right: 2%;">
 							 <a data-toggle="modal" href="#myModal"  class="btn btn-success txt-color-white pull-right  ">
                                             <i class="fa fa-circle-arrow-up fa-lg"></i>
-                                            Add Corporate User
+                                            Add Corporate Group
                                         </a>   
 							<br><br>
 						</div>
@@ -395,9 +330,6 @@
 																<label class="label col col-2">Owner</label>
 																<div class="col col-10">
 																	<select class = "form-control" id ="edit_usr_id" name = "usr_id" >
-																		<%-- <c:forEach items="${usersList}" var="owners">
-																		<option>${owners}</option>
-																		</c:forEach> --%>
 																	</select>
 																</div>
 															</div>
@@ -405,19 +337,31 @@
 														<section>
 															<div class="row">
 																<label class="label col col-2">Status</label>
-																<div class="col col-2">
+																<div class="col col-10">
+                                                                    <label class="input">
+                                                                        <select class="form-control" id="status" name="status">
+                                                                        
+                                                                        <option value="Active">Active</option>
+                                                                        
+                                                                        <option value="InActive">InActive</option>
+                                                                        
+                                                                        
+                                                                        
+                                                                    </select> 
+                                                                    </label>                                                               
+                                                                </div><!-- <div class="col col-2">
 																<label>&nbsp;</label>
 																	<label class="radio-inline">
 												                    &nbsp;&nbsp; &nbsp;   <input type="radio" name="status"  value="Active"  checked="checked"/> Active 
 												                   </label>
 												                </div>
-																	<div class="col col-2">
+																<div class="col col-2">
 																		<label>&nbsp;</label>
 																	<label class="radio-inline">
 												                      <input type="radio" name="status"  value="Inactive" /> Inactive 
 												                   </label>
 																	
-																</div>
+																</div> -->
 															</div>
 														</section>
 													</fieldset>
@@ -442,7 +386,7 @@
 							<form name = "corporateGroup" id =  "corporateGroup" method="POST" >
 							<input type = "hidden" name = "cg_id" id = "cg_id">
 							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+							<div class="jarviswidget jarviswidget-color-blueLight" id="wid-id-0" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="true" data-widget-sortable="false">
 								<!-- widget options:
 								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 				
@@ -690,7 +634,6 @@
 						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
 					"autoWidth" : true,
 					 "bSort": true,
-					    
 					    "iDisplayLength": 5,
 					    "oLanguage": {
 				            "sEmptyTable": "No Corporates available"
@@ -748,7 +691,7 @@
 	                    html : "<i class='fa fa-trash-o'></i>&nbsp; Delete Corporate Group",
 	                    "class" : "btn btn-danger",
 	                    click : function() {
-	                        document.corporateGroup.action = "./deletecorporategroup";
+	                        document.corporateGroup.action = "./deletecorporategroup1";
 	                           document.corporateGroup.submit();
 	                        $(this).dialog("close");
 	                    }
@@ -841,11 +784,23 @@
 	          var corpId=value.id;
 	          $('#editcgId').val(corpId);
 	          var userName=value.name;
-
 	          $.getJSON("./getcorporate/"+corpId,function(response){
 	                 $('#edit_corporate_name').val(response.corporate_name);
 	                 $('#edit_corporate_description').val(response.corporate_description);
-	                 $('#edit_usr_id').html('');     
+	                 $('#status').html('');  
+	                 if(response.status=="Active"){
+	                	 var options = '';  
+	                	  options += '<option selected value="Active"> Active </option>';
+	                	  options += '<option  value="InActive"> InActive </option>';
+	                      $('#status').append(options); 
+	                 }
+	                 else{
+	                  var options = '';  
+	               	  options += '<option  value="Active"> Active </option>';
+	               	  options += '<option selected value="InActive"> InActive </option>';
+	                   $('#status').append(options); 
+	                 }
+	                 $('#edit_usr_id').html('');    
 	                 $.getJSON("./getOwner/"+userName,function(response){
 	                             var options = '';                 
 	                                options += '<option selected value="' + response.usr_id + '">' + response.usr_name + '</option>';
@@ -865,14 +820,7 @@
 	               });         
 	         }
 		
-		function editCorporateGroup(value){
-			
-		    var cg_id=value.id;
-		    alert(cg_id);
-			document.getElementById('cg_id').value = cg_id;
-			document.corporateGroup.action = "./sessioneditcorporategroup";
-		   	document.corporateGroup.submit();
-	}
+		
 		</script>
 
 	</body>
