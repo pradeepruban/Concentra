@@ -141,6 +141,10 @@
 
 <form  action="customLaunch" id="smart-form-register" method="POST">
 
+<input type="hidden" name="imageName" id="imageName" value=""/>
+
+<input type="hidden" name="securityName" id="securityName" value=""/>
+
 <!-- widget grid -->
 <section id="widget-grid" class="">
 
@@ -790,6 +794,20 @@
 				$.root_.addClass("fixed-page-footer") ;
 				localStorage.setItem("sm-setmenu","top");
 	
+				
+				
+				
+				
+				
+				
+				
+				$('#image').change(	            
+					function() {
+			           var imageId = $('#image option:selected').val();	
+			           var imageType = $('#image option:selected').text();
+			           $('#imageName').val(imageType);		
+			          });
+				
 			$('#flavor').change(	            
 				function() {
 		           var flavorId = $('#flavor option:selected').val();	
@@ -858,6 +876,8 @@
 					function() {
 			           var securityGroup = $('#security option:selected').text();	
 			           var securityGroupId=$('#security option:selected').val();
+			           $('#securityName').val(securityGroup);
+			           
 			           
 			           $( "#loading2").show();
 			           $.getJSON("./getSecurityGroupDetails/"+securityGroupId,function(response){
