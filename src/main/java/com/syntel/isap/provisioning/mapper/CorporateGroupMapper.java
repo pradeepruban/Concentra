@@ -17,9 +17,9 @@ public interface CorporateGroupMapper {
 	
 	@Select("SELECT * FROM isap_cmn_corporategroups WHERE delete_flag = 0 AND cg_id!=1")
 	public List<CorporateGroups> getcorporateGroupList();
-	
-	@Select("SELECT usr_name FROM isap_cmn_users WHERE cg_Id = #{cgId}")
-	public List<String> getUsernamesByCgId(int cgId);
+	/*
+	@Select("SELECT user.usr_name FROM isap_cmn_users user,isap_cmn_user_role_map maps WHERE user.cg_Id = 1")
+	public List<String> getUsernamesByCgId();*/
 	
 	@Select("Select * FROM isap_cmn_corporategroups WHERE cg_Id = #{cgId}")
 	public CorporateGroups getCorpGrpByID(int cg_id);
@@ -41,6 +41,11 @@ public interface CorporateGroupMapper {
 			+ " corporate_owner = #{corporate_owner} , status = #{status} WHERE cg_id= #{cg_id}; ")
 	public void updateCorpGrpData(CorporateGroups corpGroup);
 	
+	@Update("UPDATE isap_cmn_corporategroups SET corporate_name = #{corporate_name}, corporate_description = #{corporate_description},"
+			+ " status = #{status} WHERE cg_id= #{cg_id}; ")
+	public void updateCorpGroupWithoutOwner(CorporateGroups corpGroup);
+
+	
 	// I have to write a JOIN QUERY FOR BELOW Three QUERIES
 	@Select("SELECT cg_id FROM isap_cmn_corporategroups WHERE corporate_owner = #{corporate_owner}")
 	public int getNewCgIdForUserByOwnerName(String corporate_owner);
@@ -49,10 +54,7 @@ public interface CorporateGroupMapper {
 	public int getUserIdByuserNameInUsertable(String ownerName);
 	
 	@Update("UPDATE isap_cmn_users SET cg_id = #{userCgIdChange} WHERE usr_id = #{userId}")
-	public void updateCgIdOfOwnerUserInUserTable(int userCgIdChange,int userId);
-
-	@Update("UPDATE isap_cmn_corporategroups SET delete_flag = 1 WHERE cg_id = #{cg_id}")
-	public void changeDeleteFlagInCorpGrp(int cg_id);
+	public void updateCgIdOfOwnerUserInUserTable(@Param("userCgIdChange")int userCgIdChange,@Param("userId")int userId);
 
 	@Select("SELECT usr_id, usr_name FROM isap_cmn_users WHERE cg_id = #{cgId}")
 	public List<User> getUsersByCgId(int cgId);
@@ -61,7 +63,7 @@ public interface CorporateGroupMapper {
 	public List<User> getUsersByCgIdAndRoleID(User user);
 
 	@Select("SELECT usr_name FROM isap_cmn_users WHERE usr_id = #{usr_id}")
-	public String getUserNameById(int usr_id);
+	public String getUserNameById(User user);
 
 	@Insert("INSERT INTO isap_cmn_corporategroups(corporate_name,corporate_description,corporate_owner,status)"
 			+"VALUES(#{corporate_name},#{corporate_description},#{corporate_owner},#{status})")
@@ -70,9 +72,43 @@ public interface CorporateGroupMapper {
 
 	@Update("UPDATE isap_cmn_user_role_map SET role_id = 2 where usr_id = #{usr_id}")
 	public void mapRoleToUser(User user);
+	
+	@Update("UPDATE isap_cmn_users SET proj_id = 1, dpt_id = 1, cg_id =1 WHERE usr_id = #{oldUsrId}")
+	public void updateCgIdofOldOwner(@Param("oldUsrId")int oldUsrId);
+	
+	@Update("UPDATE isap_cmn_user_role_map SET role_id = 6 where usr_id = #{oldUsrId}")
+	public void updateRoleOfOldOwner(@Param("oldUsrId")int oldUsrId);
 
 	@Update("UPDATE isap_cmn_users SET cg_id = #{cg_id} where usr_id = #{usr_id}")
 	public void mapCorporateGroupToUser(@Param("usr_id") int usr_id,@Param("cg_id") int cg_id);
+
+	@Select("Select dpt_id FROM isap_cmn_users WHERE cg_id = #{cg_id}")
+	public List<Integer> getDptIdListByCgId(int cg_id);
+
+	@Select("Select proj_id FROM isap_cmn_users WHERE cg_id = #{cg_id}")
+	public List<Integer> getProjIdListByCgId(int cg_id);
+
+	@Select("Select usr_id FROM isap_cmn_users WHERE cg_id = #{cg_id}")
+	public List<Integer> getUserIdListByCgId(int cg_id);
+
+	@Update("UPDATE isap_cmn_corporategroups SET delete_flag = 1 WHERE cg_id = #{cg_id}")
+	public void updateDeleteFlagInCorpGrp(int cg_id);
+
+	@Update("UPDATE isap_cmn_depts SET delete_flag = 1 WHERE dpt_id = #{deptId}")
+	public void updateDeptDeleteFlag(@Param("deptId")Integer deptId);
+
+	@Update("UPDATE isap_cmn_projects SET delete_flag = 1 WHERE proj_id = #{projId}")
+	public void updateProjDeleteFlag(@Param("projId")Integer projId);
+
+	@Update("UPDATE isap_cmn_users SET proj_id = 1, dpt_id = 1, cg_id =1 WHERE usr_id = #{userId}")
+	public void updateCgDeptProjId(Integer userId);
+	
+	@Select("SELECT corporate_owner FROM isap_cmn_corporategroups where cg_id = #{cg_id}")
+	public String getOwnerByCgId(int cg_id);
+
+	
+
+	
 
 	
 }
