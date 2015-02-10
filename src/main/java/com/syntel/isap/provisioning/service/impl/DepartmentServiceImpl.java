@@ -56,15 +56,15 @@ public class DepartmentServiceImpl implements IDepartmentService {
 	
 	@Transactional
 	public void editDepartment(Department department, User user) {
-		department.setStatus("ACT");
+		//department.setStatus("Active");
 		LOGGER.info("Inside ServiceImpl editDepartment"+department.getDpt_id());
 		Department owner=departmentDao.getDepartmentById(department.getDpt_id());		
 		LOGGER.info("Inside ServiceImpl editDepartment"+department.getDpt_id()+":"+owner.getCreated_by());
 		if(!owner.getCreated_by().trim().equals("")){
 			if(!owner.getCreated_by().equals(departmentDao.getUserNameById(user.getUsr_id()))){
-				int deptId=departmentDao.getUserIdByDeptId(department.getDpt_id());
-				departmentDao.updateUser(deptId);
-				departmentDao.updateUserRole(deptId);
+				int userId=departmentDao.getUserIdByDeptId(department.getDpt_id());
+				departmentDao.updateUser(userId);
+				departmentDao.updateUserRole(userId);
 				user.setDpt_id(department.getDpt_id());
 				departmentDao.mapRoleToUser(user);
 				departmentDao.mapDepartmentToUser(user.getUsr_id(),user.getDpt_id());
@@ -89,17 +89,31 @@ public class DepartmentServiceImpl implements IDepartmentService {
 	@Transactional
 	public void deleteDepartment(Integer deptId) {
 		LOGGER.info("Inside ServiceImpl deleteDepartment"+deptId);
+		int Id=departmentDao.getUserIdByDeptId(deptId);
 		departmentDao.updateDepartment(deptId);
 		List<Integer> projIds=departmentDao.getProjectByDeptID(deptId);
+
+		if(!projIds.isEmpty())
+		{	
 		for(Integer projId:projIds){
+			departmentDao.updateProjectDeleteFlag(projId);
 			List<Integer> userIds=departmentDao.getUserByDeptID(projId);
+
+			System.out.println("userIds"+userIds);
+			
+			if(!userIds.isEmpty())
+			{
+				System.out.println("not empty");
 			for(Integer userID:userIds){
 				departmentDao.updateUserDptProjIds(userID);
 				departmentDao.updateUserRole(userID);
 			}
-			departmentDao.updateProjectDeleteFlag(projId);
+
+			}
 		}
-		int Id=departmentDao.getUserIdByDeptId(deptId);
+		
+		}
+	
 		departmentDao.updateUserRole(Id);
 		departmentDao.updateUser(Id);
 	}

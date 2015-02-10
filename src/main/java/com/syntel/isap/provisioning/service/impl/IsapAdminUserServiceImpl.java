@@ -10,6 +10,7 @@ import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.Department;
 import com.syntel.isap.provisioning.bean.Project;
 import com.syntel.isap.provisioning.bean.User;
+import com.syntel.isap.provisioning.dao.ICorporateGroupDAO;
 import com.syntel.isap.provisioning.dao.IIsapAdminUserDAO;
 import com.syntel.isap.provisioning.service.IIsapAdminUserService;
 
@@ -18,6 +19,9 @@ public class IsapAdminUserServiceImpl implements IIsapAdminUserService{
 
 	@Autowired
 	private IIsapAdminUserDAO isapAdminUserDAO;
+	
+	@Autowired
+	private ICorporateGroupDAO corporateGroupDAO;
 	
 	@Transactional
 	public List<CorporateGroups> getCorps() {
@@ -60,10 +64,36 @@ public class IsapAdminUserServiceImpl implements IIsapAdminUserService{
 		
 	}
 
+
 	@Transactional
-	public int update(User usr) {
-		int i=isapAdminUserDAO.update(usr);
-		return i;
+	public void deleteUser( Integer usr_id)  {
+		isapAdminUserDAO.deleteUser(usr_id);
+		
+	}
+
+	@Transactional
+	public List<User> getUserLists(int cg_id) {
+		return isapAdminUserDAO.getuserLists(cg_id);
+	}
+	
+	@Transactional
+	public void addUserInUserTable(User user){
+		String userName=null;
+		int usrId = 0;
+		int projId = 0;
+		int endUserRoleId = 5;
+		int userRoleId = 6;
+		isapAdminUserDAO.addUserInUserTable(user);
+		userName = user.getUsr_name();
+		usrId = corporateGroupDAO.getUserIdByuserNameInUsertable(userName);
+		System.out.println("UserId+++++++++++++++++++++++++++++"+usrId );
+		projId = user.getProj_id();
+		System.out.println("ProjectId+++++++++++++++++++++++++++++"+projId );
+		if(projId != 1){
+			isapAdminUserDAO.insertRoleIdforUserIdInRolemap(endUserRoleId,usrId);
+		}else{
+			isapAdminUserDAO.insertRoleIdforUserIdInRolemap(userRoleId,usrId);
+		}
 	}
 
 }
