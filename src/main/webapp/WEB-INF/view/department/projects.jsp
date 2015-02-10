@@ -451,7 +451,7 @@
    													 <td style="padding-left: 30px;">${project.owner}</td>
         								          <td  style="padding-left: 3%;">
         								   
-        								      <a title="edit"  id ="${project.proj_id}" name ="${project.created_by}"  onclick="getRow(this);" href="#myModal1" data-toggle="modal"><i class="fa fa-pencil"></i></a>
+        								      <a title="edit"  id ="${project.proj_id}" name ="${project.owner}"  onclick="getRow(this);" href="#myModal1" data-toggle="modal"><i class="fa fa-pencil"></i></a>
                                                     
                                                            
                                                              <a title="delete" href="#myModal${project.proj_id}" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
