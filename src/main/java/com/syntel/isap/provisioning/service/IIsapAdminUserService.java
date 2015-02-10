@@ -21,6 +21,14 @@ public interface IIsapAdminUserService {
 
 	List<User> getUser();
 
-	int update(User usr);
+	
+
+	/*delete user*/
+     void deleteUser(Integer usr_id);
+
+	List<User> getUserLists(int cg_id);
+
+	void addUserInUserTable(User usr);
+	
 
 }

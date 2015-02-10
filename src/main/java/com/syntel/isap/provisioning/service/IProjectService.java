@@ -18,9 +18,10 @@ public interface IProjectService {
 	List<Integer> getUserinfo(User user);
 	public void deleteProject(Integer proj_id);
 	public Project editProject(Integer proj_id);
-	public void updateProject(Project project);
+	public void updateProject(Project project,User user);
 	
 	List<User> getUsersByCorporate( User user);
+	public User getOwnerByName(String userName);
 	
 
 }

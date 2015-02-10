@@ -11,9 +11,9 @@ public interface ICorporateGroupService {
 
 	void insertCorpGrpData(CorporateGroups corpGroup);
 
-	List<String> getUsernamesByCgId(int cgId);
+	List<String> getUsernamesByCgId();
 
-	void updateCorpGrpData(CorporateGroups corpGroup);
+	void updateCorpGrpData(CorporateGroups corpGroup, User user);
 
 	CorporateGroups getCorpGrpByID(int cg_id);
 
@@ -23,7 +23,7 @@ public interface ICorporateGroupService {
 
 	int getUserIdByuserNameInUsertable(String ownerName);
 
-	void changeDeleteFlagInCorpGrp(int cg_id);
+	void updateDeleteFlagInCorpGrp(int cg_id);
 
 	User getOwnerByName(String userName);
 
@@ -32,4 +32,6 @@ public interface ICorporateGroupService {
 	List<User> getUsersByCgIdAndRoleID(User user);//bean for dropdown values for role id 1 and cg id 11(cpool)
 
 	void insertAddCorporateGroupData(CorporateGroups corpGroup, User user);
+
+	void deleteCorporateGroups(int cg_id);
 }
