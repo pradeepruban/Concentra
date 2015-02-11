@@ -9,6 +9,7 @@ import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.Department;
 import com.syntel.isap.provisioning.bean.Project;
 import com.syntel.isap.provisioning.bean.User;
+import com.syntel.isap.provisioning.bean.UserRoleMap;
 import com.syntel.isap.provisioning.dao.IIsapAdminUserDAO;
 import com.syntel.isap.provisioning.mapper.IsapAdminUserMapper;
 
@@ -61,14 +62,12 @@ public class IsapAdminUserDAOImpl implements IIsapAdminUserDAO{
 
 	
 
-	public Object deleteUser(Integer usr_id) {
+	public void deleteUser(Integer usr_id) {
 		
-		return isapAdminUserMapper.getuserLists(usr_id);
+	 isapAdminUserMapper.deleteUser(usr_id);
 	}
 
-	public List<User> getuserLists(int cg_id) {
-		return isapAdminUserMapper.deleteUser(cg_id);
-	}
+	
 	
 	public void addUserInUserTable(User user) {
 		isapAdminUserMapper.addUserInUserTable(user);
@@ -77,5 +76,15 @@ public class IsapAdminUserDAOImpl implements IIsapAdminUserDAO{
 	public void insertRoleIdforUserIdInRolemap(int roleId, int usrId){
 		isapAdminUserMapper.insertRoleIdforUserIdInRolemap(roleId, usrId);
 //insertRoleIdforUserIdInRolemap(roleId,usrId);
+	}
+
+	public UserRoleMap getAdminDetailsJsonById(Integer id) {
+		// TODO Auto-generated method stub
+		return isapAdminUserMapper.getAdminDetailsJsonById(id) ;
+	}
+
+	public List<User> getuserLists(int cg_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
