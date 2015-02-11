@@ -1100,7 +1100,7 @@
                modal : true,
                title : "Delete Confirmation?",
                buttons : [{
-                   html : "<i class='fa fa-trash-o'></i>&nbsp; Delete department",
+                   html : "<i class='fa fa-trash-o'></i>&nbsp; Delete User",
                    "class" : "btn btn-danger",
                    click : function() {
                        document.department.action = "./deleteUser";
