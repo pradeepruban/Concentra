@@ -538,38 +538,12 @@
                                         <td  style="padding-left: 3%;">
 												<!-- <a title="edit"  href="#"><i class="fa fa-pencil"></i></a> -->
 												<a title="edit" data-toggle="modal" id="${users.usr_id}" name="${users.created_by}"  onclick="getRow(this);" href="#myModal1"><i class="fa fa-pencil"></i></a>
-                                                <a title="delete" href="#editModal${users.usr_id}" role="button" data-toggle="modal" ><i class="fa fa-trash-o"></i></a>
+                                               
+												  <a title="delete" href="#" id="${users.usr_id}" name="${users.usr_name}" onclick="deleteDepartment(this)"><i class="fa fa-trash-o"></i></a>
 												
-												
-												<div class="modal small fade" id="editModal${users.usr_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      												<div class="modal-dialog">
-       											  <div class="modal-content">
-          											 <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    &times;
-                                    </button>
-                                    <h4 class="modal-title">
-															Delete User 
-															</h4>
-														</div> &nbsp;&nbsp;
-          										<div class="delete_modal">
-          											<p>&nbsp;&nbsp; &nbsp;&nbsp;<!-- <i class="fa fa-warning"> --></i>DEVELOPMENT UNDER PROCESS</p>
-           											<%-- <p>&nbsp;&nbsp; &nbsp;&nbsp;<i class="fa fa-warning"></i>Are you sure you want to delete the User : ${users.usr_name} ?  <br> &nbsp;&nbsp; &nbsp;&nbsp;This cannot be undone.</p> --%>
-         											 </div> &nbsp;&nbsp;
-            									<div class="modal-footer">
-            									<!-- <button class="btn btn-default" data-dismiss="modal" >Cancel</button> -->
-           										<%-- <button class="btn btn-danger" onclick="deleteUser(this);" id="${users.usr_name}">Delete</button> --%>
-           										 </div>
-         									 </div>
-       										 </div>
-     									</div>
 												
 												</td>
-												
-												
-												
-												
-												
+									
                                         </tr>
                                      </c:forEach>
 											</tbody>
@@ -593,6 +567,34 @@
 				
 				</div>
 					</div>
+					
+					
+					
+					<div id="dialog_simple" title="Dialog Simple Title">
+            <p>
+               The User <span id="userName"> </span> is CorporateAdmin cannot be delete before assing new CorporateAdmin.
+            </p>
+        </div>
+        <div id="isapAdmin_dialog" title="Dialog Simple Title">
+            <p>
+               The User <span id="userName3"> </span> is ISAPAdmin cannot be delete before assing new ISAPAdmin.
+            </p>
+        </div>
+        <div id="departmentAdmin_dialog" title="Dialog Simple Title">
+            <p>
+               The User <span id="userName4"> </span> is DepartmentAdmin cannot be delete before assing new DepartmentAdmin.
+            </p>
+        </div>
+        <div id="projAdmin_dialog" title="Dialog Simple Title">
+            <p>
+               The User <span id="userName5"> </span> is ProjectAdmin cannot be delete before assing new ProjectAdmin.
+            </p>
+        </div>
+         <div id="user_dialog" title="Dialog Simple Title">
+            <p>
+              Do you want to delete the User  <span id="userName2"> </span> :?
+            </p>
+        </div>
 				
 					<!-- end row -->
 				
@@ -967,15 +969,61 @@
 		<script>
 		
 
-	       function deleteDepartment(department){
-	           var id=department.id;
-	           var name=department.name;
-	           $('#dept').text(name);
+	       function deleteDepartment(user){
+	           var id=user.id;
+	        
+	           var name=user.name;
+	           var name2=user.name;
+	           var name3=user.name;
+	           var name4=user.name;
+	           var name5=user.name;
+	           
+	           $('#userName').text(name);
+	           $('#userName2').text(name2);
+	           $('#userName3').text(name3);
+	           $('#userName4').text(name4);
+	           $('#userName5').text(name5);
 	           $('#usr_id').val(id);
-	           $('#dialog_simple').dialog('open');
-	            return false;      
+	         //  $('#dialog_simple').dialog('open');
+	              
+	            
+	            $.getJSON("./getAdminDetails/"+id,function(response){
+                    
+	            
+	            	if(response.role_id=="2")
+	            		{
+	            		 $('#dialog_simple').dialog('open');
+	            	
+	            		}
+	            	
+	            	if(response.role_id=="1")
+            		{
+            		 $('#isapAdmin_dialog').dialog('open');
+            	
+            		}
+	            	
+	            	if(response.role_id=="3")
+            		{
+            		 $('#departmentAdmin_dialog').dialog('open');
+            	
+            		}
+	            	if(response.role_id=="4")
+            		{
+            		 $('#projAdmin_dialog').dialog('open');
+            	
+            		}
+	            	
+	            	
+	            	if(response.role_id=="6"||response.role_id=="5")
+            		{
+            		 $('#user_dialog').dialog('open');
+            	
+            		}
+
+  
+                 });
+        
 	       }
-	       
 	       
 	       
 	       $('#dialog_simple').dialog({
@@ -983,12 +1031,79 @@
                width : 600,
                resizable : false,
                modal : true,
-               title : "<div class='widget-header'><h4><i class='fa fa-warning'></i> Delete Confirmation ?</h4></div>",
+               title : "Delete Confirmation?",
+               buttons : [{
+                   html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                   "class" : "btn btn-default",
+                   click : function() {
+                       $(this).dialog("close");
+                   }
+               }]
+           });
+	       
+	       
+	       
+	       $('#isapAdmin_dialog').dialog({
+               autoOpen : false,
+               width : 600,
+               resizable : false,
+               modal : true,
+               title : "Delete Confirmation?",
+               buttons : [{
+                   html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                   "class" : "btn btn-default",
+                   click : function() {
+                       $(this).dialog("close");
+                   }
+               }]
+           });
+	       
+	       
+	       
+	       $('#departmentAdmin_dialog').dialog({
+               autoOpen : false,
+               width : 600,
+               resizable : false,
+               modal : true,
+               title : "Delete Confirmation?",
+               buttons : [{
+                   html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                   "class" : "btn btn-default",
+                   click : function() {
+                       $(this).dialog("close");
+                   }
+               }]
+           });
+	       
+	       
+	       
+	       $('#projAdmin_dialog').dialog({
+               autoOpen : false,
+               width : 600,
+               resizable : false,
+               modal : true,
+               title : "Delete Confirmation?",
+               buttons : [{
+                   html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                   "class" : "btn btn-default",
+                   click : function() {
+                       $(this).dialog("close");
+                   }
+               }]
+           });
+	       
+	       
+	       $('#user_dialog').dialog({
+               autoOpen : false,
+               width : 600,
+               resizable : false,
+               modal : true,
+               title : "Delete Confirmation?",
                buttons : [{
                    html : "<i class='fa fa-trash-o'></i>&nbsp; Delete department",
                    "class" : "btn btn-danger",
                    click : function() {
-                       document.department.action = "./deleteDepartment";
+                       document.department.action = "./deleteUser";
                           document.department.submit();
                        $(this).dialog("close");
                    }
@@ -1000,6 +1115,26 @@
                    }
                }]
            });
+	       
+	       
+	       /* $('#dialog_simple').dialog({
+               autoOpen : false,
+               width : 600,
+               resizable : false,
+               modal : true,
+               title : "<div class='btn btn-danger'><h4><i class='fa fa-warning'></i> Delete Confirmation ?</h4></div>",
+               buttons : [{
+                   html : "<i class='fa fa-trash-o'></i>&nbsp; Delete department",
+                   "class" : "btn btn-danger",
+                   
+               }, {
+                   html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                   "class" : "btn btn-default",
+                   click : function() {
+                       $(this).dialog("close");
+                   }
+               }]
+           }); */
 		
 		
 		
