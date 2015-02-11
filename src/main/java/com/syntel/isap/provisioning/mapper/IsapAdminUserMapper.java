@@ -12,6 +12,7 @@ import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.Department;
 import com.syntel.isap.provisioning.bean.Project;
 import com.syntel.isap.provisioning.bean.User;
+import com.syntel.isap.provisioning.bean.UserRoleMap;
 
 public interface IsapAdminUserMapper {
 
@@ -25,7 +26,7 @@ public interface IsapAdminUserMapper {
 	@Select("SELECT * FROM isap_cmn_projects")
 	List<Project> getProj();
 	
-	@Select("SELECT usr_name,proj_name, dpt_name, corporate_name, e.status, e.usr_id  FROM isap_cmn_users e JOIN isap_cmn_depts r ON e.dpt_id=r.dpt_id JOIN isap_cmn_projects d ON e.proj_id=d.proj_id JOIN isap_cmn_corporategroups c on e.cg_id=c.cg_id where e.delete_flag=0;")
+	@Select("SELECT usr_name,proj_name, dpt_name, corporate_name, e.status, e.usr_id  FROM isap_cmn_users e JOIN isap_cmn_depts r ON e.dpt_id=r.dpt_id JOIN isap_cmn_projects d ON e.proj_id=d.proj_id JOIN isap_cmn_corporategroups c on e.cg_id=c.cg_id where e.delete_flag!=1;")
     public  List<User> getUser();
 
 	@Select("SELECT * FROM isap_cmn_depts where cg_id=#{cgId}")
@@ -41,15 +42,20 @@ public interface IsapAdminUserMapper {
 	public void addUserInUserTable(User usr);
 
 	
-	@Delete("UPDATE isap_cmn_users SET status='Inactive' where usr_name = #{usr_name}")
-	List<User> deleteUser(int cg_id);
+	@Delete("UPDATE isap_cmn_users SET proj_id= 1,dpt_id =1,cg_id =1,delete_flag =1 where usr_id = #{usr_id}")
+	void deleteUser(int usr_id);
 	
 
 	@Select("SELECT * FROM isap_cmn_users where cg_id = #{cg_id}  order by usr_id desc")
-	List<User> getuserLists(Integer cg_id);
+	void getuserLists(Integer cg_id);
 
 	@Insert("INSERT INTO isap_cmn_user_role_map(usr_id,role_id) VALUES (#{usrId},#{roleId})")
 	void insertRoleIdforUserIdInRolemap(@Param("roleId")int roleId,@Param("usrId") int usrId);
+
+	
+	@Select("SELECT role_id FROM isap_cmn_user_role_map where usr_id = #{id}")
+	
+	UserRoleMap getAdminDetailsJsonById(Integer id);
 	
 	
 
