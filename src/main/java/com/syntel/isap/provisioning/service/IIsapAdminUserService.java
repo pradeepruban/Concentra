@@ -6,6 +6,7 @@ import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.Department;
 import com.syntel.isap.provisioning.bean.Project;
 import com.syntel.isap.provisioning.bean.User;
+import com.syntel.isap.provisioning.bean.UserRoleMap;
 
 public interface IIsapAdminUserService {
 
@@ -29,6 +30,8 @@ public interface IIsapAdminUserService {
 	List<User> getUserLists(int cg_id);
 
 	void addUserInUserTable(User usr);
+
+	UserRoleMap getAdminDetailsJsonById(Integer id);
 	
 
 }
