@@ -1,10 +1,14 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.syntel.isap.provisioning.bean.EnvironmentVM" %>
+<%@ page import="com.syntel.isap.provisioning.bean.EnvironmentVMExt" %>
+<%@ page import="com.syntel.isap.provisioning.constants.ISAPConstants" %>
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title>ISAP User Custom Service Page</title>
+		<title>ISAP User Bespoke Service Page </title>
 		<meta name="description" content="">
 		<meta name="author" content="">	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -27,12 +31,6 @@
 		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
 		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
 
-		
-		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	
-	
 		<style>
 
           .panel-white {border-color: #333; border-top-color: #333; border-right-color-value: rgb(51, 51, 51);border-bottom-color: #333;
@@ -500,14 +498,16 @@
 			}
 			}
 		</style>
-	
-	
-	
+       
+		
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	
 	</head>
 	
 	
-    <body class="">
+    <body class="menu-on-top pace-done">
     
 		<!-- #HEADER -->
 		<header id="header">
@@ -530,7 +530,7 @@
                 <span class="label">Tenant User: ( Project : STG Automtation Team )</span>
                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
                     <i class="fa fa-user"></i>
-                        <span> Welcome ,&nbsp;&nbsp;${userValue.usr_name}</span>
+                     <span> Welcome ,&nbsp;&nbsp;${userValue.usr_name}</span>
                  </a>
                </div>
                
@@ -555,36 +555,40 @@
 		</header>
 		<!-- END HEADER -->
 
+
+		<!-- #NAVIGATION -->
+		<!-- Left panel : Navigation area -->
+		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
 		<aside id="left-panel">
 
 			<!-- NAVIGATION : This navigation is also responsive-->
 			<nav>
 			
 				<ul>
-					 <li>
+					 <li >
 						<a href="dashboardTenantUser" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
 					</li>
 					<li class="active">
 						<a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span class="menu-item-parent">Provision VM</span></a>
 						<ul>
 							<li >
-								<a href="stackTenantUser">Stack Service </a>
+								<a href="stackTenantUser" >Stack Service </a>
 							</li>
 								<li class="active">
-								<a href="bespokeTenantUser">Bespoke Service </a>
+								<a href="#">Bespoke Service </a>
 							</li>
-							<li >
-								<a href="#">Custom Service  </a>
+							<li>
+								<a href="customLaunch">Custom Service  </a>
 							</li>
 						</ul>
 					</li>
 					
-					<li>
+					<li >
 						<a href="customUserServiceList" title="Custom Service List"><i class="fa fa-lg fa-fw fa-filter"></i> <span class="menu-item-parent">Service List</span></a>
 					</li>
 					
-					
 				</ul>
+				
 			</nav>
 			<span class="minifyme" data-action="minifyMenu"> 
 				<i class="fa fa-arrow-circle-left hit"></i> 
@@ -594,6 +598,7 @@
 
 		<!-- MAIN PANEL -->
 		<div id="main" role="main">
+
 			<!-- RIBBON -->
 			<div id="ribbon">
 				<span class="ribbon-button-alignment"> 
@@ -603,7 +608,7 @@
 				</span>
 				<!-- breadcrumb -->
 				<ol class="breadcrumb">
-					<li>Home</li><li>Provision VM</li><li>Custom Service</li>
+					<li>Home</li><li>Provision VM</li><li>Bespoke Service</li>
 				</ol>
 			</div>
 			<!-- END RIBBON -->
@@ -618,48 +623,66 @@
 				
 				  <div class="row">
 					
-					<div class="col-sm-12">
-						
 						<div class="well well-light">
 				            <div class="row">
 								
+<%
+List<EnvironmentVM> envVMList=(List<EnvironmentVM>)session.getAttribute("envVMList");
+List<EnvironmentVMExt> envVMExtList=(List<EnvironmentVMExt>)session.getAttribute("envVMExtList");
+for(EnvironmentVM envVM:envVMList){
+%>     
 							      <div class="col-xs-12 col-sm4 col-md-2">
 						            <div class="panel panel-white">
 						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                         <img src="img/tomcat.png" style="padding-left: 1%" width="150px" height="50px;"  alt="Tomcat"  />
+						                  <h3 class="panel-title">
+						                 <!--  <img src="img/ribbon.png" class="ribbon" alt=""> -->
+						              
+<%
+
+	for(EnvironmentVMExt envVMExt:envVMExtList){
+	
+	if(envVM.getVm_master_id()==envVMExt.getVm_master_id() && envVMExt.getParam_name().equalsIgnoreCase(ISAPConstants.IMG_PATH)){
+%>
+	<img src="<%= envVMExt.getParam_val()%>" style="padding-left: 0%" width="110px" height="50px;"  alt="Logo"/>  
+						
+<%  
+	}else if(envVM.getVm_master_id()==envVMExt.getVm_master_id() && envVMExt.getParam_name().equalsIgnoreCase(ISAPConstants.POPULAR_TAG) &&  envVMExt.getParam_val().equalsIgnoreCase(ISAPConstants.POPULAR_TAG_ACTIVE)){
+%>
+	<img src="img/ribbon.png" class="ribbon" alt=""> 
+	
+<% }} %>
 						                     </h3>
 						                </div>
 						                <div class="panel-body no-padding text-align-center">
 						                    <div class="the-price">
 						                        <h1>
-						                            Tomcat Version <strong> : 7.0</strong>
+						                            <%= envVM.getVm_name() %> <!--  Tomcat Version <strong> : 7.0</strong> -->
 						                         </h1>
 						                    </div>
 						                    <table class="table">
 						                        <tr>
 						                            <td>
-						                              OS <strong> : Windows</strong>
+						                              OS <strong> :  <%= envVM.getOs()%> </strong>
 						                            </td>
 						                        </tr>
 						                        <tr class="active">
 						                            <td>
-						                            <strong>VCPU </strong> : 2
+						                            <strong>VCPU </strong> :  <%= envVM.getCpu()%>
 						                            </td>
 						                        </tr>
 						                        <tr>
 						                            <td>
-						                               RAM <strong> : 2GB </strong>
+						                               RAM <strong> : <%= envVM.getMem()%> </strong>
 						                            </td>
 						                        </tr>
 						                        <tr class="active">
 						                            <td>
-						                             Disk Size  <strong> : 20GB</strong>
+						                             Disk Size  <strong> : <%= envVM.getHdd()%></strong>
 						                            </td>
 						                        </tr>
 						                        <tr>
 						                            <td>
-						                             Type  <strong> : Application <br> Server</strong>
+						                             Type  <strong> :<%= envVM.getOs_type()%></strong>
 						                            </td>
 						                        </tr>
 						                      
@@ -671,600 +694,15 @@
 						                    
 						                    <i class="fa fa-shopping-cart"></i>
 						                      Launch <span> now!</span></a>
-						                
 						                </div>
 						            </div>
 						        </div>	
-						        
-						         <div class="col-xs-12 col-sm-4 col-md-2">
-						             <div class="panel panel-white">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                        <img src="img/mysql_logo.png"  style="padding-left: 1%" width="150px" height="50px;"   alt="MySql"  /></h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="the-price">
-						                        <h1>
-						                         Mysql &nbsp;&nbsp; Version <strong> : 5.5</strong>
-						                        </h1>
-						                    </div>
-						                     <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : UBuntu</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 2
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 2GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 20GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                                 Type  <strong> : Database  <br> Server</strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						
-						                     <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                </div>
-						            </div>
-						        </div>	
-								
-								
-								 <div class="col-xs-12 col-sm-4 col-md-2">
-						             <div class="panel panel-white">
-						                    <img src="img/ribbon.png" class="ribbon" alt="">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                         <img src="img/JBoss_logo.png" style="padding-left: 1%" width="110px" height="50px;"  alt="JBoss" />
-						                     </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="the-price">
-						                        <h1>
-						                             JBoss &nbsp;&nbsp; Version <strong> : 7.0</strong>
-						                         </h1>
-						                    </div>
-						                      <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : UBuntu</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 2
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 2GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 20GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                                 Type  <strong> : Application  <br> Server</strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                      <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                </div>
-						            </div>
-						        </div>
-						        <div class="col-xs-12 col-sm-4 col-md-2">
-						             <div class="panel panel-white">
-						               
-						                <img src="img/ribbon.png" class="ribbon" alt="">
-						               <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                        <img src="img/oracle.png" style="padding-left: 1%" width="120px" height="50px;"  alt="Oracle" />
-						                     </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                      <div class="the-price">
-						                        <h1>
-						                         Oracle &nbsp;&nbsp; Version <strong> : 11g</strong>
-						                       </h1>
-						                    </div>
-						                     <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : UBuntu</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 2
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 2GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 20GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                                 Type  <strong> : Database  <br> Server</strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                      <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                </div>
-						            </div>
-						        </div>		
-						   				
-						       <div class="col-xs-12 col-sm-4 col-md-2">
-						            <div class="panel panel-white">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                         <img src="img/DB2-logo.png"  style="padding-left: 1%" width="150px" height="50px;" alt="DB2" />
-						                     </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="panel-body no-padding text-align-center">
-						                      <div class="the-price">
-						                        <h1>
-						                         DB2 &nbsp;&nbsp; Version <strong>:10.5</strong>
-						                       </h1>
-						                    </div>
-						                     <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : Windows</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 2
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 2GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 20GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                                 Type  <strong> : Database <br>  Server</strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                     <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                </div>
-						            </div>
-						        </div>		        							
-						      </div>
-							
-							
-							       <div class="col-xs-12 col-sm-4 col-md-2">
-						             <div class="panel panel-white">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                         <img src="img/weblogic1.png" style="padding-left: 2%" width="150px" height="50px;"   alt="WebLogic"  />
-						                    </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="the-price">
-						                        <h1>
-						                         WebLogic  Version <strong> : 11</strong>
-						                        </h1>   
-						                    </div>
-						                     <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : Windows</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 2
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 2GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 20GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                                 Type  <strong> : Application <br>  Server</strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                     <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                </div>
-						            </div>
-						        </div>
-							
+<% } %>				        
 							</div>
 							
-								
-				     <div class="row">
-						       <div class="col-xs-12 col-sm4 col-md-2">
-						            <div class="panel panel-white">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                        <img src="img/windows_system.png"  style="padding-left: 2%" width="150px" height="50px;"  alt="Windows"  />
-						                    </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="the-price">
-						                        <h1>
-						                            Windows  Version <strong> : 7</strong>
-						                        </h1>  
-						                    </div>
-						                    <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : Windows</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 3
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 4GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 40GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                             Type  <strong> : <br> OS <br> </strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                
-						                    <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                
-						                </div>
-						            </div>
-						        </div>
-								
-							      <div class="col-xs-12 col-sm4 col-md-2">
-						            <div class="panel panel-white">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                          <img src="img/websphere.PNG" style="padding-left: 2%" width="150px" height="50px;"  alt="WebSphere"  />
-						                     </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="the-price">
-						                        <h1>
-						                            WebSphere  Version <strong> : 6.0</strong>
-						                        </h1>
-						                    </div>
-						                    <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : Windows</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 2
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 2GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 20GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                             Type  <strong> : Application <br> Server</strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                
-						                   <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                
-						                </div>
-						            </div>
-						        </div>	
-						           
-						                <div class="col-xs-12 col-sm4 col-md-2">
-						            <div class="panel panel-white">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                        <img src="img/ubuntu.PNG"  style="padding-left: 2%" width="150px" height="50px;"  alt="Ubuntu"  />
-						                     </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="the-price">
-						                        <h1>
-						                            Ubuntu Version<strong>:12.04</strong>
-						                         </h1>
-						                    </div>
-						                    <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : Linux</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 3
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 4GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 40GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                             Type  <strong> : <br> OS <br> </strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                
-						                    <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                
-						                </div>
-						            </div>
-						        </div>
-
-								    
-						         <div class="col-xs-12 col-sm-4 col-md-2">
-						             <div class="panel panel-white">
-						               
-						                <img src="img/ribbon.png" class="ribbon" alt="">
-						               <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                       <img src="img/sql-logo-no-version.png"  style="padding-left: 1%" width="120px" height="50px;"  alt="Sql Server"  />
-						                     </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                      <div class="the-price">
-						                        <h1>
-						                         Sql      Version <strong>:2012</strong>
-						                        </h1>
-						                    </div>
-						                     <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : UBuntu</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 1
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 2GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 20GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                                 Type  <strong> : Database <br> Server  </strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                      <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                </div>
-						            </div>
-						        </div>	
+						  </div>     
+					 	
 						
-						         <div class="col-xs-12 col-sm4 col-md-2">
-						            <div class="panel panel-white">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                        <img src="img/redhat.PNG"  style="padding-left: 2%" width="150px" height="50px;"  alt="RedHat" />
-						                    </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="the-price">
-						                        <h1>
-						                            Redhat <br>  Version <strong> : 7.0</strong>
-						                        </h1>
-						                    </div>
-						                    
-						                    <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : Linux</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 3
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 4GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 40GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                             Type  <strong> : <br> OS <br> </strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                
-						                    <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                
-						                </div>
-						            </div>
-						        </div>
-
-						       <div class="col-xs-12 col-sm4 col-md-2">
-						            <div class="panel panel-white">
-						                <div class="panel-heading"  style="border-bottom-color: #333;">
-						                    <h3 class="panel-title">
-						                        <img src="img/fedora-logo-100528469-medium.png"  style="padding-left: 2%" width="150px" height="50px;"  alt="Fedora"  />
-						                    </h3>
-						                </div>
-						                <div class="panel-body no-padding text-align-center">
-						                    <div class="the-price">
-						                        <h1>
-						                            Fedora <br>  Version <strong> : 20</strong>
-						                        </h1>
-						                      
-						                    </div>
-						                    <table class="table">
-						                        <tr>
-						                            <td>
-						                              OS <strong> : Linux</strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                            <strong>VCPU </strong> : 3
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                               RAM <strong> : 8GB </strong>
-						                            </td>
-						                        </tr>
-						                        <tr class="active">
-						                            <td>
-						                             Disk Size  <strong> : 40GB</strong>
-						                            </td>
-						                        </tr>
-						                        <tr>
-						                            <td>
-						                             Type  <strong> : <br> OS <br> </strong>
-						                            </td>
-						                        </tr>
-						                      
-						                    </table>
-						                </div>
-						                <div class="panel-footer no-padding">
-						                
-						                   <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
-						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                
-						                </div>
-						            </div>
-						        </div>
-							</div>
-							
-						  </div>	
-						</div>
 					</div>
 				</div>
 
@@ -1277,10 +715,10 @@
 								</button>
 								<h4 class="modal-title" id="myModalLabel">Development Under Process</h4>
 							</div>
-							<div class="modal-body">
-				
 							
-						
+		
+		<div class="modal-body">
+				
 				<!-- row -->
 				<div class="row">
 				
@@ -1295,12 +733,8 @@
 									<p class="lead">
 										The page you requested could not be found, please contact your adminstrator . Use  <b>tick</b> button to navigate to the page you have prevously come from.
 									</p>
-									
 									<br>
-								
-				
-						
-				
+					
 								</div>
 				
 							</div>
@@ -1314,10 +748,9 @@
 				
 				</div>
 						
-						</div><!-- /.modal-content -->
+	  </div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
-				
 			</div>
 			</div>
 			<!-- END MAIN CONTENT -->
