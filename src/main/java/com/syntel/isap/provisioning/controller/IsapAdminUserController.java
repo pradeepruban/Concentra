@@ -20,6 +20,7 @@ import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.Department;
 import com.syntel.isap.provisioning.bean.Project;
 import com.syntel.isap.provisioning.bean.User;
+import com.syntel.isap.provisioning.bean.UserRoleMap;
 import com.syntel.isap.provisioning.service.IIsapAdminUserService;
 
 
@@ -75,6 +76,21 @@ public class IsapAdminUserController {
 			
 		  }
 	   
+	 
+	 @RequestMapping(value="/getAdminDetails/{id}", method=RequestMethod.GET)
+	 public @ResponseBody UserRoleMap getAdminUserRole(@PathVariable Integer id) {
+		
+		 
+		 UserRoleMap userrolemap = new UserRoleMap();
+		 
+		 userrolemap= isapAdminUserService.getAdminDetailsJsonById(id);
+		 
+		LOGGER.info("insidegetProjsByIdJSON "+id);
+		return userrolemap;
+			
+		  }
+	 
+	 
 	 @RequestMapping(value="/ListUsers", method=RequestMethod.GET)
   public ModelAndView allUserLists(HttpSession session) {
 	  System.out.println("ProjectController");
@@ -114,19 +130,24 @@ public class IsapAdminUserController {
 		public ModelAndView deleteUser(@RequestParam(value = "usr_id") Integer usr_id,HttpSession session ) 
 	  {
 		/* System.out.println(""+usr_id);*/
+		 ModelAndView model = new ModelAndView();
+		  String view = "admin/UserManagement";
+		  
 		 LOGGER.info("Inside deleteUser()- GET");
 		  isapAdminUserService.deleteUser(usr_id);
 		 List<User> userList=new ArrayList<User>();
 		  LOGGER.info("Inside deleteUser()- GET");
-		  ModelAndView model = new ModelAndView();
-		  String view = "admin/UserManagement";
-		  User user = (User) session.getAttribute("userValue");
-		 userList =  isapAdminUserService.getUserLists(user.getCg_id());
-		  model.addObject("userlist", userList);
+		  
+		  
+		  userList =  isapAdminUserService.getUser();
+		  model.addObject("usrlist", userList);
 		  model.setViewName(view);
 	      return model;
 		
 		}
+	 
+	 
+	 
 	 
 	
 
