@@ -10,6 +10,7 @@ import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.Department;
 import com.syntel.isap.provisioning.bean.Project;
 import com.syntel.isap.provisioning.bean.User;
+import com.syntel.isap.provisioning.bean.UserRoleMap;
 import com.syntel.isap.provisioning.dao.ICorporateGroupDAO;
 import com.syntel.isap.provisioning.dao.IIsapAdminUserDAO;
 import com.syntel.isap.provisioning.service.IIsapAdminUserService;
@@ -94,6 +95,12 @@ public class IsapAdminUserServiceImpl implements IIsapAdminUserService{
 		}else{
 			isapAdminUserDAO.insertRoleIdforUserIdInRolemap(userRoleId,usrId);
 		}
+	}
+
+
+	public UserRoleMap getAdminDetailsJsonById(Integer id) {
+		// TODO Auto-generated method stub
+		return isapAdminUserDAO.getAdminDetailsJsonById(id);
 	}
 
 }
