@@ -6,6 +6,7 @@ import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.Department;
 import com.syntel.isap.provisioning.bean.Project;
 import com.syntel.isap.provisioning.bean.User;
+import com.syntel.isap.provisioning.bean.UserRoleMap;
 
 public interface IIsapAdminUserDAO {
 
@@ -24,12 +25,14 @@ public interface IIsapAdminUserDAO {
 	
 /*delete user */
 	
-	 public Object deleteUser(Integer usr_id);
+	 public void deleteUser(Integer usr_id);
 
 	List<User> getuserLists(int cg_id);
 
 	void addUserInUserTable(User user);
 
 	void insertRoleIdforUserIdInRolemap(int roleId, int usrId);
+	
+	UserRoleMap getAdminDetailsJsonById(Integer id);
 
 }
