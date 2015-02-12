@@ -168,6 +168,27 @@ public class IsapAdminUserController {
 		  return usersList;
 		} 
 	 
-	
+	 @RequestMapping(value="/editUserDetails", method=RequestMethod.POST)
+	  public ModelAndView  editUserDetails( @ModelAttribute("user") User user,HttpSession session){
+		  List<User> userList=new ArrayList<User>();
+		  String view = "admin/UserManagement";
+		 /* User userSession= (User) session.getAttribute("userValue");*/
+		  
+		 /* user.setUsr_id(userSession.getUsr_id());*/
+		  System.out.println(user.getUsr_name());
+		  ModelAndView model = new ModelAndView();
+		  
+		  LOGGER.info("Inside editUserDetails()- Post");
+		  
+		 isapAdminUserService.getUserFromUserTable(user);
+		  
+	    
+	     userList =  isapAdminUserService.getUser();
+		 model.addObject("usrlist", userList);
+		 model.setViewName(view);
+	     return model;
+	  }
+	 
+	 
 
 }
