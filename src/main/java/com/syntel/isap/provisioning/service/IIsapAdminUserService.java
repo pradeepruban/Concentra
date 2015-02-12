@@ -36,6 +36,8 @@ public interface IIsapAdminUserService {
 	User getUserById(Integer userId);
 
 	List<User> getUsersByuser(User user);
+
+	void getUserFromUserTable(User user);
 	
 
 }
