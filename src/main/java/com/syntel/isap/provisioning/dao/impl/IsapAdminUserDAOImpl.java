@@ -87,4 +87,14 @@ public class IsapAdminUserDAOImpl implements IIsapAdminUserDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public User getUserById(Integer userId) {
+		// TODO Auto-generated method stub
+		return isapAdminUserMapper.getUserById(userId);
+	}
+
+	public List<User> getUsersByuser(User user) {
+		// TODO Auto-generated method stub
+		return isapAdminUserMapper.getUsersByuser(user) ;
+	}
 }
