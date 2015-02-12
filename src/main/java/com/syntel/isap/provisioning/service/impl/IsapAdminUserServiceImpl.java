@@ -116,6 +116,12 @@ public class IsapAdminUserServiceImpl implements IIsapAdminUserService{
 		return isapAdminUserDAO.getUsersByuser(user);
 	}
 
+
+	public void getUserFromUserTable(User user) {
+		
+		isapAdminUserDAO.getUserFromUserTable(user);
+	}
+
 	
 	
 	
