@@ -145,9 +145,28 @@ public class IsapAdminUserController {
 	      return model;
 		
 		}
+	 @RequestMapping(value="/getUserInEditTable/{userId}", method = RequestMethod.GET)
+		public @ResponseBody User getUserInJSON(@PathVariable Integer userId) {
+		 
+		 LOGGER.info("Inside getUserInEditTable()- GET");
+		 System.out.println("user Controller inside");
+		 
+		 User useredit = new User();
+		 useredit =isapAdminUserService.getUserById(userId);	
+		 System.out.println("inside the getUserInEditTable username"+useredit.getUsr_name()); 
+		 
+		 System.out.println("inside the getUserInEditTable corpratid"+useredit.getCg_id()); 
+		 return useredit;
+		}
 	 
-	 
-	 
+	 @RequestMapping(value="/getUsersToEdit", method = RequestMethod.GET)
+		public @ResponseBody List<User> getUsersListInJSON(HttpSession session) {
+		  User user= (User) session.getAttribute("userValue");
+		  LOGGER.info("Inside user getUsers Session Values"+user.getCg_id());
+		  List<User> usersList=isapAdminUserService.getUsersByuser(user);
+ 
+		  return usersList;
+		} 
 	 
 	
 
