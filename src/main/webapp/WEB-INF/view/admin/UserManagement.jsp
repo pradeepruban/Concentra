@@ -229,7 +229,7 @@
 								
 								
 								
-								<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+								<!-- <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -256,7 +256,7 @@
 																	</div>
 																</div>
 														</section>
-														<!-- <section>
+														<section>
 																<div class="row">
 																	<label class="label col col-2"> Password</label>
 																	<div class="col col-10">
@@ -265,7 +265,7 @@
 																		</label>
 																	</div>
 																</div>
-														</section> -->
+														</section>
 														<section>
 														
 										            <div class="row">
@@ -340,9 +340,9 @@
                                              
                                          </form>                   
                                   </div>
-                           </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                   </div><!-- /.modal -->
+                           </div>/.modal-content
+                        </div>/.modal-dialog
+                   </div>/.modal -->
 	              	
 	              				<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 								<div class="modal-dialog">
@@ -529,7 +529,7 @@
                                   </td>
                                         <td  style="padding-left: 3%;">
 												<!-- <a title="edit"  href="#"><i class="fa fa-pencil"></i></a> -->
-												<a title="edit" data-toggle="modal" id="${users.usr_id}" name="${users.usr_name}"  onclick="getRow(this);" href="#myModal1"><i class="fa fa-pencil"></i></a>
+												<a title="edit" data-toggle="modal" id="${users.usr_id}" name="${users.usr_name}"  onclick="getRow(this);"><i class="fa fa-pencil"></i></a>
                                                
 												  <a title="delete" href="#" id="${users.usr_id}" name="${users.usr_name}" onclick="deleteDepartment(this)"><i class="fa fa-trash-o"></i></a>
 												
@@ -560,11 +560,16 @@
 				</div>
 					</div>
 					
-					
+					<!-- delete popup for Admin users -->
 					
 					<div id="dialog_simple" title="Dialog Simple Title">
             <p>
                The User <span id="userName"> </span> is CorporateAdmin cannot be delete before assing new CorporateAdmin.
+               
+               
+               
+               
+               
             </p>
         </div>
         <div id="isapAdmin_dialog" title="Dialog Simple Title">
@@ -587,25 +592,131 @@
               Do you want to delete the User  <span id="userName2"> </span> :?
             </p>
         </div>
-				
-					<!-- end row -->
-				
-					<!-- end row -->
-				
-				
-				<!-- end widget grid -->
-
-			
-			<!-- END MAIN CONTENT -->
-
-		
-		<!-- END MAIN PANEL -->
-		<%-- 
-		<div id="delete_modal" title="Dialog Simple Title">
+        
+        
+        
+        
+         <!-- edit popup for Admin users -->
+        <div id="isapAdminEdit_dialog" title="Dialog Simple Title">
             <p>
-                Are you sure you want to delete the user: ${users.usr_desc} "<span id="user"> </span>" ?
+               The User <span id="isapAdmin"> </span> is ISAPAdmin CorporateAdmin cannot be Edit before assing new CorporateAdmin.
+                              
             </p>
-        </div> --%>
+        </div>
+        <div id="corporateAdminEdit_dialog" title="Dialog Simple Title">
+             <p>
+               The User <span id="corporateAdmin"> </span> is CorporateAdmin cannot be Edit before assing new ISAPAdmin.
+             
+            </p>
+        </div>
+        <div id="departmentAdminEdit_dialog" title="Dialog Simple Title">
+            <p>
+               The User <span id="departmentAdmin"> </span> is DepartmentAdmin cannot be Edit before assing new DepartmentAdmin.
+            </p>
+        </div>
+        <div id="projAdminEdit_dialog" title="Dialog Simple Title">
+            <p>
+               The User <span id="projectAdmin"> </span> is ProjectAdmin cannot be Edit before assing new ProjectAdmin.
+            </p>
+        </div>
+         <div id="userEdit_dialog" title="Dialog Simple Title">
+            <div class="modal-body no-padding">
+                       <form action="" id="editusrform" name = "editusrform" class="smart-form" method="POST">
+                                   
+                                    <input type="hidden" id="editUserId" name="usr_id" >
+                                            <fieldset>
+													<section>
+																<div class="row">
+																	<label class="label col col-2"> User Name</label>
+																	<div class="col col-10">
+																		<label class="input"> 
+																			<input type="text" name="usr_name" id="editUserName">
+																		</label>
+																	</div>
+																</div>
+														</section>
+														<!-- <section>
+																<div class="row">
+																	<label class="label col col-2"> Password</label>
+																	<div class="col col-10">
+																		<label class="input"> 
+																			<input type="password" name="password" id="editUserPassword">
+																		</label>
+																	</div>
+																</div>
+														</section> -->
+														<section>
+														
+										            <div class="row">
+													<label class="label col col-2">Corporate Group</label>
+													    <div class="col col-10">
+													        <label class="input">
+													            <select class="form-control" name="cg_id" id="editCgId">
+															
+							                         <option selected="" disabled="disabled" value="0">Select Corporate</option>
+							
+													</select>  </label></div>
+														</div>
+														
+														
+												</section>
+												<section>
+														<div class="row">
+													<label class="label col col-2">Department </label>
+													<div class="col col-10"><label class="input">
+													 <select class="form-control" name="dpt_id" id="editDeptId" >
+															
+							                         <option selected="" disabled="disabled" value="0">Select Department</option>
+							
+													</select>  </label> 
+														
+															
+														  </div>
+														</div>
+												</section>
+														  
+														
+														<section>
+														<div class="row">
+													<label class="label col col-2">Projects </label>
+													<div class="col col-10"><label class="input">
+														<select class="form-control" name="proj_id" id="editProjId" >
+															
+							                         <option selected="" disabled="disabled" value="0">Select Projects</option>
+							
+													</select>  </label></div>
+														</div>
+												</section> 	
+														
+														<section>
+                                                    <div class="row">
+                                                        <label class="label col col-2">Status</label>
+                                                                <div class="col col-10">
+                                                                    <label class="input">
+                                                                        <select class="form-control" id="status" name="status">
+                                                                        
+                                                                        <option value="Active">Active</option>
+                                                                        
+                                                                        <option value="InActive">InActive</option>
+                                                                        
+                                                                        
+                                                                        
+                                                                    </select> 
+                                                                    </label>                                                               
+                                                                </div>
+                                                     </div>
+                                                </section>   
+												</fieldset>	
+													                             
+                                             
+                                         </form>                   
+                                  </div>
+               
+               
+               
+               
+        </div>
+        
 		
 		<!-- PAGE FOOTER -->
           <div class="page-footer">
@@ -1109,26 +1220,7 @@
            });
 	       
 	       
-	       /* $('#dialog_simple').dialog({
-               autoOpen : false,
-               width : 600,
-               resizable : false,
-               modal : true,
-               title : "<div class='btn btn-danger'><h4><i class='fa fa-warning'></i> Delete Confirmation ?</h4></div>",
-               buttons : [{
-                   html : "<i class='fa fa-trash-o'></i>&nbsp; Delete department",
-                   "class" : "btn btn-danger",
-                   
-               }, {
-                   html : "<i class='fa fa-times'></i>&nbsp; Cancel",
-                   "class" : "btn btn-default",
-                   click : function() {
-                       $(this).dialog("close");
-                   }
-               }]
-           }); */
-		
-		
+	     
 		
 		</script>
 		
@@ -1139,24 +1231,33 @@
 		function getRow(value){
 			
 		    var userId=value.id;
-		    $('#editUserId').val(userId);
+		    var id=value.id;
+		    var isapAdmin=value.name; 
+		    var corporateAdmin=value.name; 
+		    var departmentAdmin=value.name; 
+		    var projectAdmin=value.name;
+		    var endUser=value.name;
+		    
 		   
-
-		    $.getJSON("./getUserInEditTable/"+userId,function(response){
+	           $('#isapAdmin').text(isapAdmin);
+	           $('#corporateAdmin').text(corporateAdmin);
+	           $('#departmentAdmin').text(departmentAdmin);
+	           $('#projectAdmin').text(projectAdmin);
+	           $('#endUser').text(endUser);
+		    $('#editUserId').val(userId);
+		     $.getJSON("./getUserInEditTable/"+userId,function(response){
 		    	var cgId=response.cg_id;
 		    	var dptId=response.dpt_id;
-		    	var projId=response.proj_id
-		    	alert(projId);
+		    	var projId=response.proj_id;
+		    
 		    	$('#editUserName').val(response.usr_name);
 		    	 
 		    	   $('#editDeptId').html(''); 
 				    $('#editProjId').html('');
 				    $('#editCgId').html(''); 
-				    
-		/* 			  $('#editCgId').val(response.cg_id);
-		            */
+		
 		           $.getJSON("./getCorps",function(response){
-						 var userName=value.name;   
+						   
 						 var options = '';   
 			                for(i=0;i<response.length;i++){
 			                	
@@ -1170,8 +1271,6 @@
 			               $('#editCgId').append(options);    
 			               
 			        
-			 
-			               
 			               $.getJSON("./getDeptsJson/"+cgId,function(response){
 				                var options = ''; 
 				                for(i=0;i<response.length;i++){
@@ -1191,7 +1290,7 @@
 			               
 			               $.getJSON("./getProjsJson/"+dptId,function(response){
 				                var options = ''; 
-				                alert(response.length);
+				                //alert(response.length);
 				                for(i=0;i<response.length;i++){
 				                	
 				                	 // alert(response[i].proj_name);
@@ -1209,62 +1308,7 @@
 			               
 			             });
 		           
-		           
-		           
-		           
-		           
-		          /*  $('#editCgId').change(	            
-							function() {
-					           var cgId = $('#editCgId option:selected').val();		       
-							    $('#editDeptId').html(''); 
-							    $('#editProjId').html(''); 
-							   
-					           $.getJSON("./getDeptsJson/"+cgId,function(response){
-					                var options = '<option selected disabled="disabled" value="0"> Select Department </option>'; 
-					                for(i=0;i<response.length;i++){
-					                
-					                   options += '<option value="' + response[i].dpt_id + '">' + response[i].dpt_name + '</option>';
-					                }
-					               $('#editDeptId').append(options);     
-					             });
-					          });	
-						 
-					$('#editDeptId').change(	            
-							function() {
-					           var dptId = $('#editDeptId option:selected').val();		       
-							    $('#editProjId').html(''); 
-							    
-					           $.getJSON("./getProjsJson/"+dptId,function(response){
-					                var options = '<option selected disabled="disabled" value="0"> Select Projects </option>'; 
-					                for(i=0;i<response.length;i++){
-					                
-					                   options += '<option value="' + response[i].proj_id + '">' + response[i].proj_name + '</option>';
-					                }
-					               $('#editProjId').append(options);     
-					             });
-					          });
-		           
-		           //** */
-		         
-		           
-								/*  var userName=value.name;   
-								 if(userName.trim() !== ""){
-					                      $.getJSON("./getCorps/"+userName,function(response){
-					                    	  var options = '';   
-								                for(i=0;i<response.length;i++){
-								                   options += '<option value="' + response[i].cg_id + '">' + response[i].corporate_name + '</option>';
-								                }
-								               $('#editCgId').append(options);     
-								             });
-					                  }
-					                  else{
-					                      var options = '';                 
-					                       options += '<option selected value="0"> Select new Owner </option>';
-					                      $('#edit_usr_id').append(options);   
-					                  } */
-		           
-		           
-		           
+		       
 		           
 		           $('#status').html('');  
 		            if(response.status=="Active"){
@@ -1288,9 +1332,142 @@
 		                     options += '<option value="' + response[i].usr_id + '">' + response[i].usr_name + '</option>';
 		                  }
 		                 $('#editUserId').append(options);     
-		               });  
-		         });         
-		   }
+		               });
+		       
+		         });
+		    
+		   
+		    $.getJSON("./getAdminDetails/"+id,function(response){
+		    	
+		    
+		    	if(response.role_id=="1")
+        		{
+        		 $('#isapAdminEdit_dialog').dialog('open');
+        	
+        		}
+        	
+        	if(response.role_id=="2")
+    		{
+    		 $('#corporateAdminEdit_dialog').dialog('open');
+    	
+    		}
+        	
+        	if(response.role_id=="3")
+    		{
+    		 $('#departmentAdminEdit_dialog').dialog('open');
+    	
+    		}
+        	if(response.role_id=="4")
+    		{
+    		 $('#projAdminEdit_dialog').dialog('open');
+    	
+    		}
+        	
+        	
+        	if(response.role_id=="6"||response.role_id=="5")
+    		{
+        		 $('#userEdit_dialog').dialog('open');
+    		}
+        	
+		    });
+       
+		}
+		   
+		
+		
+		
+		  
+	       $('#isapAdminEdit_dialog').dialog({
+            autoOpen : false,
+            width : 600,
+            resizable : false,
+            modal : true,
+            title : "Edit Confirmation?",
+            buttons : [{
+                html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                "class" : "btn btn-default",
+                click : function() {
+                    $(this).dialog("close");
+                }
+            }]
+        });
+	       
+	       
+	       
+	       $('#corporateAdminEdit_dialog').dialog({
+            autoOpen : false,
+            width : 600,
+            resizable : false,
+            modal : true,
+            title : "Edit Confirmation?",
+            buttons : [{
+                html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                "class" : "btn btn-default",
+                click : function() {
+                    $(this).dialog("close");
+                }
+            }]
+        });
+	       
+	       
+	       
+	       $('#departmentAdminEdit_dialog').dialog({
+            autoOpen : false,
+            width : 600,
+            resizable : false,
+            modal : true,
+            title : "Edit Confirmation?",
+            buttons : [{
+                html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                "class" : "btn btn-default",
+                click : function() {
+                    $(this).dialog("close");
+                }
+            }]
+        });
+	       
+	       
+	       
+	       $('#projAdminEdit_dialog').dialog({
+            autoOpen : false,
+            width : 600,
+            resizable : false,
+            modal : true,
+            title : "Edit Confirmation?",
+            buttons : [{
+                html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                "class" : "btn btn-default",
+                click : function() {
+                    $(this).dialog("close");
+                }
+            }]
+        });
+	       
+	       
+  $('#userEdit_dialog').dialog({
+            autoOpen : false,
+            width : 600,
+            resizable : false,
+            modal : true,
+            title : "Edit User",
+            buttons : [{
+                html : "<i class='fa fa-trash-o'></i>&nbsp; Edit User",
+                "class" : "btn btn-success",
+                click : function() {
+                    document.editusrform.action = "./editUserDetails";
+                       document.editusrform.submit();
+                    $(this).dialog("close");
+                }
+            }, {
+                html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                "class" : "btn btn-default",
+                click : function() {
+                    $(this).dialog("close");
+                }
+            }]
+        });
+		
+		
 		</script>
 
 	</body>
