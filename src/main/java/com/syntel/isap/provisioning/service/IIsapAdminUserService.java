@@ -32,6 +32,10 @@ public interface IIsapAdminUserService {
 	void addUserInUserTable(User usr);
 
 	UserRoleMap getAdminDetailsJsonById(Integer id);
+
+	User getUserById(Integer userId);
+
+	List<User> getUsersByuser(User user);
 	
 
 }
