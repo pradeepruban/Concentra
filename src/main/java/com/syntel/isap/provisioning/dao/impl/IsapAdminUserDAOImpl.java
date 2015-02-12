@@ -97,4 +97,9 @@ public class IsapAdminUserDAOImpl implements IIsapAdminUserDAO{
 		// TODO Auto-generated method stub
 		return isapAdminUserMapper.getUsersByuser(user) ;
 	}
+
+	public void getUserFromUserTable(User user) {
+		isapAdminUserMapper.getUserFromUserTable(user);
+		
+	}
 }
