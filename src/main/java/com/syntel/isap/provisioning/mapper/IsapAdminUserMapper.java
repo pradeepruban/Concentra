@@ -29,10 +29,10 @@ public interface IsapAdminUserMapper {
 	@Select("SELECT usr_name,proj_name, dpt_name, corporate_name, e.status, e.usr_id  FROM isap_cmn_users e JOIN isap_cmn_depts r ON e.dpt_id=r.dpt_id JOIN isap_cmn_projects d ON e.proj_id=d.proj_id JOIN isap_cmn_corporategroups c on e.cg_id=c.cg_id where e.delete_flag!=1;")
     public  List<User> getUser();
 
-	@Select("SELECT * FROM isap_cmn_depts where cg_id=#{cgId}")
+	@Select("SELECT * FROM isap_cmn_depts where cg_id=#{cgId} OR cg_id=1")
 	List<Department> getDeptsJson(Integer cgId);
 
-	@Select("SELECT * FROM isap_cmn_projects where dpt_id=#{dptId}")
+	@Select("SELECT * FROM isap_cmn_projects where dpt_id=#{dptId} OR dpt_id =1")
 	List<Project> getProjsJson(Integer deptId);
 
 	
@@ -56,6 +56,20 @@ public interface IsapAdminUserMapper {
 	@Select("SELECT role_id FROM isap_cmn_user_role_map where usr_id = #{id}")
 	
 	UserRoleMap getAdminDetailsJsonById(Integer id);
+
+	@Select("SELECT * FROM isap_cmn_users WHERE usr_id = #{usrId}")
+	User getUserById(Integer userId);
+
+
+	 final String GET_USER_BY_USR_ID = "SELECT users.usr_id,users.usr_name FROM isap_cmn_users users,isap_cmn_user_role_map maps,isap_cmn_corporategroups corp "
+				+ "WHERE users.usr_id=maps.usr_id "
+				+ "AND users.dpt_id=#{DeptId} ";
+				/*+ "AND users.cg_id = 2 AND corps.cg_id=2";*/
+	
+	
+	 @Select(GET_USER_BY_USR_ID)
+	List<User> getUsersByuser(User user);
+
 	
 	
 
