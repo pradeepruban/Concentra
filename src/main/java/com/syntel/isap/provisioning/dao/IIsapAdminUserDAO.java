@@ -35,4 +35,8 @@ public interface IIsapAdminUserDAO {
 	
 	UserRoleMap getAdminDetailsJsonById(Integer id);
 
+	User getUserById(Integer userId);
+
+	List<User> getUsersByuser(User user);
+
 }
