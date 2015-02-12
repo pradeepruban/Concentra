@@ -60,6 +60,12 @@ public interface LaunchMapper {
 
 	@Select("SELECT * FROM isap_env_vm_mst_ext")
 	List<EnvironmentVMExt> getVMExtParams();
+	
+	@Select("SELECT * FROM isap_env_vm_mst where vm_master_id= #{envVMid}")
+	EnvironmentVM getEnvVmDetailsByID(Integer envVMid);
+
+	@Select("SELECT * FROM isap_env_vm_mst_ext where vm_master_id= #{envVMid}")
+	List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid);
 
 
 }

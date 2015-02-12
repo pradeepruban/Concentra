@@ -193,4 +193,16 @@ public class LaunchServiceImpl implements ILaunchService {
 		return envVMExtList;
 	}
 
+	@Transactional
+	public EnvironmentVM getEnvVmDetailsByID(Integer envVMid) {
+		EnvironmentVM envVM=launchDao.getEnvVmDetailsByID(envVMid);
+		return envVM;
+	}
+
+	public List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid) {
+		List<EnvironmentVMExt> envVMExtDet=launchDao.getVMExtParamsByID(envVMid);
+		return envVMExtDet;
+	}
+
+
 }

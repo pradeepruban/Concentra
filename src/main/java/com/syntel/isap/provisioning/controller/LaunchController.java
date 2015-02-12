@@ -3,16 +3,8 @@ package com.syntel.isap.provisioning.controller;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-
-
-
-
 import javax.jms.JMSException;
-
-
-
 import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.isap.cloudmanager.responses.xsd.GetOpenstackFlavorResp;
 import com.isap.cloudmanager.responses.xsd.Rules;
 import com.syntel.isap.provisioning.bean.CustomVM;
@@ -103,6 +94,27 @@ public class LaunchController {
 			return model;
 		  }
 		  
+		
+		@RequestMapping(value="/bespokeLaunch/{envVMid}", method=RequestMethod.GET)
+		  public ModelAndView  bespokeLaunch(HttpSession session,@PathVariable Integer envVMid,@ModelAttribute("envVM") EnvironmentVM envVM,
+       			@ModelAttribute("envVMExt") EnvironmentVMExt envVMExt) throws JMSException {
+			ModelAndView model = new ModelAndView();
+			System.out.println("envVM"+envVM.toString());
+			EnvironmentVM envVMDet=launchService.getEnvVmDetailsByID(envVMid);
+			List<EnvironmentVMExt> envVMExtDet=launchService.getVMExtParamsByID(envVMid);
+			System.out.println("envVM"+envVMDet.toString());
+			System.out.println("envVMExtDet"+envVMExtDet.toString());
+			
+			
+		/*	launchService.customLaunch(image,network,security,flavor,customVM,serviceReqMst);*/
+			
+			
+			
+			 String view="provision/bespokeTenantUser";
+		      model.setViewName(view);
+			return model;
+		}
+		
 	  /**
 		* param 
 		* @param @param @no params	

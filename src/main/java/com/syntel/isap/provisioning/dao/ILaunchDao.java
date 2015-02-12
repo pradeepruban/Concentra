@@ -32,4 +32,8 @@ public interface ILaunchDao {
 
 	List<EnvironmentVMExt> getVMExtParams();
 
+	EnvironmentVM getEnvVmDetailsByID(Integer envVMid);
+
+	List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid);
+
 }

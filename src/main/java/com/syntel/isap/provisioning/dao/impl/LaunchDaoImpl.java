@@ -62,4 +62,14 @@ public class LaunchDaoImpl implements ILaunchDao {
 			return envVMExtList;
 	}
 
+	public EnvironmentVM getEnvVmDetailsByID(Integer envVMid) {
+		EnvironmentVM envVM=launchMapper.getEnvVmDetailsByID(envVMid);
+		return envVM;
+	}
+
+	public List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid) {
+		List<EnvironmentVMExt> envVMExtDet=launchMapper.getVMExtParamsByID(envVMid);
+		return envVMExtDet;
+	}
+
 }

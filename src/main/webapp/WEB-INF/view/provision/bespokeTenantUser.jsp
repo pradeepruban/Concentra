@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
+	
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
@@ -688,13 +689,20 @@ for(EnvironmentVM envVM:envVMList){
 						                      
 						                    </table>
 						                </div>
-						                <div class="panel-footer no-padding">
 						                
-						                  <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="btn bg-color-darken txt-color-white btn-block" role="button">
-						                    
+						               
+						                 <div class="panel-footer no-padding">
+						                   <a title="delete" id="<%= envVM.getVm_master_id()%>"   onclick="launchNow(<%= envVM.getVm_master_id()%>);" class="btn bg-color-darken txt-color-white btn-block" role="button">
 						                    <i class="fa fa-shopping-cart"></i>
-						                      Launch <span> now!</span></a>
-						                </div>
+						                      Launch <span> now!</span></a> 
+						                 </div>
+						                
+						                <!-- <div class="panel-footer no-padding">
+						                   <a title="delete"  onclick="deleteCorporateGroup()" class="btn bg-color-darken txt-color-white btn-block" role="button">
+						                    <i class="fa fa-shopping-cart"></i>
+						                      Launch <span> now!</span></a> 
+						                 </div> -->
+	       
 						            </div>
 						        </div>	
 <% } %>				        
@@ -879,7 +887,15 @@ for(EnvironmentVM envVM:envVMList){
 			})();
 
 		</script>
-
+		
+		<script>
+		
+	
+function launchNow(envVMid){ 
+	alert("envVMid==> "+envVMid);
+	window.location.href = "./bespokeLaunch/"+envVMid;
+}
+	</script>
 	</body>
 
 </html>
