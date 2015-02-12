@@ -39,4 +39,6 @@ public interface IIsapAdminUserDAO {
 
 	List<User> getUsersByuser(User user);
 
+	void getUserFromUserTable(User user);
+
 }
