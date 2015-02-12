@@ -96,7 +96,7 @@ public class LaunchController {
 		  
 		
 		@RequestMapping(value="/bespokeLaunch/{envVMid}", method=RequestMethod.GET)
-		  public ModelAndView  bespokeLaunch(HttpSession session,@PathVariable Integer envVMid,@ModelAttribute("envVM") EnvironmentVM envVM,
+		  public String  bespokeLaunch(HttpSession session,@PathVariable Integer envVMid,@ModelAttribute("envVM") EnvironmentVM envVM,
        			@ModelAttribute("envVMExt") EnvironmentVMExt envVMExt) throws JMSException {
 			ModelAndView model = new ModelAndView();
 			System.out.println("envVM"+envVM.toString());
@@ -112,7 +112,7 @@ public class LaunchController {
 			
 			 String view="provision/bespokeTenantUser";
 		      model.setViewName(view);
-			return model;
+			return "provision/bespokeTenantUser";
 		}
 		
 	  /**
