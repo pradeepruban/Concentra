@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.syntel.isap.provisioning.bean.CorporateGroups;
 import com.syntel.isap.provisioning.bean.Department;
@@ -69,6 +70,9 @@ public interface IsapAdminUserMapper {
 	
 	 @Select(GET_USER_BY_USR_ID)
 	List<User> getUsersByuser(User user);
+
+	 @Update("UPDATE isap_cmn_users SET usr_name=#{usr_name},proj_id=#{proj_id},dpt_id=#{dpt_id},cg_id=#{cg_id} where usr_id=#{usr_id}")
+	void getUserFromUserTable(User user);
 
 	
 	
