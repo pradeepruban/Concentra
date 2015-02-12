@@ -242,42 +242,37 @@
                                     
                                 </div>
                                 <div class="modal-body no-padding">
-                                    <form action="editDepartment" id="editusrform" class="smart-form" method="POST">
+                                    <form action="editUserDetails" id="editusrform" class="smart-form" method="POST">
                                    
-                                    <input type="hidden" id="editDeptId" name="dpt_id" value="">
+                                    <input type="hidden" id="editUserId" name="usr_id" >
                                             <fieldset>
-                                            <p> DEVELOPMENT UNDER PROGRESS</p>&nbsp;&nbsp;&nbsp;
-                                            <div class="modal-footer">
-            									<!-- <button class="btn btn-default" data-dismiss="modal" >Cancel</button> -->
-           										<%-- <button class="btn btn-danger" onclick="deleteUser(this);" id="${users.usr_name}">Delete</button> --%>
-           										 </div>&nbsp;&nbsp;&nbsp;&nbsp;
-															<!-- <section>
+													<section>
 																<div class="row">
 																	<label class="label col col-2"> User Name</label>
 																	<div class="col col-10">
 																		<label class="input"> 
-																			<input type="text" name="usr_name">
+																			<input type="text" name="usr_name" id="editUserName">
 																		</label>
 																	</div>
 																</div>
 														</section>
-														<section>
+														<!-- <section>
 																<div class="row">
 																	<label class="label col col-2"> Password</label>
 																	<div class="col col-10">
 																		<label class="input"> 
-																			<input type="password" name="usr_desc">
+																			<input type="password" name="password" id="editUserPassword">
 																		</label>
 																	</div>
 																</div>
-														</section>
+														</section> -->
 														<section>
 														
 										            <div class="row">
 													<label class="label col col-2">Corporate Group</label>
 													    <div class="col col-10">
 													        <label class="input">
-													            <select class="form-control" name="cg_id" id="cg_id">
+													            <select class="form-control" name="cg_id" id="editCgId">
 															
 							                         <option selected="" disabled="disabled" value="0">Select Corporate</option>
 							
@@ -290,7 +285,7 @@
 														<div class="row">
 													<label class="label col col-2">Department </label>
 													<div class="col col-10"><label class="input">
-													 <select class="form-control" name="dpt_id" id="dpt_id" onclick="getdepartment(this)">
+													 <select class="form-control" name="dpt_id" id="editDeptId" >
 															
 							                         <option selected="" disabled="disabled" value="0">Select Department</option>
 							
@@ -306,7 +301,7 @@
 														<div class="row">
 													<label class="label col col-2">Projects </label>
 													<div class="col col-10"><label class="input">
-														<select class="form-control" name="proj_id" id="proj_id" onclick="getdepartment(this)">
+														<select class="form-control" name="proj_id" id="editProjId" >
 															
 							                         <option selected="" disabled="disabled" value="0">Select Projects</option>
 							
@@ -315,37 +310,34 @@
 												</section> 	
 														
 														<section>
-															<div class="row">
-																<label class="label col col-2">Status</label>
-																
-																<div class="col col-2">
-																<label>&nbsp;</label>
-																	<label class="radio-inline">
-												                    &nbsp;&nbsp; &nbsp;   <input type="radio" name="status"  value="ACT"  checked="checked"/> Active 
-												                   </label>
-												               
-																</div>
-																	<div class="col col-2">
-																		<label>&nbsp;</label>
-																	<label class="radio-inline">
-												                      <input type="radio" name="status"  value="INA" /> Inactive 
-												                   </label>
-																	
-																</div>
-															</div>
-														</section> -->
-													
-														
-													 </fieldset> 
-													                                
-                                              <!--  <footer>
-                                                    <button type="submit" class="btn btn-primary">
-                                                    Save Changes
-                                                    </button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                        Cancel
-                                                    </button>               
-                                                </footer> -->
+                                                    <div class="row">
+                                                        <label class="label col col-2">Status</label>
+                                                                <div class="col col-10">
+                                                                    <label class="input">
+                                                                        <select class="form-control" id="status" name="status">
+                                                                        
+                                                                        <option value="Active">Active</option>
+                                                                        
+                                                                        <option value="InActive">InActive</option>
+                                                                        
+                                                                        
+                                                                        
+                                                                    </select> 
+                                                                    </label>                                                               
+                                                                </div>
+                                                     </div>
+                                                </section>   
+												</fieldset>	
+													<footer>
+													<button type="submit" id="user"  class="btn btn-primary">
+														Edit User
+													</button>
+													<button type="button" class="btn btn-default" data-dismiss="modal">
+														Cancel
+													</button>
+					
+												</footer>                                
+                                             
                                          </form>                   
                                   </div>
                            </div><!-- /.modal-content -->
@@ -537,7 +529,7 @@
                                   </td>
                                         <td  style="padding-left: 3%;">
 												<!-- <a title="edit"  href="#"><i class="fa fa-pencil"></i></a> -->
-												<a title="edit" data-toggle="modal" id="${users.usr_id}" name="${users.created_by}"  onclick="getRow(this);" href="#myModal1"><i class="fa fa-pencil"></i></a>
+												<a title="edit" data-toggle="modal" id="${users.usr_id}" name="${users.usr_name}"  onclick="getRow(this);" href="#myModal1"><i class="fa fa-pencil"></i></a>
                                                
 												  <a title="delete" href="#" id="${users.usr_id}" name="${users.usr_name}" onclick="deleteDepartment(this)"><i class="fa fa-trash-o"></i></a>
 												
@@ -1145,41 +1137,160 @@
 		
 		
 		function getRow(value){
-	          var corpId=value.id;
-	          $('#editcgId').val(corpId);
-	          var userName=value.name;
-
-	          $.getJSON("./getcorporate/"+corpId,function(response){
-	                 $('#edit_corporate_name').val(response.corporate_name);
-	                 $('#edit_corporate_description').val(response.corporate_description);
-	                 $('#edit_usr_id').html('');     
-	                 $.getJSON("./getOwner/"+userName,function(response){
-	                             var options = '';                 
-	                                options += '<option selected value="' + response.usr_id + '">' + response.usr_name + '</option>';
-	                                $('#edit_usr_id').append(options); 
-	                             
-	           
-	                          });
-	                 
-	                
-	                  $.getJSON("./getCorpUsers",function(response){
-	                        var options = '';   
-	                        for(i=0;i<response.length;i++){
-	                           options += '<option value="' + response[i].usr_id + '">' + response[i].usr_name + '</option>';
-	                        }
-	                       $('#edit_usr_id').append(options);     
-	                     });  
-	               });         
-	         }
-		
-		function editCorporateGroup(value){
 			
-		    var cg_id=value.id;
-		    alert(cg_id);
-			document.getElementById('cg_id').value = cg_id;
-			document.corporateGroup.action = "./sessioneditcorporategroup";
-		   	document.corporateGroup.submit();
-	}
+		    var userId=value.id;
+		    $('#editUserId').val(userId);
+		   
+
+		    $.getJSON("./getUserInEditTable/"+userId,function(response){
+		    	var cgId=response.cg_id;
+		    	var dptId=response.dpt_id;
+		    	var projId=response.proj_id
+		    	alert(projId);
+		    	$('#editUserName').val(response.usr_name);
+		    	 
+		    	   $('#editDeptId').html(''); 
+				    $('#editProjId').html('');
+				    $('#editCgId').html(''); 
+				    
+		/* 			  $('#editCgId').val(response.cg_id);
+		            */
+		           $.getJSON("./getCorps",function(response){
+						 var userName=value.name;   
+						 var options = '';   
+			                for(i=0;i<response.length;i++){
+			                	
+			                	var newCgId=response[i].cg_id;
+			                	
+			                	if(newCgId==cgId){options += '<option selected value="' + response[i].cg_id + '">' + response[i].corporate_name + '</option>';}
+			                		 
+			                    else{ options += '<option value="' + response[i].cg_id + '">' + response[i].corporate_name + '</option>';}
+			                  
+			                }
+			               $('#editCgId').append(options);    
+			               
+			        
+			 
+			               
+			               $.getJSON("./getDeptsJson/"+cgId,function(response){
+				                var options = ''; 
+				                for(i=0;i<response.length;i++){
+				                	//alert(response[i].dpt_id);
+				                	//alert(response[i].dpt_name);
+				                var newDeptId=response[i].dpt_id;
+				                	if(newDeptId==dptId){options += '<option selected value="' + response[i].dpt_id + '">' + response[i].dpt_name + '</option>';}
+			                		 
+				                    else{ options += '<option value="' + response[i].dpt_id + '">' + response[i].dpt_name + '</option>';}
+				                  }
+				               $('#editDeptId').append(options);     
+				             });
+			               
+			               
+			               
+			    
+			               
+			               $.getJSON("./getProjsJson/"+dptId,function(response){
+				                var options = ''; 
+				                alert(response.length);
+				                for(i=0;i<response.length;i++){
+				                	
+				                	 // alert(response[i].proj_name);
+				                	var newProjId=response[i].proj_id;
+				                	//alert(newProjId);
+				                	if(newProjId==projId){options += '<option selected value="' + response[i].proj_id + '">' + response[i].proj_name + '</option>';}
+			                		 
+				                    else{ options += '<option value="' + response[i].proj_id + '">' + response[i].proj_name + '</option>';}
+				                   
+				                }
+				               $('#editProjId').append(options);     
+				             });
+			               
+			           	
+			               
+			             });
+		           
+		           
+		           
+		           
+		           
+		          /*  $('#editCgId').change(	            
+							function() {
+					           var cgId = $('#editCgId option:selected').val();		       
+							    $('#editDeptId').html(''); 
+							    $('#editProjId').html(''); 
+							   
+					           $.getJSON("./getDeptsJson/"+cgId,function(response){
+					                var options = '<option selected disabled="disabled" value="0"> Select Department </option>'; 
+					                for(i=0;i<response.length;i++){
+					                
+					                   options += '<option value="' + response[i].dpt_id + '">' + response[i].dpt_name + '</option>';
+					                }
+					               $('#editDeptId').append(options);     
+					             });
+					          });	
+						 
+					$('#editDeptId').change(	            
+							function() {
+					           var dptId = $('#editDeptId option:selected').val();		       
+							    $('#editProjId').html(''); 
+							    
+					           $.getJSON("./getProjsJson/"+dptId,function(response){
+					                var options = '<option selected disabled="disabled" value="0"> Select Projects </option>'; 
+					                for(i=0;i<response.length;i++){
+					                
+					                   options += '<option value="' + response[i].proj_id + '">' + response[i].proj_name + '</option>';
+					                }
+					               $('#editProjId').append(options);     
+					             });
+					          });
+		           
+		           //** */
+		         
+		           
+								/*  var userName=value.name;   
+								 if(userName.trim() !== ""){
+					                      $.getJSON("./getCorps/"+userName,function(response){
+					                    	  var options = '';   
+								                for(i=0;i<response.length;i++){
+								                   options += '<option value="' + response[i].cg_id + '">' + response[i].corporate_name + '</option>';
+								                }
+								               $('#editCgId').append(options);     
+								             });
+					                  }
+					                  else{
+					                      var options = '';                 
+					                       options += '<option selected value="0"> Select new Owner </option>';
+					                      $('#edit_usr_id').append(options);   
+					                  } */
+		           
+		           
+		           
+		           
+		           $('#status').html('');  
+		            if(response.status=="Active"){
+		          	 var options = '';  
+		          	  options += '<option selected value="Active"> Active </option>';
+		          	  options += '<option  value="InActive"> InActive </option>';
+		                $('#status').append(options); 
+		           }
+		           else{
+		            var options = '';  
+		         	  options += '<option  value="Active"> Active </option>';
+		         	  options += '<option selected value="InActive"> InActive </option>';
+		             $('#status').append(options); 
+		           } 
+		           
+		          
+		            $.getJSON("./getUsersToEdit",function(response){
+		            	
+		                  var options = '';   
+		                  for(i=0;i<response.length;i++){
+		                     options += '<option value="' + response[i].usr_id + '">' + response[i].usr_name + '</option>';
+		                  }
+		                 $('#editUserId').append(options);     
+		               });  
+		         });         
+		   }
 		</script>
 
 	</body>
