@@ -103,4 +103,20 @@ public class IsapAdminUserServiceImpl implements IIsapAdminUserService{
 		return isapAdminUserDAO.getAdminDetailsJsonById(id);
 	}
 
+	
+	@Transactional
+	public User getUserById(Integer userId) {
+		System.out.println("UserId+++++++++++++++++++++++++++++"+userId );
+		return isapAdminUserDAO.getUserById(userId);
+	}
+
+
+	public List<User> getUsersByuser(User user) {
+		// TODO Auto-generated method stub
+		return isapAdminUserDAO.getUsersByuser(user);
+	}
+
+	
+	
+	
 }
