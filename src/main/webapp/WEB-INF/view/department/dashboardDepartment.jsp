@@ -100,11 +100,13 @@
 						<a href="dashboardDeparment" title="DashBoard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">DashBoard</span></a>
 					</li>
 					
-					
-				
 					<li >
 						<a href="projects"><i class="fa fa-stack-overflow"></i> <span class="menu-item-parent">Projects</span></a>
-					</li>		
+					</li>	
+					
+					<li>
+						<a href="templateList" title="templateList"><i class="fa  fa-group"></i> <span class="menu-item-parent">Template List</span></a>
+					</li>	
 				<!-- 	<li >
 						<a href="#"><i class="fa fa-lg fa-fw fa-filter"></i> <span class="menu-item-parent">Map Users</span></a>
 					</li> -->
