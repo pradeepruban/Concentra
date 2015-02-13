@@ -76,6 +76,31 @@ public class LaunchController {
 			return model;
 		  }
 		  
+		@RequestMapping(value="/templateList", method=RequestMethod.GET)
+		public ModelAndView  getTemplateList(HttpSession session) {
+			  LOGGER.info("Inside getTemplateList()- Get");
+			  ModelAndView model = new ModelAndView();
+			  List<EnvironmentVM> envVMList=launchService.getEnvVmDetails();
+		      session.setAttribute("envVMList", envVMList);
+		      String view="department/templateListPage";
+		      model.setViewName(view);
+			return model;
+		  }
+		
+		
+		@RequestMapping(value="/addTemplate", method=RequestMethod.GET)
+		public ModelAndView addTemplate(HttpSession session) {
+			  LOGGER.info("Inside getTemplateList()- Get");
+			  ModelAndView model = new ModelAndView();
+			  
+			  /*List<EnvironmentVM> envVMList=launchService.getEnvVmDetails();
+		      session.setAttribute("envVMList", envVMList);*/
+			  
+		      String view="department/bespokeTemplate";
+		      model.setViewName(view);
+			return model;
+		  }
+		
 	  /**
 		* param 
 		* @param @param @no params	
