@@ -205,145 +205,7 @@
 				<!-- widget grid -->
 				<section id="widget-grid" class="">
 				
-					<!-- row -->
-					<div class="row">
-                       
-						 <div class="pull-right" style="padding-right: 2%;">
-							 <a data-toggle="modal" href="#myModal"  class="btn btn-success txt-color-white pull-right  ">
-                                            <i class="fa fa-circle-arrow-up fa-lg"></i>
-                                            Add User
-                                        </a>   
-							<br><br>
-						</div>		
-								
-                    <!--  <div class="pull-right" style="padding-right: 1%;">
-							 <a data-toggle="modal" href="#myModal"  class="btn btn-success txt-color-white pull-right  ">
-                                            <i class="fa fa-circle-arrow-up fa-lg"></i>
-                                            Add User
-                                        </a>  
-                                        <br> 
-							<br>
-						</div> -->
-								</div>
-								
-								
-								
-								
-								<!-- <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    &times;
-                                    </button>
-                                    <h4 class="modal-title">
-                                        Edit User
-                                    </h4>
-                                    
-                                </div>
-                                <div class="modal-body no-padding">
-                                    <form action="editUserDetails" id="editusrform" class="smart-form" method="POST">
-                                   
-                                    <input type="hidden" id="editUserId" name="usr_id" >
-                                            <fieldset>
-													<section>
-																<div class="row">
-																	<label class="label col col-2"> User Name</label>
-																	<div class="col col-10">
-																		<label class="input"> 
-																			<input type="text" name="usr_name" id="editUserName">
-																		</label>
-																	</div>
-																</div>
-														</section>
-														<section>
-																<div class="row">
-																	<label class="label col col-2"> Password</label>
-																	<div class="col col-10">
-																		<label class="input"> 
-																			<input type="password" name="password" id="editUserPassword">
-																		</label>
-																	</div>
-																</div>
-														</section>
-														<section>
-														
-										            <div class="row">
-													<label class="label col col-2">Corporate Group</label>
-													    <div class="col col-10">
-													        <label class="input">
-													            <select class="form-control" name="cg_id" id="editCgId">
-															
-							                         <option selected="" disabled="disabled" value="0">Select Corporate</option>
-							
-													</select>  </label></div>
-														</div>
-														
-														
-												</section>
-												<section>
-														<div class="row">
-													<label class="label col col-2">Department </label>
-													<div class="col col-10"><label class="input">
-													 <select class="form-control" name="dpt_id" id="editDeptId" >
-															
-							                         <option selected="" disabled="disabled" value="0">Select Department</option>
-							
-													</select>  </label> 
-														
-															
-														  </div>
-														</div>
-												</section>
-														  
-														
-														<section>
-														<div class="row">
-													<label class="label col col-2">Projects </label>
-													<div class="col col-10"><label class="input">
-														<select class="form-control" name="proj_id" id="editProjId" >
-															
-							                         <option selected="" disabled="disabled" value="0">Select Projects</option>
-							
-													</select>  </label></div>
-														</div>
-												</section> 	
-														
-														<section>
-                                                    <div class="row">
-                                                        <label class="label col col-2">Status</label>
-                                                                <div class="col col-10">
-                                                                    <label class="input">
-                                                                        <select class="form-control" id="status" name="status">
-                                                                        
-                                                                        <option value="Active">Active</option>
-                                                                        
-                                                                        <option value="InActive">InActive</option>
-                                                                        
-                                                                        
-                                                                        
-                                                                    </select> 
-                                                                    </label>                                                               
-                                                                </div>
-                                                     </div>
-                                                </section>   
-												</fieldset>	
-													<footer>
-													<button type="submit" id="user"  class="btn btn-primary">
-														Edit User
-													</button>
-													<button type="button" class="btn btn-default" data-dismiss="modal">
-														Cancel
-													</button>
 					
-												</footer>                                
-                                             
-                                         </form>                   
-                                  </div>
-                           </div>/.modal-content
-                        </div>/.modal-dialog
-                   </div>/.modal -->
-	              	
 	              				<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 								<div class="modal-dialog">
 								<div class="modal-content">
@@ -419,38 +281,7 @@
 							
 													</select>  </label></div>
 														</div>
-												</section> 														<!-- <section>
-															<div class="row">
-																<label class="label col col-2">Role</label>
-																<div class="col col-10">
-																	<label class="input"> <i class="icon-append fa fa-user"></i>
-																		<input type="text" name="role">
-																	</label>
-																	
-																</div>
-															</div>
-														</section> -->
-														
-														<!-- <section>
-															<div class="row">
-																<label class="label col col-2">Status</label>
-																
-																<div class="col col-2">
-																<label>&nbsp;</label>
-																	<label class="radio-inline">
-												                    &nbsp;&nbsp; &nbsp;   <input type="radio" name="status" checked="checked"/> Active 
-												                   </label>
-												               
-																</div>
-																	<div class="col col-2">
-																		<label>&nbsp;</label>
-																	<label class="radio-inline">
-												                      <input type="radio" name="status"  value="INA" /> Inactive 
-												                   </label>
-																	
-																</div>
-															</div>
-														</section> -->
+												</section> 													
 													
 														
 													 </fieldset>
@@ -600,18 +431,132 @@
         <div id="isapAdminEdit_dialog" title="Dialog Simple Title">
             <p>
                The User <span id="isapAdmin"> </span> is ISAPAdmin CorporateAdmin cannot be Edit before assing new CorporateAdmin.
-                              
+               
+               <!-- <div class="modal-body no-padding">
+                       <form action="" id="editnewISAPAdminform" name = "editnewISAPAdminform" class="smart-form" method="POST">
+                                   
+                                    <input type="hidden" id="editUserId" name="usr_id" >
+                                            <fieldset>
+													<section>
+																<div class="row">
+																	<label class="label col col-2"> Old ISAP ADMIN</label>
+																	<div class="col col-10">
+																		<label class="input"> 
+																			<input type="text" disabled="disabled" name="usr_name" id="editISAPUserName">
+																		</label>
+																	</div>
+																</div>
+														</section>
+											   <section>
+														
+										            <div class="row">
+													<label class="label col col-2">Select New ISAP Admin</label>
+													    <div class="col col-10">
+													        <label class="input">
+													            <select class="form-control" name="usr_id" id="editISAPusrId">
+															
+							                         <option selected="" disabled="disabled" value="0">Select Corporate</option>
+							
+													</select>  </label></div>
+														</div>
+														
+														
+												</section>
+											
+												</fieldset>	
+													                             
+                                             
+                                         </form>                   
+                                  </div>
+               
+               
+               
+                               -->
             </p>
         </div>
         <div id="corporateAdminEdit_dialog" title="Dialog Simple Title">
              <p>
-               The User <span id="corporateAdmin"> </span> is CorporateAdmin cannot be Edit before assing new ISAPAdmin.
+               The User <span id="corporateAdmin"> </span> is CorporateAdmin Please Select New Admin Before Edit.
+               
+                 <div class="modal-body no-padding">
+                       <form action="" id="editnewCorpAdminform" name = "editnewCorpAdminform" class="smart-form" method="POST">
+                                   
+                                    <input type="hidden" id="editCorpUserId" name="usr_id" >
+                                            <fieldset>
+													<section>
+																<div class="row">
+																	<label class="label col col-5"> Old CorporateAdmin</label>
+																	<div class="col col-6">
+																		<label class="input"> 
+																			<input type="text" disabled="disabled"  id="editCorpUserName">
+																		</label>
+																	</div>
+																</div>
+														</section>
+											   <section>
+														
+										            <div class="row">
+													<label class="label col col-5">Select New Corporate Admin</label>
+													    <div class="col col-6">
+													        <label class="input">
+													            <select class="form-control" name="usr_name" id="editCgUsrId">
+															
+							                         <option selected="" disabled="disabled" value="0">Select Corporate</option>
+							
+													</select>  </label></div>
+														</div>
+														
+														
+												</section>
+											
+												</fieldset>	
+													                             
+                                             
+                                         </form>                   
+                                  </div>
              
             </p>
         </div>
         <div id="departmentAdminEdit_dialog" title="Dialog Simple Title">
             <p>
-               The User <span id="departmentAdmin"> </span> is DepartmentAdmin cannot be Edit before assing new DepartmentAdmin.
+               The User <span id="departmentAdmin"> </span> is DepartmentAdmin Please Select New Admin Before Edit.
+               
+                 <div class="modal-body no-padding">
+                       <form action="" id="editnewDeptAdminform" name = "editnewDeptAdminform" class="smart-form" method="POST">
+                                   
+                                    <input type="hidden" id="editDeptUserId" name="usr_id" >
+                                            <fieldset>
+													<section>
+																<div class="row">
+																	<label class="label col col-5">Old DepartmentAdmin</label>
+																	<div class="col col-6">
+																		<label class="input"> 
+																			<input type="text" disabled="disabled" id="editDeptUserName">
+																		</label>
+																	</div>
+																</div>
+														</section>
+											   <section>
+														
+										            <div class="row">
+													<label class="label col col-5">Select New DepartmentAdmin</label>
+													    <div class="col col-6">
+													        <label class="input">
+													            <select class="form-control" name="usr_name" id="editDeptusrId">
+															
+							                         <option selected="" disabled="disabled" value="0">Select Department</option>
+							
+													</select>  </label></div>
+														</div>
+														
+														
+												</section>
+											
+												</fieldset>	
+													                             
+                                             
+                                         </form>                   
+                                  </div>
             </p>
         </div>
         <div id="projAdminEdit_dialog" title="Dialog Simple Title">
@@ -620,7 +565,7 @@
             </p>
         </div>
          <div id="userEdit_dialog" title="Dialog Simple Title">
-            <div class="modal-body no-padding">
+             <div class="modal-body no-padding">
                        <form action="" id="editusrform" name = "editusrform" class="smart-form" method="POST">
                                    
                                     <input type="hidden" id="editUserId" name="usr_id" >
@@ -711,8 +656,6 @@
                                              
                                          </form>                   
                                   </div>
-               
-               
                
                
         </div>
@@ -1244,6 +1187,8 @@
 	           $('#departmentAdmin').text(departmentAdmin);
 	           $('#projectAdmin').text(projectAdmin);
 	           $('#endUser').text(endUser);
+		    $('#editCorpUserId').val(userId);
+		    $('#editDeptUserId').val(userId);
 		    $('#editUserId').val(userId);
 		     $.getJSON("./getUserInEditTable/"+userId,function(response){
 		    	var cgId=response.cg_id;
@@ -1251,10 +1196,16 @@
 		    	var projId=response.proj_id;
 		    
 		    	$('#editUserName').val(response.usr_name);
+		    	$('#editDeptUserName').val(response.usr_name);
+		    	$('#editCorpUserName').val(response.usr_name);
+		    	//$('#editUserName').val(response.usr_name);
+		    	//$('#editUserName').val(response.usr_name);
 		    	 
 		    	   $('#editDeptId').html(''); 
 				    $('#editProjId').html('');
 				    $('#editCgId').html(''); 
+				    $('#editDeptusrId').html(''); 
+				    $('#editCgUsrId').html(''); 
 		
 		           $.getJSON("./getCorps",function(response){
 						   
@@ -1304,11 +1255,67 @@
 				               $('#editProjId').append(options);     
 				             });
 			               
-			           	
-			               
+			 
+			   		  
+			   		
 			             });
 		           
-		       
+		           /*  this method is for getting non admin users for setting new Admin */
+		           
+		           $.getJSON("./getNonAdminUsers/",function(response){
+		   		    	
+		   		    	for(i=0;i<response.length;i++){
+		   		    		
+		   		    		var usrId =response[i].usr_id;
+		   		    		//alert(usr_ID);
+		                   
+		   		     $.getJSON("./getNewDeptUsers/"+usrId +"/"+dptId,function(response){
+		   		    	 
+		   		    	 var username = '';
+		   		 	
+		   		    	for(i=0;i<response.length;i++){
+		   		    		
+		   		    	 //alert(response[i].usr_name);
+		   		    	username += '<option value="' + response[i].usr_id + '">' + response[i].usr_name + '</option>';
+		   		    
+		   		    	}
+		   		     $('#editDeptusrId').append(username); 
+		   		 
+		   		  });
+		   		 
+		   		   
+		   		}
+		       	
+		   		  });
+		           
+		           $.getJSON("./getNonAdminUsers/",function(response){
+		   		    	
+		   		    	for(i=0;i<response.length;i++){
+		   		    		
+		   		    		var usrId =response[i].usr_id;
+		   		    		//alert(usr_ID);
+		                   
+		   		     $.getJSON("./getNewCorpUsers/"+usrId +"/"+cgId,function(response){
+		   		    	 
+		   		    	 var options = '';
+		   		 	
+		   		    	for(i=0;i<response.length;i++){
+		   		    		
+		   		    	 //alert(response[i].usr_name);
+		   		    	options += '<option value="' + response[i].usr_id + '">' + response[i].usr_name + '</option>';
+		   		    
+		   		    	}
+		   		     $('#editCgUsrId').append(options); 
+		   		 
+		   		  });
+		   		 
+		   		   
+		   		}
+		       	
+		   		  });
+		           
+		           
+		           
 		           
 		           $('#status').html('');  
 		            if(response.status=="Active"){
@@ -1370,6 +1377,9 @@
     		}
         	
 		    });
+		    
+		   
+		    
        
 		}
 		   
@@ -1401,6 +1411,16 @@
             modal : true,
             title : "Edit Confirmation?",
             buttons : [{
+                html : "Update Admin",
+                "class" : "btn btn-success",
+                click : function() {
+                    document.editusrform.action = "./editUserDetails";
+                       document.editusrform.submit();
+                    $(this).dialog("close");
+                }
+            },{
+            	html : "<i class='fa fa-trash-o'></i>&nbsp; UpdateAdmin",
+                "class" : "btn btn-success",
                 html : "<i class='fa fa-times'></i>&nbsp; Cancel",
                 "class" : "btn btn-default",
                 click : function() {
@@ -1418,6 +1438,14 @@
             modal : true,
             title : "Edit Confirmation?",
             buttons : [{
+                html : "Update Admin",
+                "class" : "btn btn-success",
+                click : function() {
+                    document.editusrform.action = "./editUserDetails";
+                       document.editusrform.submit();
+                    $(this).dialog("close");
+                }
+            },{
                 html : "<i class='fa fa-times'></i>&nbsp; Cancel",
                 "class" : "btn btn-default",
                 click : function() {
@@ -1435,6 +1463,7 @@
             modal : true,
             title : "Edit Confirmation?",
             buttons : [{
+            	
                 html : "<i class='fa fa-times'></i>&nbsp; Cancel",
                 "class" : "btn btn-default",
                 click : function() {
