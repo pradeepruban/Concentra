@@ -173,8 +173,13 @@
 					</li>
 					
 					<li class="active">
-						<a href="#" title="Custom Service List"><i class="fa fa-lg fa-fw fa-filter"></i> <span class="menu-item-parent">Service List</span></a>
+						<a href="customUserServiceList" title="Custom Service List"><i class="fa fa-lg fa-fw fa-filter"></i> <span class="menu-item-parent">Service List</span></a>
 					</li>
+					
+					<li >
+						<a href="userKeyPairList" title="KeyPair"><i class="fa fa-lg fa-fw fa-key"></i> <span class="menu-item-parent">KeyPair List</span></a>
+					</li>
+					
 					
 				</ul>
 			</nav>
@@ -268,6 +273,7 @@
 													<th>IP Address</th>
 													<th data-hide="phone,tablet">Size</th>
 													<th data-hide="phone,tablet">Security Group</th>
+													<th data-hide="phone,tablet">KeyPair</th>
 													<th data-hide="phone,tablet">Start</th>
 													<th data-hide="phone,tablet">EndDate</th>
 													<th data-hide="phone,tablet">Status</th>						
@@ -283,6 +289,7 @@
 													<td>${customList.ip_addr} </td>
 													<td>${customList.stackList.flavor}  </td>
 													<td>${customList.stackList.security}  </td>
+													<td>${customList.stackList.keypair}  </td>
 													<td>${customList.startDate}   </td>
 													<td>${customList.endDate}  </td>
 												    	<c:set var="paramName" value="${customList.status}"/>
@@ -292,7 +299,9 @@
 															 Requesting &nbsp; <img src="img/discoverImage.GIF">
 														   </c:when>
 														   <c:otherwise>
-															   ${customList.status}
+														     <span class="label label-success">${customList.status}</span>
+														     <br><br>
+															     <span class="label label-danger">Inaccessible</span>
 														   </c:otherwise>
 													    </c:choose>	 
 													</td>
@@ -313,7 +322,7 @@
 																</li>
 																<li class="divider"></li>
 																<li>
-																	<a href="javascript:void(0);">Terminate Instance</a>
+																	<a id="${customList.vm_custom_id}" name="${customList.vm_name}" onclick="terminateInstance(this)" href="#">Terminate Instance ${customList.vm_custom_id}</a>
 																</li>
 															</ul>
 														</div>
@@ -350,6 +359,14 @@
 
 		</div>
 		<!-- END MAIN PANEL -->
+		
+		
+		 <!-- ui-dialog -->
+        <div id="dialog_simple" title="Dialog Simple Title">
+            <p>
+                Are you sure you want to delete the Instance : <span id="instance"> </span> ? .
+            </p>
+        </div>
 
 		<!-- PAGE FOOTER -->
           <div class="page-footer">
@@ -445,13 +462,77 @@
 		<script src="js/plugin/datatables/dataTables.bootstrap.min.js"></script>
 		<script src="js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
 
+<script type="text/javascript">
+
+function terminateInstance(instance){
+       var id=department.id;
+       var name=department.name;
+       alert(id);
+      // $('#instId').val(id);
+       $('#dialog_simple').dialog('open');
+        return false;      
+   }
+</script>
+
 		<script type="text/javascript">
+		
+		
 		
 		// DO NOT REMOVE : GLOBAL FUNCTIONS!
 		
 		$(document).ready(function() {
 			
 			pageSetUp();
+			
+			
+			  /*
+             * CONVERT DIALOG TITLE TO HTML
+             * REF: http://stackoverflow.com/questions/14488774/using-html-in-a-dialogs-title-in-jquery-ui-1-10
+             */
+            $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+                _title : function(title) {
+                    if (!this.options.title) {
+                        title.html("&#160;");
+                    } else {
+                        title.html(this.options.title);
+                    }
+                }
+            }));
+           
+            /*
+            * DIALOG SIMPLE
+            */
+       
+            // Dialog click
+            $('#dialog_link').click(function() {
+                $('#dialog_simple').dialog('open');
+                return false;
+       
+            });
+       
+            $('#dialog_simple').dialog({
+                autoOpen : false,
+                width : 600,
+                resizable : false,
+                modal : true,
+                title : "<div class='widget-header'><h4><i class='fa fa-warning'></i> Delete Confirmation ?</h4></div>",
+                buttons : [{
+                    html : "<i class='fa fa-trash-o'></i>&nbsp; Terminate Instance",
+                    "class" : "btn btn-danger",
+                    click : function() {
+                        document.department.action = "./terminateInstance";
+                           document.department.submit();
+                        $(this).dialog("close");
+                    }
+                }, {
+                    html : "<i class='fa fa-times'></i>&nbsp; Cancel",
+                    "class" : "btn btn-default",
+                    click : function() {
+                        $(this).dialog("close");
+                    }
+                }]
+            });
+       
 			
 			/* // DOM Position key index //
 		
