@@ -122,6 +122,38 @@ public class IsapAdminUserServiceImpl implements IIsapAdminUserService{
 		isapAdminUserDAO.getUserFromUserTable(user);
 	}
 
+
+	public List<UserRoleMap> getNonAdminUsers() {
+		// TODO Auto-generated method stub
+		return isapAdminUserDAO.getNonAdminUsers();
+	}
+
+
+	public List<User> getNewDeptsUserJsonById(Integer usr_ID, Integer dptId) {
+		// TODO Auto-generated method stub
+		return isapAdminUserDAO.getNewDeptsUserJsonById(usr_ID, dptId);
+	}
+
+
+	public List<User> geNewCoprUsersInJSONId(Integer usr_ID, Integer cgId) {
+		// TODO Auto-generated method stub
+		return isapAdminUserDAO.geNewCoprUsersInJSONId(usr_ID, cgId);
+	}
+
+
+	public void updateAdminDetails(User user) {
+		
+		int oldAdminId = user.getUsr_id();
+		isapAdminUserDAO.updateOldAdminrole(oldAdminId);
+		//isapAdminUserDAO.updateOldAdminDetails(oldAdminId);
+		
+	String newAdmin =user.getUsr_name();
+System.out.println("New admin name form Form"+newAdmin);
+	
+	int newAdminID = isapAdminUserDAO.getNewAdminIdByName(newAdmin);
+		isapAdminUserDAO.updateAdminDetails(newAdminID);
+	}
+
 	
 	
 	
