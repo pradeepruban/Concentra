@@ -38,6 +38,14 @@ public interface IIsapAdminUserService {
 	List<User> getUsersByuser(User user);
 
 	void getUserFromUserTable(User user);
+
+	List<UserRoleMap> getNonAdminUsers();
+
+	List<User> getNewDeptsUserJsonById(Integer usr_ID, Integer dptId);
+
+	List<User> geNewCoprUsersInJSONId(Integer usr_ID, Integer dptId);
+
+	void updateAdminDetails(User user);
 	
 
 }
