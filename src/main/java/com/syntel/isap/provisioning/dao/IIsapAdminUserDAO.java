@@ -41,4 +41,18 @@ public interface IIsapAdminUserDAO {
 
 	void getUserFromUserTable(User user);
 
+	List<UserRoleMap> getNonAdminUsers();
+
+	List<User> getNewDeptsUserJsonById(Integer usr_ID,Integer dptId);
+
+	List<User> geNewCoprUsersInJSONId(Integer usr_ID, Integer cgId);
+
+	void updateAdminDetails(int newAdminID);
+
+	//void updateOldAdminDetails(int oldAdminId);
+
+	void updateOldAdminrole(int oldAdminId);
+
+	int getNewAdminIdByName(String newAdmin);
+
 }
