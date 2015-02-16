@@ -73,6 +73,25 @@ public interface IsapAdminUserMapper {
 
 	 @Update("UPDATE isap_cmn_users SET usr_name=#{usr_name},proj_id=#{proj_id},dpt_id=#{dpt_id},cg_id=#{cg_id} where usr_id=#{usr_id}")
 	void getUserFromUserTable(User user);
+    @Select("SELECT usr_id FROM isap_cmn_user_role_map where role_id =5 OR role_id = 6")
+	List<UserRoleMap> getNonAdminUsers();
+    @Select("SELECT usr_name,usr_id FROM isap_cmn_users WHERE usr_id = #{usr_ID} AND dpt_id=#{dptId}")
+	List<User> getNewDeptsUserJsonById(@Param("usr_ID")int usr_ID,@Param("dptId")int dptId);
+    @Select("SELECT usr_name,usr_id FROM isap_cmn_users WHERE usr_id = #{usr_ID} AND cg_id=#{cgId}")
+	List<User> geNewCoprUsersInJSONId(@Param("usr_ID")int usr_ID,@Param("cgId")int cgId);
+
+    
+    @Update("UPDATE isap_cmn_user_role_map SET role_id = 3 WHERE usr_id =#{usrId}")
+	void updateAdminDetails(int usrId);
+
+	//void updateOldAdminDetails(int oldAdminId);
+
+	 @Update("UPDATE isap_cmn_user_role_map SET role_id = 6 WHERE usr_id =#{usr_ID}")
+	
+	void updateOldAdminrole(@Param("usr_ID")int usr_ID);
+
+	 @Select("SELECT usr_id FROM isap_cmn_users WHERE usr_name = #{usrName}")
+	int getNewAdminIdByName(String usrName);
 
 	
 	
