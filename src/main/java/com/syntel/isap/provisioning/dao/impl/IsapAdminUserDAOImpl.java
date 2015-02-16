@@ -102,4 +102,44 @@ public class IsapAdminUserDAOImpl implements IIsapAdminUserDAO{
 		isapAdminUserMapper.getUserFromUserTable(user);
 		
 	}
+
+	public List<UserRoleMap> getNonAdminUsers() {
+		// TODO Auto-generated method stub
+		return isapAdminUserMapper.getNonAdminUsers();
+	}
+
+	public List<User> getNewDeptsUserJsonById(Integer usr_ID, Integer dptId) {
+		// TODO Auto-generated method stub
+		return isapAdminUserMapper.getNewDeptsUserJsonById(usr_ID,dptId);
+	}
+
+	public List<User> geNewCoprUsersInJSONId(Integer usr_ID, Integer cgId) {
+		// TODO Auto-generated method stub
+		return isapAdminUserMapper.geNewCoprUsersInJSONId(usr_ID, cgId);
+	}
+
+	/*public void updateAdminDetails(User user) {
+		isapAdminUserMapper.updateAdminDetails(user);
+		
+	};*/
+
+	/*public void updateOldAdminDetails(int oldAdminId) {
+		isapAdminUserMapper.updateOldAdminDetails(oldAdminId);
+		
+	}
+*/
+	public void updateOldAdminrole(int oldAdminId) {
+		isapAdminUserMapper.updateOldAdminrole(oldAdminId);
+		
+	}
+
+	public int getNewAdminIdByName(String newAdmin) {
+		
+		return isapAdminUserMapper.getNewAdminIdByName(newAdmin);
+	}
+
+	public void updateAdminDetails(int newAdminID) {
+		isapAdminUserMapper.updateAdminDetails(newAdminID);
+		
+	}
 }
