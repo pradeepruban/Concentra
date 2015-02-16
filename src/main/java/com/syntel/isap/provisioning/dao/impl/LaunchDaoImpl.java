@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.syntel.isap.provisioning.bean.CustomVM;
 import com.syntel.isap.provisioning.bean.CustomVMExt;
+import com.syntel.isap.provisioning.bean.EnvironmentVDC;
 import com.syntel.isap.provisioning.bean.EnvironmentVM;
 import com.syntel.isap.provisioning.bean.EnvironmentVMExt;
 import com.syntel.isap.provisioning.bean.ServiceReqDts;
@@ -70,6 +71,11 @@ public class LaunchDaoImpl implements ILaunchDao {
 	public List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid) {
 		List<EnvironmentVMExt> envVMExtDet=launchMapper.getVMExtParamsByID(envVMid);
 		return envVMExtDet;
+	}
+
+	public List<EnvironmentVDC> getEnvVdcList() {
+		List<EnvironmentVDC> envVDCList=launchMapper.getEnvVdcList();
+		 return envVDCList;
 	}
 
 }

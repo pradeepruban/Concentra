@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
@@ -213,9 +215,6 @@
 											</label>
 									    </section>
 									    
-									
-						
-						
 						         <section class="col col-4">
 								<label class="label">Location</label>
 										<label class="select state-disabled">
@@ -226,17 +225,14 @@
 												</select>  <i></i> </label>
 									</section>
 						
-						
 						 <section class="col col-4">
 								<label class="label">Choose your Virtual Data Center</label>
 										<label class="select">
 											<select name="prov_name" class="input-sm" id="prov_name">
-												<option value="0"  disabled="">Select</option>
-												<option value="1" selected="">OpenStack</option>
-												<option value="2" >Amazon</option>
-												<option value="3">VMWare</option>
-												<option value="4">Rackspace</option>
-												<option value="5">Microsoft-Azure</option>										
+											<option value="0">--  Select VDC  --</option>
+										<c:forEach items="${envVDCList}" var="envvdc">
+										<option value="${envvdc.vdc_id}">${envvdc.vdc_name}</option>
+										</c:forEach>									
 											</select>   <i></i> </label>
 									</section>
 								

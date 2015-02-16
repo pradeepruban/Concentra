@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.syntel.isap.provisioning.bean.CustomVM;
 import com.syntel.isap.provisioning.bean.CustomVMExt;
+import com.syntel.isap.provisioning.bean.EnvironmentVDC;
 import com.syntel.isap.provisioning.bean.EnvironmentVM;
 import com.syntel.isap.provisioning.bean.EnvironmentVMExt;
 import com.syntel.isap.provisioning.bean.ServiceReqDts;
@@ -66,6 +67,9 @@ public interface LaunchMapper {
 
 	@Select("SELECT * FROM isap_env_vm_mst_ext where vm_master_id= #{envVMid}")
 	List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid);
+
+	@Select("SELECT * FROM isap_env_vdc_master")
+	List<EnvironmentVDC> getEnvVdcList();
 
 
 }

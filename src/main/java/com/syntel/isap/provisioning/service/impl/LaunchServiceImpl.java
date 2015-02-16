@@ -2,23 +2,21 @@ package com.syntel.isap.provisioning.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.isap.cloudmanager.responses.xsd.GetOpenstackFlavorResp;
 import com.syntel.isap.provisioning.bean.CustomVM;
 import com.syntel.isap.provisioning.bean.CustomVMExt;
+import com.syntel.isap.provisioning.bean.EnvironmentVDC;
 import com.syntel.isap.provisioning.bean.EnvironmentVM;
 import com.syntel.isap.provisioning.bean.EnvironmentVMExt;
 import com.syntel.isap.provisioning.bean.ServiceReqDts;
@@ -199,9 +197,16 @@ public class LaunchServiceImpl implements ILaunchService {
 		return envVM;
 	}
 
+	@Transactional
 	public List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid) {
 		List<EnvironmentVMExt> envVMExtDet=launchDao.getVMExtParamsByID(envVMid);
 		return envVMExtDet;
+	}
+
+	@Transactional
+	public List<EnvironmentVDC> getEnvVdcList() {
+		 List<EnvironmentVDC> envVDCList=launchDao.getEnvVdcList();
+		 return envVDCList;
 	}
 
 

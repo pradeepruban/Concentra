@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.isap.cloudmanager.responses.xsd.GetOpenstackFlavorResp;
 import com.isap.cloudmanager.responses.xsd.Rules;
 import com.syntel.isap.provisioning.bean.CustomVM;
+import com.syntel.isap.provisioning.bean.EnvironmentVDC;
 import com.syntel.isap.provisioning.bean.EnvironmentVM;
 import com.syntel.isap.provisioning.bean.EnvironmentVMExt;
 import com.syntel.isap.provisioning.bean.ServiceReqMst;
@@ -92,10 +93,8 @@ public class LaunchController {
 		public ModelAndView addTemplate(HttpSession session) {
 			  LOGGER.info("Inside getTemplateList()- Get");
 			  ModelAndView model = new ModelAndView();
-			  
-			  /*List<EnvironmentVM> envVMList=launchService.getEnvVmDetails();
-		      session.setAttribute("envVMList", envVMList);*/
-			  
+			  List<EnvironmentVDC> envVDCList=launchService.getEnvVdcList();
+		      session.setAttribute("envVDCList", envVDCList);
 		      String view="department/bespokeTemplate";
 		      model.setViewName(view);
 			return model;
@@ -129,12 +128,7 @@ public class LaunchController {
 			List<EnvironmentVMExt> envVMExtDet=launchService.getVMExtParamsByID(envVMid);
 			System.out.println("envVM"+envVMDet.toString());
 			System.out.println("envVMExtDet"+envVMExtDet.toString());
-			
-			
 		/*	launchService.customLaunch(image,network,security,flavor,customVM,serviceReqMst);*/
-			
-			
-			
 			 String view="provision/bespokeTenantUser";
 		      model.setViewName(view);
 			return "provision/bespokeTenantUser";

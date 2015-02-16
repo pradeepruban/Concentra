@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.syntel.isap.provisioning.bean.CustomVM;
 import com.syntel.isap.provisioning.bean.CustomVMExt;
+import com.syntel.isap.provisioning.bean.EnvironmentVDC;
 import com.syntel.isap.provisioning.bean.EnvironmentVM;
 import com.syntel.isap.provisioning.bean.EnvironmentVMExt;
 import com.syntel.isap.provisioning.bean.ServiceReqDts;
@@ -35,5 +36,7 @@ public interface ILaunchDao {
 	EnvironmentVM getEnvVmDetailsByID(Integer envVMid);
 
 	List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid);
+
+	List<EnvironmentVDC> getEnvVdcList();
 
 }

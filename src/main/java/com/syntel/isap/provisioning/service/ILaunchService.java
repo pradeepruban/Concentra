@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jms.JMSException;
 
 import com.syntel.isap.provisioning.bean.CustomVM;
+import com.syntel.isap.provisioning.bean.EnvironmentVDC;
 import com.syntel.isap.provisioning.bean.EnvironmentVM;
 import com.syntel.isap.provisioning.bean.EnvironmentVMExt;
 import com.syntel.isap.provisioning.bean.ServiceReqMst;
@@ -27,6 +28,8 @@ public interface ILaunchService {
 	EnvironmentVM getEnvVmDetailsByID(Integer envVMid);
 
 	List<EnvironmentVMExt> getVMExtParamsByID(Integer envVMid);
+
+	List<EnvironmentVDC> getEnvVdcList();
 
 
 
