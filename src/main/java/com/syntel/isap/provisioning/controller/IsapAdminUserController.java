@@ -190,5 +190,69 @@ public class IsapAdminUserController {
 	  }
 	 
 	 
+	/* 
+	 @RequestMapping(value="/getNewDeptUsers{userId}", method = RequestMethod.GET)
+	 public @ResponseBody User geNewDeptUsersInJSON(@PathVariable Integer userId ){
+		
+		  List<User> usersList=isapAdminUserService.getUsersByuser(userId);
 
+		  return usersList;
+		} */
+	 @RequestMapping(value="/getNonAdminUsers/", method=RequestMethod.GET)
+	   public @ResponseBody List<UserRoleMap>  getNonAdminUsersInJSON() {
+			
+			
+			return isapAdminUserService.getNonAdminUsers();
+			
+		  }
+	 
+	 @RequestMapping(value="/getNewDeptUsers/{usr_ID}/{dptId}", method=RequestMethod.GET)
+	   public @ResponseBody List<User>  geNewDeptUsersInJSON(@PathVariable Integer usr_ID,@PathVariable Integer dptId) {
+			
+			LOGGER.info("insidegetDeptsByIdJSON "+usr_ID);
+			
+			LOGGER.info("insidegetDeptsByIdJSON "+dptId);
+			
+			
+			return isapAdminUserService.getNewDeptsUserJsonById(usr_ID,dptId);
+			
+		  }
+
+	 
+	 @RequestMapping(value="/getNewCorpUsers/{usr_ID}/{cgId}", method=RequestMethod.GET)
+	   public @ResponseBody List<User>  geNewCoprUsersInJSON(@PathVariable Integer usr_ID,@PathVariable Integer cgId) {
+			
+			LOGGER.info("insidegetDeptsByIdJSON "+usr_ID);
+			
+			LOGGER.info("insidegetDeptsByIdJSON "+cgId);
+		
+			return isapAdminUserService.geNewCoprUsersInJSONId(usr_ID,cgId);
+			
+		  }
+	 
+	 
+	 @RequestMapping(value="/updateNewAdmin", method=RequestMethod.POST)
+	  public ModelAndView  updateNewAdmin( @ModelAttribute("user") User user,HttpSession session){
+		 
+		 System.out.println("inside update new controller");
+		  List<User> userList=new ArrayList<User>();
+		  String view = "admin/UserManagement";
+		 
+		  System.out.println(user.getUsr_name());
+		  ModelAndView model = new ModelAndView();
+		  
+		  LOGGER.info("Inside updateNewAdmin()- Post");
+		  
+		 isapAdminUserService.updateAdminDetails(user);
+		  
+	     userList =  isapAdminUserService.getUser();
+		 model.addObject("usrlist", userList);
+		 model.setViewName(view);
+	     return model;
+	  }
+	 
+	 
+	 
+	 
+	 
 }
