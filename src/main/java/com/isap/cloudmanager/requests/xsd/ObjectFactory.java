@@ -24,14 +24,15 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ListOpenstackNetworksReqTokenId_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "token_id");
-    private final static QName _ListOpenstackNetworksReqOpspassword_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "opspassword");
-    private final static QName _ListOpenstackNetworksReqIp_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "ip");
-    private final static QName _ListOpenstackNetworksReqTenantId_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "tenant_id");
-    private final static QName _ListOpenstackNetworksReqOpstenantname_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "opstenantname");
-    private final static QName _ListOpenstackNetworksReqOpesusername_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "opesusername");
-    private final static QName _GetOpenstackSecurityGroupDetailsReqSecGpId_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "sec_gp_id");
+    private final static QName _GetOpenstackImageDetailsReqTokenId_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "token_id");
+    private final static QName _GetOpenstackImageDetailsReqImageid_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "imageid");
+    private final static QName _GetOpenstackImageDetailsReqOpspassword_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "opspassword");
+    private final static QName _GetOpenstackImageDetailsReqIp_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "ip");
+    private final static QName _GetOpenstackImageDetailsReqTenantId_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "tenant_id");
+    private final static QName _GetOpenstackImageDetailsReqOpstenantname_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "opstenantname");
+    private final static QName _GetOpenstackImageDetailsReqOpesusername_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "opesusername");
     private final static QName _GetOpenstackFlavorDetailsReqFlavorId_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "flavor_id");
+    private final static QName _GetOpenstackSecurityGroupDetailsReqSecGpId_QNAME = new QName("http://requests.cloudmanager.isap.com/xsd", "sec_gp_id");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.isap.cloudmanager.requests.xsd
@@ -41,19 +42,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ListOpenstackImagesReq }
-     * 
-     */
-    public ListOpenstackImagesReq createListOpenstackImagesReq() {
-        return new ListOpenstackImagesReq();
-    }
-
-    /**
      * Create an instance of {@link ListOpenstackKeypairsReq }
      * 
      */
     public ListOpenstackKeypairsReq createListOpenstackKeypairsReq() {
         return new ListOpenstackKeypairsReq();
+    }
+
+    /**
+     * Create an instance of {@link GetOpenstackImageDetailsReq }
+     * 
+     */
+    public GetOpenstackImageDetailsReq createGetOpenstackImageDetailsReq() {
+        return new GetOpenstackImageDetailsReq();
+    }
+
+    /**
+     * Create an instance of {@link ListOpenstackImagesReq }
+     * 
+     */
+    public ListOpenstackImagesReq createListOpenstackImagesReq() {
+        return new ListOpenstackImagesReq();
     }
 
     /**
@@ -100,108 +109,126 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = ListOpenstackNetworksReq.class)
-    public JAXBElement<String> createListOpenstackNetworksReqTokenId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTokenId_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = GetOpenstackImageDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackImageDetailsReqTokenId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTokenId_QNAME, String.class, GetOpenstackImageDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = ListOpenstackNetworksReq.class)
-    public JAXBElement<String> createListOpenstackNetworksReqOpspassword(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpspassword_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "imageid", scope = GetOpenstackImageDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackImageDetailsReqImageid(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqImageid_QNAME, String.class, GetOpenstackImageDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = ListOpenstackNetworksReq.class)
-    public JAXBElement<String> createListOpenstackNetworksReqIp(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqIp_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = GetOpenstackImageDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackImageDetailsReqOpspassword(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpspassword_QNAME, String.class, GetOpenstackImageDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = ListOpenstackNetworksReq.class)
-    public JAXBElement<String> createListOpenstackNetworksReqTenantId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTenantId_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = GetOpenstackImageDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackImageDetailsReqIp(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqIp_QNAME, String.class, GetOpenstackImageDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = ListOpenstackNetworksReq.class)
-    public JAXBElement<String> createListOpenstackNetworksReqOpstenantname(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpstenantname_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = GetOpenstackImageDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackImageDetailsReqTenantId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTenantId_QNAME, String.class, GetOpenstackImageDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = ListOpenstackNetworksReq.class)
-    public JAXBElement<String> createListOpenstackNetworksReqOpesusername(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpesusername_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = GetOpenstackImageDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackImageDetailsReqOpstenantname(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpstenantname_QNAME, String.class, GetOpenstackImageDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = ListOpenstackFlavorsReq.class)
-    public JAXBElement<String> createListOpenstackFlavorsReqTokenId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTokenId_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = GetOpenstackImageDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackImageDetailsReqOpesusername(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpesusername_QNAME, String.class, GetOpenstackImageDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = ListOpenstackFlavorsReq.class)
-    public JAXBElement<String> createListOpenstackFlavorsReqOpspassword(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpspassword_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = GetOpenstackFlavorDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackFlavorDetailsReqTokenId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTokenId_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = ListOpenstackFlavorsReq.class)
-    public JAXBElement<String> createListOpenstackFlavorsReqIp(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqIp_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = GetOpenstackFlavorDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackFlavorDetailsReqOpspassword(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpspassword_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = ListOpenstackFlavorsReq.class)
-    public JAXBElement<String> createListOpenstackFlavorsReqTenantId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTenantId_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = GetOpenstackFlavorDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackFlavorDetailsReqIp(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqIp_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = ListOpenstackFlavorsReq.class)
-    public JAXBElement<String> createListOpenstackFlavorsReqOpstenantname(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpstenantname_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = GetOpenstackFlavorDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackFlavorDetailsReqTenantId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTenantId_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = ListOpenstackFlavorsReq.class)
-    public JAXBElement<String> createListOpenstackFlavorsReqOpesusername(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpesusername_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = GetOpenstackFlavorDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackFlavorDetailsReqOpstenantname(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpstenantname_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = GetOpenstackFlavorDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackFlavorDetailsReqOpesusername(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpesusername_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "flavor_id", scope = GetOpenstackFlavorDetailsReq.class)
+    public JAXBElement<String> createGetOpenstackFlavorDetailsReqFlavorId(String value) {
+        return new JAXBElement<String>(_GetOpenstackFlavorDetailsReqFlavorId_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
     }
 
     /**
@@ -210,7 +237,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = ListOpenstackImagesReq.class)
     public JAXBElement<String> createListOpenstackImagesReqTokenId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTokenId_QNAME, String.class, ListOpenstackImagesReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTokenId_QNAME, String.class, ListOpenstackImagesReq.class, value);
     }
 
     /**
@@ -219,7 +246,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = ListOpenstackImagesReq.class)
     public JAXBElement<String> createListOpenstackImagesReqOpspassword(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpspassword_QNAME, String.class, ListOpenstackImagesReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpspassword_QNAME, String.class, ListOpenstackImagesReq.class, value);
     }
 
     /**
@@ -228,7 +255,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = ListOpenstackImagesReq.class)
     public JAXBElement<String> createListOpenstackImagesReqIp(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqIp_QNAME, String.class, ListOpenstackImagesReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqIp_QNAME, String.class, ListOpenstackImagesReq.class, value);
     }
 
     /**
@@ -237,7 +264,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = ListOpenstackImagesReq.class)
     public JAXBElement<String> createListOpenstackImagesReqTenantId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTenantId_QNAME, String.class, ListOpenstackImagesReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTenantId_QNAME, String.class, ListOpenstackImagesReq.class, value);
     }
 
     /**
@@ -246,7 +273,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = ListOpenstackImagesReq.class)
     public JAXBElement<String> createListOpenstackImagesReqOpstenantname(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpstenantname_QNAME, String.class, ListOpenstackImagesReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpstenantname_QNAME, String.class, ListOpenstackImagesReq.class, value);
     }
 
     /**
@@ -255,7 +282,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = ListOpenstackImagesReq.class)
     public JAXBElement<String> createListOpenstackImagesReqOpesusername(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpesusername_QNAME, String.class, ListOpenstackImagesReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpesusername_QNAME, String.class, ListOpenstackImagesReq.class, value);
     }
 
     /**
@@ -264,7 +291,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = GetOpenstackSecurityGroupDetailsReq.class)
     public JAXBElement<String> createGetOpenstackSecurityGroupDetailsReqTokenId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTokenId_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTokenId_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
     }
 
     /**
@@ -282,7 +309,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = GetOpenstackSecurityGroupDetailsReq.class)
     public JAXBElement<String> createGetOpenstackSecurityGroupDetailsReqOpspassword(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpspassword_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpspassword_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
     }
 
     /**
@@ -291,7 +318,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = GetOpenstackSecurityGroupDetailsReq.class)
     public JAXBElement<String> createGetOpenstackSecurityGroupDetailsReqIp(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqIp_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqIp_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
     }
 
     /**
@@ -300,7 +327,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = GetOpenstackSecurityGroupDetailsReq.class)
     public JAXBElement<String> createGetOpenstackSecurityGroupDetailsReqTenantId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTenantId_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTenantId_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
     }
 
     /**
@@ -309,7 +336,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = GetOpenstackSecurityGroupDetailsReq.class)
     public JAXBElement<String> createGetOpenstackSecurityGroupDetailsReqOpstenantname(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpstenantname_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpstenantname_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
     }
 
     /**
@@ -318,124 +345,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = GetOpenstackSecurityGroupDetailsReq.class)
     public JAXBElement<String> createGetOpenstackSecurityGroupDetailsReqOpesusername(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpesusername_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = ListOpenstackSecurityGroupsReq.class)
-    public JAXBElement<String> createListOpenstackSecurityGroupsReqTokenId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTokenId_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = ListOpenstackSecurityGroupsReq.class)
-    public JAXBElement<String> createListOpenstackSecurityGroupsReqOpspassword(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpspassword_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = ListOpenstackSecurityGroupsReq.class)
-    public JAXBElement<String> createListOpenstackSecurityGroupsReqIp(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqIp_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = ListOpenstackSecurityGroupsReq.class)
-    public JAXBElement<String> createListOpenstackSecurityGroupsReqTenantId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTenantId_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = ListOpenstackSecurityGroupsReq.class)
-    public JAXBElement<String> createListOpenstackSecurityGroupsReqOpstenantname(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpstenantname_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = ListOpenstackSecurityGroupsReq.class)
-    public JAXBElement<String> createListOpenstackSecurityGroupsReqOpesusername(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpesusername_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = GetOpenstackFlavorDetailsReq.class)
-    public JAXBElement<String> createGetOpenstackFlavorDetailsReqTokenId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTokenId_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = GetOpenstackFlavorDetailsReq.class)
-    public JAXBElement<String> createGetOpenstackFlavorDetailsReqOpspassword(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpspassword_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = GetOpenstackFlavorDetailsReq.class)
-    public JAXBElement<String> createGetOpenstackFlavorDetailsReqIp(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqIp_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = GetOpenstackFlavorDetailsReq.class)
-    public JAXBElement<String> createGetOpenstackFlavorDetailsReqTenantId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTenantId_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = GetOpenstackFlavorDetailsReq.class)
-    public JAXBElement<String> createGetOpenstackFlavorDetailsReqOpstenantname(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpstenantname_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = GetOpenstackFlavorDetailsReq.class)
-    public JAXBElement<String> createGetOpenstackFlavorDetailsReqOpesusername(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpesusername_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "flavor_id", scope = GetOpenstackFlavorDetailsReq.class)
-    public JAXBElement<String> createGetOpenstackFlavorDetailsReqFlavorId(String value) {
-        return new JAXBElement<String>(_GetOpenstackFlavorDetailsReqFlavorId_QNAME, String.class, GetOpenstackFlavorDetailsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpesusername_QNAME, String.class, GetOpenstackSecurityGroupDetailsReq.class, value);
     }
 
     /**
@@ -444,7 +354,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = ListOpenstackKeypairsReq.class)
     public JAXBElement<String> createListOpenstackKeypairsReqTokenId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTokenId_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTokenId_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
     }
 
     /**
@@ -453,7 +363,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = ListOpenstackKeypairsReq.class)
     public JAXBElement<String> createListOpenstackKeypairsReqOpspassword(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpspassword_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpspassword_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
     }
 
     /**
@@ -462,7 +372,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = ListOpenstackKeypairsReq.class)
     public JAXBElement<String> createListOpenstackKeypairsReqIp(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqIp_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqIp_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
     }
 
     /**
@@ -471,7 +381,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = ListOpenstackKeypairsReq.class)
     public JAXBElement<String> createListOpenstackKeypairsReqTenantId(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqTenantId_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTenantId_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
     }
 
     /**
@@ -480,7 +390,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = ListOpenstackKeypairsReq.class)
     public JAXBElement<String> createListOpenstackKeypairsReqOpstenantname(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpstenantname_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpstenantname_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
     }
 
     /**
@@ -489,7 +399,169 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = ListOpenstackKeypairsReq.class)
     public JAXBElement<String> createListOpenstackKeypairsReqOpesusername(String value) {
-        return new JAXBElement<String>(_ListOpenstackNetworksReqOpesusername_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpesusername_QNAME, String.class, ListOpenstackKeypairsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = ListOpenstackFlavorsReq.class)
+    public JAXBElement<String> createListOpenstackFlavorsReqTokenId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTokenId_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = ListOpenstackFlavorsReq.class)
+    public JAXBElement<String> createListOpenstackFlavorsReqOpspassword(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpspassword_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = ListOpenstackFlavorsReq.class)
+    public JAXBElement<String> createListOpenstackFlavorsReqIp(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqIp_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = ListOpenstackFlavorsReq.class)
+    public JAXBElement<String> createListOpenstackFlavorsReqTenantId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTenantId_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = ListOpenstackFlavorsReq.class)
+    public JAXBElement<String> createListOpenstackFlavorsReqOpstenantname(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpstenantname_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = ListOpenstackFlavorsReq.class)
+    public JAXBElement<String> createListOpenstackFlavorsReqOpesusername(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpesusername_QNAME, String.class, ListOpenstackFlavorsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = ListOpenstackNetworksReq.class)
+    public JAXBElement<String> createListOpenstackNetworksReqTokenId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTokenId_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = ListOpenstackNetworksReq.class)
+    public JAXBElement<String> createListOpenstackNetworksReqOpspassword(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpspassword_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = ListOpenstackNetworksReq.class)
+    public JAXBElement<String> createListOpenstackNetworksReqIp(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqIp_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = ListOpenstackNetworksReq.class)
+    public JAXBElement<String> createListOpenstackNetworksReqTenantId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTenantId_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = ListOpenstackNetworksReq.class)
+    public JAXBElement<String> createListOpenstackNetworksReqOpstenantname(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpstenantname_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = ListOpenstackNetworksReq.class)
+    public JAXBElement<String> createListOpenstackNetworksReqOpesusername(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpesusername_QNAME, String.class, ListOpenstackNetworksReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "token_id", scope = ListOpenstackSecurityGroupsReq.class)
+    public JAXBElement<String> createListOpenstackSecurityGroupsReqTokenId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTokenId_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opspassword", scope = ListOpenstackSecurityGroupsReq.class)
+    public JAXBElement<String> createListOpenstackSecurityGroupsReqOpspassword(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpspassword_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "ip", scope = ListOpenstackSecurityGroupsReq.class)
+    public JAXBElement<String> createListOpenstackSecurityGroupsReqIp(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqIp_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "tenant_id", scope = ListOpenstackSecurityGroupsReq.class)
+    public JAXBElement<String> createListOpenstackSecurityGroupsReqTenantId(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqTenantId_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opstenantname", scope = ListOpenstackSecurityGroupsReq.class)
+    public JAXBElement<String> createListOpenstackSecurityGroupsReqOpstenantname(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpstenantname_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://requests.cloudmanager.isap.com/xsd", name = "opesusername", scope = ListOpenstackSecurityGroupsReq.class)
+    public JAXBElement<String> createListOpenstackSecurityGroupsReqOpesusername(String value) {
+        return new JAXBElement<String>(_GetOpenstackImageDetailsReqOpesusername_QNAME, String.class, ListOpenstackSecurityGroupsReq.class, value);
     }
 
 }
