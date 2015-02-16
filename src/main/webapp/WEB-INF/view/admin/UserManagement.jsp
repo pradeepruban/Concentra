@@ -1260,7 +1260,7 @@
 			   		
 			             });
 		           
-		           /*  this method is for getting non admin users for setting new Admin */
+		           /*  this method is for getting non admin users for setting new departmentAdmin  */
 		           
 		           $.getJSON("./getNonAdminUsers/",function(response){
 		   		    	
@@ -1276,7 +1276,7 @@
 		   		    	for(i=0;i<response.length;i++){
 		   		    		
 		   		    	 //alert(response[i].usr_name);
-		   		    	username += '<option value="' + response[i].usr_id + '">' + response[i].usr_name + '</option>';
+		   		    	username += '<option value="' + response[i].usr_name + '">' + response[i].usr_name + '</option>';
 		   		    
 		   		    	}
 		   		     $('#editDeptusrId').append(username); 
@@ -1441,8 +1441,8 @@
                 html : "Update Admin",
                 "class" : "btn btn-success",
                 click : function() {
-                    document.editusrform.action = "./editUserDetails";
-                       document.editusrform.submit();
+                    document.editnewDeptAdminform.action = "./updateNewAdmin";
+                       document.editnewDeptAdminform.submit();
                     $(this).dialog("close");
                 }
             },{
