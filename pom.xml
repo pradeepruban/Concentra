@@ -103,26 +103,7 @@
   <build>
     <finalName>ISAP_Provision</finalName>
     <plugins>
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-pmd-plugin</artifactId>
-<version>3.0.1</version>
-<configuration>
-    <linkXRef>true</linkXRef>
-    <sourceEncoding>UTF-8</sourceEncoding>
-    <minimumTokens>100</minimumTokens>
-    <targetJdk>1.7</targetJdk>
-</configuration>
-<executions>
-    <execution>
-        <phase>validate</phase>
-        <goals>
-            <goal>check</goal>
-            <goal>cpd-check</goal>
-        </goals>
-    </execution>
-</executions>
-</plugin>
+
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-pmd-plugin</artifactId>
